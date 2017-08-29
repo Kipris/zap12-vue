@@ -32,13 +32,12 @@ module.exports = {
       },
     ],
     // allow optionalDependencies
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        optionalDependencies: ['test/unit/index.js'],
-      },
-    ],
-    // allow debugger during developmen
+    'import/no-extraneous-dependencies': ['error', {
+      'optionalDependencies': ['test/unit/index.js']
+    }],
+    // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-  },
-};
+    "comma-dangle": 0,
+    "semi": 0
+  }
+}
