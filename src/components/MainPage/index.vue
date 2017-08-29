@@ -1,17 +1,12 @@
 <template>
   <div>
-    <Header />
+    dasdasd
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
-  name: 'MainPage',
-  compontents: {
-    Header
-  }
+  name: 'MainPage'
 }
 </script>
 
