@@ -1,4 +1,4 @@
-@import "./../../styles/colors";
+@import './../../assets/styles/colors';
 $navbar-height: 60px;
 
 .navbar {
@@ -94,7 +94,7 @@ $navbar-height: 60px;
         width: 0;
         height: 0;
         margin-left: 15px;
-        content: url('../img/Icon_Arrow.png');
+        content: url('../../assets/img/Icon_Arrow.png');
     }        
 }
 
@@ -162,7 +162,7 @@ $navbar-height: 60px;
         width: 0;
         height: 0;
         margin-left: 15px;
-        content: url('../img/Icon_Arrow.png');
+        content: url('../../assets/img/Icon_Arrow.png');
     }   
     &:hover .dropdown-menu {
         display: block;

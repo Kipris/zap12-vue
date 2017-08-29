@@ -1,4 +1,4 @@
-@import './../../styles/colors';
+@import './../../assets/styles/colors';
 
 //ARROWS
 .arrow-wrap {
@@ -38,7 +38,7 @@ cursor: pointer;
 }
 &.back::after,
 &.forward::after {
-    content: url('../img/ic_back.png');    
+    content: url('../../assets/img/ic_back.png');    
     margin-left: -7px;
 }
 &.forward::after {
@@ -47,7 +47,7 @@ cursor: pointer;
 }
 &.back:hover::after,
 &.forward:hover::after {
-    content: url('../img/ic_forward.png');   
+    content: url('../../assets/img/ic_forward.png');   
     transform: scaleX(1);
 }
 &.back:hover::after {
