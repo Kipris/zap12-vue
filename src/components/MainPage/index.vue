@@ -1,12 +1,17 @@
 <template>
   <div>
-    dasdasd
+    <Arrow />
   </div>
 </template>
 
 <script>
+import Arrow from '@/uikit/Arrow'
+
 export default {
-  name: 'MainPage'
+  name: 'MainPage',
+  components: {
+    Arrow
+  }
 }
 </script>
 

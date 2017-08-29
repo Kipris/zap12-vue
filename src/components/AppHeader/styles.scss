@@ -1,0 +1,185 @@
+@import "./../../styles/colors";
+$navbar-height: 60px;
+
+.navbar {
+    position: relative;
+    background-color: $dark;
+    .navbar-wrap {        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+
+.navbar-menu {
+    height: $navbar-height;
+    margin-right: auto;
+    padding: 0 15px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    & > span, 
+    & > a {   
+        padding: ($navbar-height/2px - 10px) 15px;
+        color: $dark-grey; 
+        text-transform: uppercase;        
+        white-space: nowrap; 
+        font-size: 1.3rem; 
+        line-height: 2rem;
+    }
+    & > a {
+        
+    }
+    & > span.contacts {
+        font-size: 2rem;
+//        padding: ($navbar-height/2px - 10px) 15px;
+        &:hover {
+            text-decoration: underline;
+        }
+        &.dropdown {
+            margin-right: 30px;
+        }
+        &.dropdown::after {
+            position: absolute;
+            top: 50%;
+            margin-top: -13px;
+        }
+        
+        //NAVBAR > CONTACTS > DROPDOWN
+        .dropdown-menu {
+            nav {
+                display: flex;
+                flex-direction: column;
+                a {   
+                    text-transform: none;
+                    color: $dark-grey;
+                    font-size: 2rem;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    
+    }
+}
+
+.navbar-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .cart {
+        top: 2px;
+        padding: ($navbar-height/2px - 12px) 15px;
+        margin-right: 18px;
+        &.dropdown {
+            margin-right: 30px;
+        }
+        &.dropdown::after {
+            position: absolute;
+            top: 50%;
+            margin-top: -16px;
+            left: 50%;
+            margin-left: 20px;
+        }
+        .dropdown-menu {
+            width: 350px;
+            text-align: center;
+        }
+    }
+}
+
+.navbar-dropdown {
+    &::after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 15px;
+        content: url('../img/Icon_Arrow.png');
+    }        
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    .navbar-wrap {
+        height: $navbar-height;
+    }
+    .navbar-logo {
+        margin-right: auto;
+    }
+    .navbar-menu {
+        display: none;
+    }
+    .navbar-actions {
+        button {
+            display: none;    
+        }
+    }
+    .navbar-toggle {
+        display: block;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        cursor: pointer;
+        span {
+            display: block;
+            width: 25px;
+            height: 3.5px;
+            border-radius: 10px;
+            background-color: #ff0000;
+            position: relative;
+            top: 50%;
+            margin-top: -1.75px;
+        }
+        span::before {
+            position: absolute;
+            bottom: -8px;
+        }
+        span::after {
+            top: -8px;
+        }
+        span::after, span::before {
+            content: '';
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            background-color: inherit;
+            position: absolute;
+        }
+    }
+}
+
+
+//TODO: Replace to DROPDOWN.SCSS
+.dropdown {
+    cursor: pointer;
+    position: relative;
+    &::after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 15px;
+        content: url('../img/Icon_Arrow.png');
+    }   
+    &:hover .dropdown-menu {
+        display: block;
+    }
+    & .dropdown-menu {
+        position: absolute;
+        top: $navbar-height;
+        left: 0;        
+        display: block;        
+        background-color: $white;
+        border-radius: 0 0 8px 8px;
+        padding: 15px;
+        display: none;
+        &.right {
+            left: auto;
+            right: 0;
+        }
+    }   
+    
+}
