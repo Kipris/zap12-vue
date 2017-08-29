@@ -1,0 +1,60 @@
+@import './../../assets/styles/colors';
+
+//ARROWS
+.arrow-wrap {
+position: relative;
+width: 42px;
+height: 42px;
+display: inline-block;
+}
+.arrow {
+cursor: pointer;
+&::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: background-color .3s ease-in;
+}
+&::after {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    margin-top: -10px;    
+}
+&.black::before,
+&.forward::before {    
+    background-color: $black;
+}
+&.black:hover::before,
+&.forward:hover::before {
+    background-color: $red;
+    content: '';
+}
+&.back::after,
+&.forward::after {
+    content: url('../../assets/img/ic_back.png');    
+    margin-left: -7px;
+}
+&.forward::after {
+    transform: scaleX(-1);
+    margin-left: -18px;
+}
+&.back:hover::after,
+&.forward:hover::after {
+    content: url('../../assets/img/ic_forward.png');   
+    transform: scaleX(1);
+}
+&.back:hover::after {
+    margin-left: -20px;
+    transform: scaleX(-1);
+}
+&.forward:hover::after {
+    margin-left: -4px;
+}
+}
