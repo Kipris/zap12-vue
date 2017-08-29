@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_cart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Main" transform="translate(-1124.000000, -21.000000)">
+            <g id="Header">
+                <g id="ic_cart" transform="translate(1122.000000, 18.000000)">
+                    <g id="cart" transform="translate(3.000000, 4.000000)">
+                        <polyline id="Path-3" stroke="#999999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="0 0 4 0 7 10 15 10 18 2 10 2"></polyline>
+                        <circle id="Oval" fill="#999999" cx="8" cy="15" r="2"></circle>
+                        <circle id="Oval-Copy" fill="#999999" cx="14" cy="15" r="2"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
