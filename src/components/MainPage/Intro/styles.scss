@@ -1,0 +1,28 @@
+@import './../../../assets/theme/colors';
+@import './../../../assets/theme/typography';
+@import './../../../assets/theme/search-input';
+
+//INTRO
+.intro {
+  height: 540px;
+  background: url(./../../../assets/img/background.jpg) no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  .container {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  h1 {
+      color: $white;
+  }
+  small {
+      max-width: 630px;
+  }
+  .search-input-group {
+      max-width: 745px;
+  }
+}
+

@@ -1,4 +1,6 @@
-@import './../../assets/styles/colors';
+@import './../../assets/theme/colors';
+@import './../../assets/theme/typography';
+
 $navbar-height: 60px;
 
 .navbar {
@@ -10,7 +12,6 @@ $navbar-height: 60px;
         align-items: center;
     }
 }
-
 
 .navbar-menu {
     height: $navbar-height;
@@ -72,14 +73,14 @@ $navbar-height: 60px;
         padding: ($navbar-height/2px - 12px) 15px;
         margin-right: 18px;
         &.dropdown {
-            margin-right: 30px;
+            margin-right: 35px;
         }
         &.dropdown::after {
             position: absolute;
             top: 50%;
-            margin-top: -16px;
+            margin-top: -10px;
             left: 50%;
-            margin-left: 20px;
+            margin-left: 25px;
         }
         .dropdown-menu {
             width: 350px;
@@ -129,7 +130,7 @@ $navbar-height: 60px;
             width: 25px;
             height: 3.5px;
             border-radius: 10px;
-            background-color: #ff0000;
+            background-color: $red;
             position: relative;
             top: 50%;
             margin-top: -1.75px;
