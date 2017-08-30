@@ -1,0 +1,137 @@
+@import './../../assets/theme/colors';
+@import './../../assets/theme/typography';
+
+.footer {
+  padding: 50px 0 60px 0;
+  background-color: $dark;
+  .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+  }
+  .footer-item {
+      .footer-logo {
+          margin-bottom: 20px;
+      }
+      .description {
+          max-width: 260px;
+          font-size: 1.3rem;
+          color: $dark-grey;
+      }
+      .footer-nav {
+          display: flex;
+          flex-direction: column;
+          a {
+              font-size: 1.3rem;
+              line-height: 2.9rem;
+              text-transform: uppercase;
+              color: $white;
+              margin-bottom: 15px;
+              &:last-child {
+                  margin-bottom: 0;
+              }
+          }
+      }
+      .footer-contacts {
+          color: $white;
+          font-size: 1.6rem;
+          line-height: 2.9rem;
+          margin-left: 40px;            
+          display: flex;
+          flex-direction: column;
+          a {
+              color: $white;
+          }
+          span {
+             position: relative; 
+             margin-bottom: 15px;
+          }
+          span::before {
+              position: absolute;
+              display: block;
+              top: 50%;                
+          }
+          span.circle::before {
+              content: '';                
+              width: 6px;
+              height: 6px;
+              background-color: $dark-grey;
+              border-radius: 50%;  
+              margin-top: -3px;
+              left: -27px;
+          }
+          span.phone::before {
+              content: url('./../../assets/img/ic_phone.png');  
+              margin-top: -9px;
+              margin-left: -33px;
+          }
+          span.mail::before {
+              content: url('./../../assets/img/ic_message.png');  
+              margin-top: -12px;
+              margin-left: -33px;
+          }
+      }
+      .location {
+          font-size: 1.6rem;
+          color: $white;
+          line-height: 2.9rem;
+          max-width: 190px;
+          margin-left: 40px;
+          position: relative;
+          margin-bottom: 24px;
+      }
+      .location::before {
+          content: url('./../../assets/img/ic_location.png');  
+          position: absolute;
+          display: block;
+          top: 0;
+          margin-left: -33px;
+      }
+  }
+}
+
+@media (max-width: 991px) {
+  .footer {
+      &-wrap {
+          flex-wrap: wrap;
+      }
+      .footer-item {
+          width: 45%;
+          margin-bottom: 50px;
+          .footer-nav {
+//                flex-direction: row;        
+//                justify-content: space-between;
+          }
+      }
+      .footer-item:nth-child(odd) {
+          margin-right: 30px;
+      }
+      
+  }
+}
+
+@media (max-width: 540px) {
+  .footer {
+      .footer-item {
+          text-align: center;
+          width: 100%;
+          margin-right: 0;
+          .description {
+              max-width: 100%;
+          }
+          .footer-contacts {                
+              span {
+                  width: 190px;
+                  margin-left: -95px;
+                  left: 50%;
+                  white-space: nowrap;
+              }                
+          }            
+          .location {
+              left: 50%;
+              margin-left: -95px;
+//                white-space: nowrap;
+          }
+      }
+      
+  }
+}
