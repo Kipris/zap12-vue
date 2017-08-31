@@ -4,8 +4,9 @@
         <div class="h1">Последние новости</div>
         <!-- TODO: CAROUSEL -->
         <div class="news-wrap">
-            <Arrow class="prev" @click.native="nextSlide"/>
-            <flickity ref="flickity" :options="flickityOptions">
+            <Arrow class="prev" @click.native="prevSlide"/>
+              <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
+                <swiper-slide>
                 <div class="news-block panel">
                     <div class="news-title">
                         <h5>Запчасти для BMW</h5>
@@ -13,6 +14,8 @@
                     </div>
                     <p>В жизни бывают такие ситуации, когда компромисс просто недопустим, особенно если речь идет о безопасности за рулем. Автомобили немецкой компании-производителя BMW …</p>
                 </div>
+                </swiper-slide>
+                <swiper-slide>
                 <div class="news-block panel">
                     <div class="news-title">
                         <h5>Запчасти для Митсубиси</h5>
@@ -20,6 +23,8 @@
                     </div>
                     <p>Мы продаем оптом и в розницу запчасти для автомобилей Mitsubishi. К вашим услугам - самые разнообразные комплектующие от официального производителя по самым доступным ценам.</p>
                 </div>
+                </swiper-slide>
+                <swiper-slide>
                 <div class="news-block panel">
                     <div class="news-title">
                         <h5>Запчасти для Рено</h5>
@@ -27,8 +32,27 @@
                     </div>
                     <p>Несомненно, зашедшие на наш сайт являются давними и преданными поклонниками продукции крупнейшего французского автомобильного концерна Renault.</p>
                 </div>
-            </flickity>
-            <Arrow class="next" @click.native="prevSlide"/> 
+                </swiper-slide>
+                <swiper-slide>
+                <div class="news-block panel">
+                    <div class="news-title">
+                        <h5>Запчасти для Рено</h5>
+                        <span>07.03.2017</span>                        
+                    </div>
+                    <p>Несомненно, зашедшие на наш сайт являются давними и преданными поклонниками продукции крупнейшего французского автомобильного концерна Renault.</p>
+                </div>
+                </swiper-slide>
+                <swiper-slide>
+                <div class="news-block panel">
+                    <div class="news-title">
+                        <h5>Запчасти для Рено</h5>
+                        <span>07.03.2017</span>                        
+                    </div>
+                    <p>Несомненно, зашедшие на наш сайт являются давними и преданными поклонниками продукции крупнейшего французского автомобильного концерна Renault.</p>
+                </div>
+                </swiper-slide>
+              </swiper>
+            <Arrow class="next" @click.native="nextSlide"/> 
         </div>
         <button class="btn full-red">Читать еще</button>
       </div>
@@ -37,31 +61,47 @@
 
 <script>
 import Arrow from '@/uikit/Arrow'
-import Flickity from 'vue-flickity'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default {
   name: 'News',
   data() {
     return {
-      flickityOptions: {
-        initialIndex: 1,
-        prevNextButtons: false,
-        pageDots: false,
-        wrapAround: true
+      notNextTick: true,
+      swiperOption: {
+        autoplay: 3000,
+        slidesPerView: 3,
+        breakpoints: {
+          768: {
+            slidesPerView: 2
+          },
+          1024: {
+            slidesPerView: 3
+          },
+          320: {
+            slidesPerView: 1
+          }
+        }
       }
+    }
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mySwiper.swiper
+    }
+  },
+  methods: {
+    nextSlide() {
+      this.swiper.slideNext(false, 300)
+    },
+    prevSlide() {
+      this.swiper.slidePrev(false, 300)
     }
   },
   components: {
     Arrow,
-    Flickity
-  },
-  methods: {
-    nextSlide() {
-      this.$refs.flickity.next()
-    },
-    prevSlide() {
-      this.$refs.flickity.previous()
-    }
+    swiper,
+    swiperSlide
   }
 }
 </script>
@@ -69,6 +109,7 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../../node_modules/pavilion/scss/pavilion';
+  @import './../../../../node_modules/swiper/dist/css/swiper.css';
   @import './../../../assets/theme/buttons';
 
  
