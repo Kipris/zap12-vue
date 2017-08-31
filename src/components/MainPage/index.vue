@@ -2,27 +2,25 @@
   <div>
     <Intro />
     <Service />
-    <Details />
+    <Detail />
     <News />
     <Repair />
   </div>
 </template>
 
 <script>
-import Arrow from '@/uikit/Arrow';
 import Intro from './Intro';
 import Service from './Service';
-import Details from './Details';
+import Detail from './Detail';
 import News from './News';
 import Repair from './Repair';
 
 export default {
   name: 'MainPage',
   components: {
-    Arrow,
     Intro,
     Service,
-    Details,
+    Detail,
     News,
     Repair
   }

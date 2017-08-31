@@ -38,7 +38,7 @@
 <script>
 
 export default {
-  name: 'Details',
+  name: 'Detail',
   components: {}
 }
 </script>
