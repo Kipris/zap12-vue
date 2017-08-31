@@ -14,7 +14,7 @@
     "pavilion": "^2.0.3",
     "style-loader": "^0.18.2",
     "vue": "^2.4.2",
-    "vue-flickity": "^1.0.8",
+    "vue-awesome-swiper": "^2.6.2",
     "vue-router": "^2.7.0"
   },
   "devDependencies": {
