@@ -2,10 +2,10 @@
   <header class="header">
     <div class="navbar">
       <div class="container">
-          <div class="navbar-wrap">                            
-              <a href="#" class="navbar-logo">
-                  <img src="./../../assets/img/Icon_Logo.svg" alt="logo">
-              </a>                    
+          <div class="navbar-wrap">         
+            <router-link :to="'/'" class="navbar-logo" tag="a">
+              <img src="./../../assets/img/Icon_Logo.svg" alt="logo">
+            </router-link>                   
               <nav class="navbar-menu">
                   <span class="dropdown contacts" href="#">
                       +7 (495) 971-02-02
@@ -21,10 +21,10 @@
                   
                   
                   <a class="navbar-dropdown" href="#">Запчасти</a>
-                  <a href="#">Новости</a>
+                  <router-link :to="'/news'" tag="a">Новости</router-link>
                   <a href="#">Доставка</a>
                   <a href="#">Поставщикам</a>
-                  <a href="#">О нас</a>
+                  <router-link :to="'/about'" tag="a">О Нас</router-link>
               </nav>                        
               <div class="navbar-actions">
                   <span class="cart dropdown">
