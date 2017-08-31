@@ -3,6 +3,13 @@
 
 $navbar-height: 60px;
 
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .navbar {
     position: relative;
     background-color: $dark;
@@ -35,9 +42,6 @@ $navbar-height: 60px;
     & > span.contacts {
         font-size: 2rem;
 //        padding: ($navbar-height/2px - 10px) 15px;
-        &:hover {
-            text-decoration: underline;
-        }
         &.dropdown {
             margin-right: 30px;
         }
@@ -56,7 +60,7 @@ $navbar-height: 60px;
                     text-transform: none;
                     color: $dark-grey;
                     font-size: 2rem;
-                    margin-bottom: 10px;
+                    margin-bottom: 10px;                    
                 }
             }
         }
@@ -176,11 +180,18 @@ $navbar-height: 60px;
         background-color: $white;
         border-radius: 0 0 8px 8px;
         padding: 15px;
-        display: none;
-        &.right {
-            left: auto;
-            right: 0;
-        }
-    }   
+        display: none; 
+        &.cart {
+          top: 56px;
+          left: auto;
+          right: 0;
+          z-index: 100;
+        }        
+    }  
     
 }
+
+
+
+
+
