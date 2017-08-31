@@ -29,9 +29,7 @@
               <div class="navbar-actions">
                   <span class="cart dropdown">
                       <img src="./../../assets/img/ic_cart.svg" alt="Корзина">
-                      <div class="dropdown-menu right">
-                          <span>Корзина пуста</span>
-                      </div>
+                      <Cart />
                   </span>
                   
                   <button class="btn red">Войти</button>
@@ -49,8 +47,13 @@
 </template>
 
 <script>
+import Cart from './Cart'
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  components: {
+    Cart
+  }
 }
 </script>
 

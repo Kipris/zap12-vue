@@ -1,0 +1,47 @@
+@import './../../../assets/theme/colors';
+@import './../../../assets/theme/typography';
+@import './../../../assets/theme/panels';
+
+.search-panel {
+  background-color: #D8D8D8;
+  padding: 10px 0;
+}
+
+.search-panel-wrap {
+  display: flex;
+  justify-content: space-between;  
+}
+
+.search-input-group {
+  max-width: 360px;  
+}
+.sort-wrap {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-end;
+  align-items: center;
+}
+label {
+  margin-right: 6px;
+  font-size: 1.4rem;
+}
+select {
+  position: relative;
+  padding: 12px;
+  height: 40px !important;
+  border-radius: 8px;
+  line-height: 14px;
+  border: 1px solid rgba(0,0,0,.2);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  appearance: none;
+}
+
+select.sort-by {
+  width: 126px;
+  margin-right: 20px;
+}
+select.show-record {
+  width: 66px;
+}
