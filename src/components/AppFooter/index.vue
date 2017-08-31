@@ -3,9 +3,9 @@
     <div class="container">
       <div class="footer-wrap">
       <div class="footer-item">
-          <div class="footer-logo">
-              <img src="./../../assets/img/Icon_Logo.svg" alt="logo">
-          </div>
+        <router-link :to="'/'" tag="div" class="footer-logo">
+          <img src="./../../assets/img/Icon_Logo.svg" alt="logo">
+        </router-link>
           <p class="description">
               Мы продаем оптом и в розницу запчасти для автомобилей Mitsubishi. К вашим услугам - 
               самые разнообразные комплектующие от официального производителя по самым доступным ценам.
@@ -14,10 +14,10 @@
       <div class="footer-item">
           <nav class="footer-nav">
               <a href="#">Каталоги</a>
-              <a href="#">Новости</a>
+              <router-link :to="'/news'" tag="a">Новости</router-link>
               <a href="#">Доставка</a>
               <a href="#">Поставщикам</a>
-              <a href="#">О нас</a>
+              <router-link :to="'/about'" tag="a">О Нас</router-link>
           </nav>
       </div>
       <div class="footer-item">
