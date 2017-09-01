@@ -51,9 +51,14 @@
 </template>
 
 <script>
+import { find } from '@/APIMock/details'
 
 export default {
-  name: 'ResultsTable'
+  name: 'ResultsTable',
+  created() {
+    const result = find('сarModel', 'Renault')
+    console.log(result)
+  }
 }
 </script>
 
