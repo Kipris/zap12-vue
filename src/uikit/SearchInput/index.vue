@@ -5,7 +5,7 @@
         <input type="text" class="search-input" placeholder="">
 
         <!-- TODO: v-if: display if button = true -->
-        <button class="btn full-red search-button">Найти</button>
+        <button class="btn full-red search-button" @click="search">Найти</button>
     </div>
 </template>
 
@@ -13,6 +13,11 @@
 
 export default {
   name: 'SearchInput',
+  methods: {
+    search() {
+      this.$router.push('/searchresults')
+    }
+  },
   components: {}
 }
 </script>

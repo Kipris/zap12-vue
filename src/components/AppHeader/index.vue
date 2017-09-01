@@ -18,8 +18,6 @@
                           </nav>
                       </div>
                   </span>
-                  
-                  
                   <a class="navbar-dropdown" href="#">Запчасти</a>
                   <router-link :to="'/news'" tag="a">Новости</router-link>
                   <a href="#">Доставка</a>
