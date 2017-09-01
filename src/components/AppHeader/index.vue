@@ -81,13 +81,26 @@
                   <span class="cart dropdown">
                       <img src="./../../assets/img/ic_cart.svg" alt="Корзина">
                       <Cart />
-                  </span>
-                  
+                  </span>                  
                   <button class="btn red">Войти</button>
-                  
-                  <div class="navbar-toggle">
-                      <span></span>
+
+                  <div class="toggle-menu-wrap">
+                    <input type="checkbox" name="menu" id="menu" class="toggle-menu-checkbox">
+                    <label for="menu" class="toggle-menu-icon"><span></span></label>
+                    <nav class="toggle-menu">
+                      <a href="" class="nav-link">Запчасти</a>
+                      <a href="" class="nav-link">Новости</a>
+                      <a href="" class="nav-link">Доставка</a>
+                      <a href="" class="nav-link">Поставщикам</a>
+                      <a href="" class="nav-link">О нас</a>                            
+                      <a href="">+7 (495) 971-02-02</a>
+                      <a href="">+7 (915) 471-02-02</a>
+                      <a href="">+7 (925) 111-02-02</a>
+                      <a href="">zap12@gmail.com</a>
+                      <a href="" class="nav-enter">Войти</a>
+                    </nav>
                   </div>
+
               </div> 
           </div>                        
             

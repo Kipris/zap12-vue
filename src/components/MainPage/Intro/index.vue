@@ -6,7 +6,7 @@
             Более 20000 оригинальных деталей и запчастей для иномарок, расходных материалов и средств по уходу за автомобилем
         </small>
         <!-- TODO: search input: button = true -->
-        <SearchInput />
+        <SearchInput placeholder="Поиск автозапчастей по номеру, по марке машины" button="true" />
       </div>
     </div>
 </template>

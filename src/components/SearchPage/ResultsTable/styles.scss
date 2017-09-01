@@ -9,8 +9,11 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  margin-bottom: 10px;
   h1 {
     word-break: normal;
+    margin: 0;
+    text-transform: uppercase;
   }
   .chips-wrap {
     flex: 1;
@@ -65,14 +68,16 @@ table {
     th {
       font-size: 1.8rem;
       color: $black;
-      padding: 15px 15px 15px 0;
-      // border-collapse: 
+      padding: 15px 15px 15px 0; 
       border-spacing: 0 0;
       border-bottom: 2px solid transparentize($black, .95);
       text-align: left;
     }
   }
   tbody {
+    tr {
+      cursor: pointer;
+    }
     tr:hover {
       background-color: transparentize($black, .9);
     }
@@ -88,7 +93,8 @@ table {
       }
       & > div {
         width: inherit;
-        padding: 20px 8px;
+        
+        padding: 10px 8px;
         border-bottom: 1px solid transparentize($black, .85);
         .chip::after {
           right: 15px;
