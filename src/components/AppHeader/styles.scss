@@ -11,7 +11,7 @@ a {
 }
 
 .navbar {
-    position: relative;
+    // position: relative;
     background-color: $dark;
     .navbar-wrap {        
         display: flex;
@@ -25,7 +25,7 @@ a {
     margin-right: auto;
     padding: 0 15px;
     display: flex;
-    position: relative;
+    // position: relative;
     align-items: center;
     & > span, 
     & > a {   
@@ -72,6 +72,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: $navbar-height;
     .cart {
         top: 2px;
         padding: ($navbar-height/2px - 12px) 15px;
@@ -93,14 +94,51 @@ a {
     }
 }
 
-.navbar-dropdown {
+.navbar-dropdown {  
     &::after {
         display: inline-block;
         width: 0;
         height: 0;
         margin-left: 15px;
         content: url('../../assets/img/Icon_Arrow.png');
-    }        
+    }   
+    &:hover .dropdown {
+      display: block;
+    }
+    .dropdown {
+      width: 100vw;
+      background-color: $dark;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: none;
+      padding: 10px 15px;
+      &::after {
+        display: none;
+      }
+    }
+    .car-row {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      & > div {
+          flex: 1;
+          padding: 10px;
+          min-width: 135px;
+      }
+      span {
+          text-transform: uppercase;
+          border-radius: 50px;
+          padding: 10px 20px;
+          transition: .2s ease-in;
+          &:hover {
+              background-color: #fff;
+              color: #000;
+          }            
+      }
+  }
 }
 
 .navbar-toggle {
@@ -181,11 +219,13 @@ a {
         border-radius: 0 0 8px 8px;
         padding: 15px;
         display: none; 
+        z-index: 100;
         &.cart {
           top: 56px;
           left: auto;
           right: 0;
           z-index: 100;
+          margin-right: -35px;
         }        
     }  
     

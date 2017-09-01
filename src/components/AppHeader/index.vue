@@ -20,7 +20,58 @@
                   </span>
                   
                   
-                  <a class="navbar-dropdown" href="#">Запчасти</a>
+                  <a class="navbar-dropdown" href="#">
+                    <span>Запчасти</span>
+                    <div class="dropdown">
+                      <div class="container">
+                          <div class="car-row">
+                              <div><span>Audi</span></div>
+                              <div><span>BMW</span></div>
+                              <div><span>Chevrolet</span></div>
+                              <div><span>Crysler</span></div>
+                              <div><span>Citroen</span></div>
+                              <div><span>Daewoo</span></div>
+                              <div><span>Dodge</span></div>
+                          </div>
+                          <div class="car-row">
+                              <div> <span>Fiat</span> </div>
+                              <div> <span>Ford</span> </div>
+                              <div> <span>Honda</span> </div>
+                              <div> <span>Hyundai</span> </div>
+                              <div> <span>Infinity</span> </div>
+                              <div> <span>Isuzu</span> </div>
+                              <div> <span>Jaguar</span> </div>
+                          </div>         
+                          <div class="car-row">
+                            <div><span>Jeep</span></div>
+                            <div><span>Kia</span></div>
+                            <div><span>Lexus</span></div>
+                            <div><span>Mazda</span></div>
+                            <div><span>Mercedes-benz</span></div>
+                            <div><span>Mini</span></div>
+                            <div><span>Mitsubushi</span> </div>                             
+                          </div>
+                          <div class="car-row">
+                            <div><span>Nissan</span></div>
+                            <div><span>Opel</span></div>
+                            <div><span>Peugeot</span></div>
+                            <div><span>Porshe</span></div>
+                            <div><span>Renault</span></div>
+                            <div><span>Saab</span></div>
+                            <div><span>Seat</span> </div>
+                          </div>  
+                          <div class="car-row">
+                            <div><span>Skoda</span></div>
+                            <div><span>Ssangyong</span></div>
+                            <div><span>Subaru</span></div>
+                            <div><span>Suzuki</span></div>
+                            <div><span>Toyota</span></div>
+                            <div><span>Volvo</span></div>
+                            <div><span>Vokswagen</span> </div>
+                          </div>    
+                      </div>                                   
+                    </div>
+                  </a>
                   <router-link :to="'/news'" tag="a">Новости</router-link>
                   <a href="#">Доставка</a>
                   <a href="#">Поставщикам</a>
