@@ -12,11 +12,14 @@ a {
 
 .navbar {
     // position: relative;
-    background-color: $dark;
+    background-color: $dark;    
     .navbar-wrap {        
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: center;        
+    }
+    .navbar-logo {
+      z-index: 100;
     }
 }
 
@@ -77,6 +80,7 @@ a {
         top: 2px;
         padding: ($navbar-height/2px - 12px) 15px;
         margin-right: 18px;
+        z-index: 100;
         &.dropdown {
             margin-right: 35px;
         }
@@ -141,10 +145,63 @@ a {
   }
 }
 
-.navbar-toggle {
-    display: none;
+.toggle-menu-wrap {
+  display: none;
+  position: relative;
+  padding: 23px 9px;
+  cursor: pointer;
 }
-
+.toggle-menu-checkbox {
+  width: 46px;
+  height: 46px;
+  display: none;
+}
+.toggle-menu-icon {
+  span {
+    cursor: pointer;
+    display: block;
+    width: 25px;
+    height: 3.5px;
+    border-radius: 10px;
+    background-color: $red;
+    position: relative;
+    top: 50%;
+    margin-top: -1.75px;
+    z-index: 100;
+    &::before,
+    &::after {
+      content: '';
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      background-color: inherit;
+      position: absolute;
+    }
+    &::before {
+      position: absolute;
+      bottom: -8px;
+    }
+    &::after {
+      top: -8px;
+    }
+  }
+}
+.toggle-menu {
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  top: -250px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  text-align: center;
+  z-index: 10;
+  background-color: $dark;
+}
+.toggle-menu-checkbox:checked + label + nav {
+  top: 54px;
+}
 
 @media (max-width: 1200px) {
     .navbar-wrap {
@@ -161,37 +218,8 @@ a {
             display: none;    
         }
     }
-    .navbar-toggle {
-        display: block;
-        width: 44px;
-        height: 44px;
-        padding: 10px;
-        cursor: pointer;
-        span {
-            display: block;
-            width: 25px;
-            height: 3.5px;
-            border-radius: 10px;
-            background-color: $red;
-            position: relative;
-            top: 50%;
-            margin-top: -1.75px;
-        }
-        span::before {
-            position: absolute;
-            bottom: -8px;
-        }
-        span::after {
-            top: -8px;
-        }
-        span::after, span::before {
-            content: '';
-            width: inherit;
-            height: inherit;
-            border-radius: inherit;
-            background-color: inherit;
-            position: absolute;
-        }
+    .toggle-menu-wrap {
+      display: block;
     }
 }
 

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="search-panel-wrap">            
             <!-- <input type="text" class="search-input" placeholder="Поиск"> -->
-            <SearchInput />
+            <SearchInput placeholder="Поиск" button="false" />
             <div class="sort-wrap">
                 <div class="sort-by">
                   <label>Сортировать по:</label>
