@@ -13,7 +13,7 @@ import Intro from './Intro';
 import Service from './Service';
 import Detail from './Detail';
 import News from './News';
-import Repair from './Repair';
+import Repair from './../Repair';
 
 export default {
   name: 'MainPage',
