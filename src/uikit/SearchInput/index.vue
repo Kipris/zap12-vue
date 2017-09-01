@@ -3,7 +3,7 @@
     <div class="search-input-group">
         <input type="text" class="search-input" :placeholder="placeholder">
         <!-- TODO: v-if: display if button = true -->
-        <button class="btn full-red search-button" v-if="button">Найти</button>
+        <button class="btn full-red search-button" @click="search">Найти</button>
     </div>
 </template>
 
@@ -12,6 +12,11 @@
 export default {
   name: 'SearchInput',
   props: ['placeholder', 'button'],
+  methods: {
+    search() {
+      this.$router.push('/searchresults')
+    }
+  },
   components: {}
 }
 </script>
