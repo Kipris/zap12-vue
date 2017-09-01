@@ -4,9 +4,10 @@
       <form>
         <div class="form-group">
           <label>Марка автомобиля</label> 
-          <select>
+          <multiselect v-model="selectedMark" :options="markOptions"></multiselect>
+          <!-- <select>
             <option value="0" selected>BMW</option>
-          </select>
+          </select> -->
         </div>
         <div class="form-group">
           <label>По производителю</label> 
@@ -25,11 +26,18 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 
 export default {
-  name: 'SearchPanel',
+  name: 'Filters',
+  data() {
+    return {
+      selectedMark: '',
+      markOptions: ['BMW', 'Renault', 'Mercedes']
+    }
+  },
   components: {
-
+    Multiselect
   }
 }
 </script>
