@@ -1,9 +1,7 @@
 <template>
-    <!-- TODO: v-if=isMainPageDisplayed -->
     <!-- TODO: control placeholder -->
     <div class="search-input-group">
-        <input type="text" class="search-input" placeholder="">
-
+        <input type="text" class="search-input" :placeholder="placeholder" v-model="searchStr">
         <!-- TODO: v-if: display if button = true -->
         <button class="btn full-red search-button" @click="search">Найти</button>
     </div>
@@ -13,9 +11,15 @@
 
 export default {
   name: 'SearchInput',
+  props: ['placeholder', 'button'],
+  data() {
+    return {
+      searchStr: ''
+    }
+  },
   methods: {
     search() {
-      this.$router.push('/searchresults')
+      this.$router.push({ path: 'searchresults', query: { carModel: this.searchStr } })
     }
   },
   components: {}
