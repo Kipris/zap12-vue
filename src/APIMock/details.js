@@ -102,7 +102,7 @@ const details = [
         amount: 1,
         price: 2750
       }
-    }   
+    }
   },
   {
     carModel: 'Audi',
@@ -123,7 +123,7 @@ const details = [
         amount: 10,
         price: 2750
       }
-    }    
+    }
   },
   {
     carModel: 'Audi',
@@ -144,7 +144,7 @@ const details = [
         amount: 0,
         price: 2750
       }
-    }    
+    }
   },
   {
     carModel: 'Jeep',
@@ -165,7 +165,7 @@ const details = [
         amount: 0,
         price: 2750
       }
-    }    
+    }
   },
   {
     carModel: 'Lexus',
@@ -186,7 +186,7 @@ const details = [
         amount: 0,
         price: 2750
       }
-    }    
+    }
   },
   {
     carModel: 'Skoda',
@@ -207,7 +207,7 @@ const details = [
         amount: 6,
         price: 20750
       }
-    }    
+    }
   },
   {
     carModel: 'Suzuki',
@@ -228,8 +228,17 @@ const details = [
         amount: 6,
         price: 20750
       }
-    }    
+    }
   }
 ]
+export const find = (option, value) => details.filter((elem) => {
+  // eslint-disable-next-line
+    for (let key in elem) {
+      if (elem[key] === value) {
+        return elem
+      }
+    }
+  return false
+})
 
 export default details
