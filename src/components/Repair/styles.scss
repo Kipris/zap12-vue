@@ -1,9 +1,9 @@
-@import './../../../assets/theme/colors';
-@import './../../../assets/theme/typography';
-@import './../../../assets/theme/panels';
+@import './../../assets/theme/colors';
+@import './../../assets/theme/typography';
+@import './../../assets/theme/panels';
 
 .repair {
-  background: url('./../../../assets/img/hyundai.png') no-repeat bottom right;
+  background: url('./../../assets/img/hyundai.png') no-repeat bottom right;
   background-size: cover;
   padding: 50px 0;
   .h1 {

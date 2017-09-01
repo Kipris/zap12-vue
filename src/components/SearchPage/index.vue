@@ -6,21 +6,24 @@
           <Filters />
           <ResultsTable />
         </div>    
-    </div>    
+    </div> 
+    <Repair />      
   </div>
 </template>
 
 <script>
 import SearchPanel from './SearchPanel';
 import Filters from './Filters';
-import ResultsTable from './ResultsTable'
+import ResultsTable from './ResultsTable';
+import Repair from './../Repair'
 
 export default {
   name: 'SearchPage',
   components: {
     SearchPanel,
     Filters,
-    ResultsTable
+    ResultsTable,
+    Repair
   }
 }
 </script>

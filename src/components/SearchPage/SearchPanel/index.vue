@@ -5,14 +5,18 @@
             <!-- <input type="text" class="search-input" placeholder="Поиск"> -->
             <SearchInput />
             <div class="sort-wrap">
-                <label class="sort-by">Сортировать по:</label>
-                <select class="sort-by">
-                    <option value="0" selected>Наличию</option>
-                </select>
-                <label class="show-record">Показывать:</label>
-                <select class="show-record">
-                    <option value="0" selected>24</option>
-                </select>
+                <div class="sort-by">
+                  <label>Сортировать по:</label>
+                  <select>
+                      <option value="0" selected>Наличию</option>
+                  </select>
+                </div>
+                <div class="show-record">
+                  <label>Показывать:</label>
+                  <select>
+                      <option value="0" selected>24</option>
+                  </select>
+                </div>
             </div>
         </div>                
     </div>

@@ -119,6 +119,12 @@ table {
 }
 
 @media (max-width: 600px) {
+  .table-title {
+    .chips-wrap {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+  }
   table {
     .producer {
       display: none;

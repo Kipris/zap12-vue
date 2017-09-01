@@ -35,13 +35,36 @@ select {
   border: 1px solid rgba(0,0,0,.2);
   font-size: 1.3rem;
   text-transform: uppercase;
-  appearance: none;
+  // appearance: none;
 }
 
-select.sort-by {
-  width: 126px;
-  margin-right: 20px;
+.sort-by {
+  select {
+    width: 126px;
+    margin-right: 20px;
+  }  
 }
-select.show-record {
-  width: 66px;
+.show-record {
+  select {
+    width: 66px;
+  }
+}
+
+@media (max-width: 991px) {
+  .search-panel-wrap {
+    flex-direction: column;
+  }
+  .search-input-group {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  .sort-wrap {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 474px) {
+  .sort-by {
+    margin-bottom: 10px;
+  }
 }
