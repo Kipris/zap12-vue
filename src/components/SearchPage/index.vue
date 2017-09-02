@@ -3,8 +3,8 @@
     <SearchPanel />
     <div class="content"> 
         <div class="container">
-          <Filters />
-          <ResultsTable />
+          <Filters @selected="filtered = $event"/>
+          <ResultsTable :filter="filtered"/>
         </div>    
     </div> 
     <Repair />      
@@ -19,6 +19,11 @@ import Repair from './../Repair'
 
 export default {
   name: 'SearchPage',
+  data() {
+    return {
+      filtered: ''
+    }
+  },
   components: {
     SearchPanel,
     Filters,

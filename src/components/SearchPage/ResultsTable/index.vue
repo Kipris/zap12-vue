@@ -104,15 +104,28 @@ import { find } from '@/APIMock/details'
 
 export default {
   name: 'ResultsTable',
+  props: {
+    filtered: {
+      type: [String, Array]
+    }
+  },
   data() {
     return {
-      carDetails: []
+      carDetails: [],
+      appliedFilters: []
+    }
+  },
+  watch: {
+    filtered(val) {
+      this.carDetails = find(this.appliedFilters, val)
     }
   },
   created() {
-    const field = Object.keys(this.$route.query)[0]
-    const value = Object.values(this.$route.query)[0]
-    const result = find(field, value)
+    // const field = Object.keys(this.$route.query)[0]
+    // const value = Object.values(this.$route.query)[0]
+    // console.log(this.$route.query, field, value)
+    const result = find(['carModel', 'detailProducer'], ['BMW', 'HELLA', ''])
+    console.log('result', result)
     this.carDetails = result
   }
 }

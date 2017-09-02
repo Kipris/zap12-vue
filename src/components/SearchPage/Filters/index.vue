@@ -4,7 +4,10 @@
       <form>
         <div class="form-group">
           <label>Марка автомобиля</label> 
-          <multiselect v-model="selectedMark" :options="markOptions"></multiselect>
+          <multiselect v-model="selectedMark"
+                      :multiple="true"
+                      :options="markOptions"
+                      @close="emitSelected"></multiselect>
           <!-- <select>
             <option value="0" selected>BMW</option>
           </select> -->
@@ -34,6 +37,11 @@ export default {
     return {
       selectedMark: '',
       markOptions: ['BMW', 'Renault', 'Mercedes']
+    }
+  },
+  methods: {
+    emitSelected() {
+      this.$emit('selected', this.selectedMark)
     }
   },
   components: {
