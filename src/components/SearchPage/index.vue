@@ -3,8 +3,10 @@
     <SearchPanel />
     <div class="content"> 
         <div class="container">
-          <Filters @selected="filtered = $event"/>
-          <ResultsTable :filter="filtered"/>
+          <Filters @carSelected="filteredCar = $event"
+                   @producerSelected="filteredProducer = $event"/>
+          <ResultsTable :filteredCar="filteredCar"
+                        :filteredProducer="filteredProducer"/>
         </div>    
     </div> 
     <Repair />      
@@ -21,7 +23,8 @@ export default {
   name: 'SearchPage',
   data() {
     return {
-      filtered: ''
+      filteredCar: '',
+      filteredProducer: ''
     }
   },
   components: {
