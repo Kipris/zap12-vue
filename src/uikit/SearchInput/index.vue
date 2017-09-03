@@ -19,7 +19,11 @@ export default {
   },
   methods: {
     search() {
-      this.$router.push({ path: 'searchresults', query: { carModel: this.searchStr } })
+      if (this.searchStr.length === 0) {
+        this.$router.push({ path: 'searchresults' })
+      } else {
+        this.$router.push({ path: 'searchresults', query: { carModel: this.searchStr } })
+      }
     }
   },
   components: {}

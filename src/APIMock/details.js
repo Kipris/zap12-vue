@@ -231,14 +231,22 @@ const details = [
     }
   }
 ]
-export const find = (option, value) => details.filter((elem) => {
+export const find = (filters, values) => details.filter((elem) => {
   // eslint-disable-next-line
-    for (let key in elem) {
-      if (elem[key] === value) {
-        return elem
-      }
-    }
-  return false
+  //   for (let key in elem) {
+  //     if (value.some(el => el === elem[key])) {
+  //       return elem
+  //     }
+  //   }
+  // return false
+  const res = filters.every(fe => values.some(ve => elem[fe] === ve))
+  console.log('res', res)
+  return res
+  // eslint-disable-next-line
+  // if (values.some(el => el === elem[filters])) {
+  //   return elem[filters]
+  // }
+  // return false
 })
 
 export default details
