@@ -5,11 +5,11 @@
   "author": "Alexander Dubrovin & Maria Zakharova",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js && mock",
+    "dev": "node build/dev-server.js & npm run mock",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "mock": "npx json-server src/APIMock/dbf.json"
+    "mock": "npx json-server --watch src/APIMock/dbf.json"
   },
   "dependencies": {
     "axios": "^0.16.2",
