@@ -25,50 +25,60 @@
                     <div class="dropdown">
                       <div class="container">
                           <div class="car-row">
-                              <div><span>Audi</span></div>
+                             <div v-for="car in cars.row1"
+                                  @click="goTo(car)"><span>{{car}}</span></div>
+                              <!-- <div><span>Audi</span></div>
                               <div><span>BMW</span></div>
                               <div><span>Chevrolet</span></div>
                               <div><span>Crysler</span></div>
                               <div><span>Citroen</span></div>
                               <div><span>Daewoo</span></div>
-                              <div><span>Dodge</span></div>
+                              <div><span>Dodge</span></div> -->
                           </div>
                           <div class="car-row">
-                              <div> <span>Fiat</span> </div>
+                              <div v-for="car in cars.row2"
+                                   @click="goTo(car)"><span>{{car}}</span></div>
+                              <!-- <div> <span>Fiat</span> </div>
                               <div> <span>Ford</span> </div>
                               <div> <span>Honda</span> </div>
                               <div> <span>Hyundai</span> </div>
                               <div> <span>Infinity</span> </div>
                               <div> <span>Isuzu</span> </div>
-                              <div> <span>Jaguar</span> </div>
+                              <div> <span>Jaguar</span> </div> -->
                           </div>         
                           <div class="car-row">
-                            <div><span>Jeep</span></div>
+                            <div v-for="car in cars.row3"
+                                   @click="goTo(car)"><span>{{car}}</span></div>
+                            <!-- <div><span>Jeep</span></div>
                             <div><span>Kia</span></div>
                             <div><span>Lexus</span></div>
                             <div><span>Mazda</span></div>
                             <div><span>Mercedes-benz</span></div>
                             <div><span>Mini</span></div>
-                            <div><span>Mitsubushi</span> </div>                             
+                            <div><span>Mitsubushi</span> </div>  -->
                           </div>
                           <div class="car-row">
-                            <div><span>Nissan</span></div>
+                            <div v-for="car in cars.row4"
+                                   @click="goTo(car)"><span>{{car}}</span></div>
+                            <!-- <div><span>Nissan</span></div>
                             <div><span>Opel</span></div>
                             <div><span>Peugeot</span></div>
                             <div><span>Porshe</span></div>
                             <div><span>Renault</span></div>
                             <div><span>Saab</span></div>
-                            <div><span>Seat</span> </div>
+                            <div><span>Seat</span> </div> -->
                           </div>  
                           <div class="car-row">
-                            <div><span>Skoda</span></div>
+                            <div v-for="car in cars.row5"
+                                   @click="goTo(car)"><span>{{car}}</span></div>
+                            <!-- <div><span>Skoda</span></div>
                             <div><span>Ssangyong</span></div>
                             <div><span>Subaru</span></div>
                             <div><span>Suzuki</span></div>
                             <div><span>Toyota</span></div>
                             <div><span>Volvo</span></div>
-                            <div><span>Vokswagen</span> </div>
-                          </div>    
+                            <div><span>Vokswagen</span> </div> -->
+                          </div>
                       </div>                                   
                     </div>
                   </a>
@@ -115,6 +125,22 @@ import Cart from './Cart'
 
 export default {
   name: 'AppHeader',
+  data() {
+    return {
+      cars: {
+        row1: ['Audi', 'BMW', 'Chevrolet', 'Crysler', 'Citroen', 'Daewo0', 'Dodge'],
+        row2: ['Fiat', 'Ford', 'Honda', 'Hyundai', 'Infinity', 'Isuzu', 'Jaguar'],
+        row3: ['Jeep', 'Kia', 'Lexus', 'Mazda', 'Mercedes-benz', 'Mini', 'Mitsubishi'],
+        row4: ['Nissan', 'Opel', 'Peugeot', 'Porshe', 'Renault', 'Saab', 'Seat'],
+        row5: ['Skoda', 'Ssangyong', 'Subary', 'Suzuki', 'Toyota', 'Volvo', 'Volkswagen']
+      }
+    }
+  },
+  methods: {
+    goTo(car) {
+      this.$router.push({ path: 'searchresults', query: { carModel: car } })
+    }
+  },
   components: {
     Cart
   }
