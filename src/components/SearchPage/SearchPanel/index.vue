@@ -3,7 +3,9 @@
     <div class="container">
         <div class="search-panel-wrap">            
             <!-- <input type="text" class="search-input" placeholder="Поиск"> -->
-            <SearchInput placeholder="Поиск" button="false" />
+            <SearchInput placeholder="Поиск"
+                         :button="false"
+                         @input="handleInput" />
             <div class="sort-wrap">
                 <div class="sort-by">
                   <label>Сортировать по:</label>
@@ -28,6 +30,11 @@ import SearchInput from '@/uikit/SearchInput'
 
 export default {
   name: 'SearchPanel',
+  methods: {
+    handleInput($event) {
+      this.$emit('carSelected', $event)
+    }
+  },
   components: {
     SearchInput
   }
