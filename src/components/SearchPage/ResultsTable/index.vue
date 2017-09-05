@@ -32,16 +32,20 @@
             <div>{{detail.detailName}}</div>
           </td>  
           <td class="availability">
-            <div>
+            <div v-if="detail.storageAmount">
               <label class="chip chip-green">{{detail.storageAmount}}</label>
-              <label class="chip chip-blue">{{detail.deliveryAamount}}</label>
-              <label class="chip chip-grey">{{detail.nonAvailableAamount}}</label>
-            </div>            
+            </div>
+            <div v-if="detail.deliveryAmount">
+              <label class="chip chip-blue">{{detail.deliveryAmount}}</label>
+            </div>
+            <div v-if="detail.nonAvailableAmount">
+              <label class="chip chip-grey">{{detail.nonAvailableAmount}}</label>
+            </div>        
           </td>
           <td class="price">
-            <div>{{detail.storagePrice}} Р</div>
-            <div>{{detail.deliveryPrice}} Р</div>
-            <div>{{detail.nonAvailablePrice}} Р</div>
+            <div v-if="detail.storageAmount">{{detail.storagePrice}} Р</div>
+            <div v-if="detail.deliveryAmount">{{detail.deliveryPrice}} Р</div>
+            <div v-if="detail.nonAvailableAmount">{{detail.nonAvailablePrice}} Р</div>
           </td>
         </tr>
       </tbody>

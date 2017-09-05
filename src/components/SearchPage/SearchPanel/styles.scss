@@ -33,9 +33,11 @@ select {
   border-radius: 8px;
   line-height: 14px;
   border: 1px solid rgba(0,0,0,.2);
-  font-size: 1.3rem;
+  font-size: 1.3rem !important;
   text-transform: uppercase;
-  // appearance: none;
+  appearance: none;
+  background-image: url('../../../assets/img/red_arrow.svg') !important;
+  background-size: 12px !important;
 }
 
 .sort-by {

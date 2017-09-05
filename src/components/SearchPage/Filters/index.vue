@@ -70,9 +70,31 @@ export default {
     height: 40px;
     border-radius: 8px;
     border: 1px solid rgba(46,46,46,.2);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+  .multiselect__tags {
+    position: relative;
+    min-height: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid rgba(46,46,46,.2);
+  }
+  .multiselect__tags::after {
+    content: url('../../../assets/img/red_arrow.svg');
+    position: absolute;
+    top: 50%;
+    margin-top: -9.5px;
+    right: 10px;
+  }
+  .multiselect__tags-wrap {
+    padding: 10px 25px 10px 15px;
   }
   .multiselect__tag {
     cursor: pointer;
+    position: relative;
+    z-index: 10;
   }
   .multiselect__tag:hover {
     text-decoration: underline;
@@ -85,7 +107,7 @@ export default {
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid rgba(46,46,46,.2);
-    margin-top: 10px;
+    margin-top: 5px;
   }
   .multiselect__content {
     list-style: none;

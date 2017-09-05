@@ -1,0 +1,75 @@
+@import './../../assets/theme/colors';
+@import './../../assets/theme/typography';
+
+.hyundai-repair {
+  background: url('../../assets/img/hyundai_porter.png') no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  padding: 65px;
+  h1, small {
+    color: $white;
+  }
+  .panel-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .panel {
+    max-width: 937px;
+    display: flex;
+    padding: 40px;
+  }
+  .list-wrap,
+  .map-wrap {
+    flex: 1;
+  }
+  .list-wrap {
+    margin-right: 30px;
+    ul {
+      column-count: 2;
+      text-align: left;
+      list-style: none;
+      margin: 0;
+      li {
+        margin-bottom: 23px;
+        position: relative;
+        padding-left: 30px;
+      }
+      span {
+        background: url('../../assets/img/Oval.svg') no-repeat;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        position: absolute;
+        top: 2px;
+        left: 0;
+      }
+    }
+  }
+  .map-wrap {
+    background-color: $dark;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 420px;
+    height: 250px;
+    position: relative;
+    .h1 {
+      color: $white;
+      text-align: left;
+    }
+    button {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .panel {
+    flex-direction: column;
+  }
+  .list-wrap {
+    margin-bottom: 30px;
+  }
+}
