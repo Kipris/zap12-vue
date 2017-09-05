@@ -93,11 +93,10 @@ table {
       }
       & > div {
         width: inherit;
-        
         padding: 10px 8px;
         border-bottom: 1px solid transparentize($black, .85);
         .chip::after {
-          right: 15px;
+          right: 10px;
         }
       }
       & > div:last-child {
@@ -108,7 +107,7 @@ table {
       }
       label {
         display: block;
-        margin-bottom: 15px;
+        margin: 0;
         position: relative;
       }
     }    
@@ -125,7 +124,7 @@ table {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .table-title {
     .chips-wrap {
       flex-wrap: wrap;

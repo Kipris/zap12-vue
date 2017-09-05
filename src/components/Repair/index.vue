@@ -3,7 +3,7 @@
       <div class="container">
          <div class="h1">Ремонт и обслуживание Hyundai Porter</div>
          <p>Разборка и продажа запчастей</p>
-         <button class="btn full-red">Подробнее</button>      
+         <router-link :to="'/hyundairepair'" tag="button" class="btn full-red">Подробнее</router-link>  
       </div>
     </section>
 </template>

@@ -5,6 +5,7 @@ import MainPage from '@/components/MainPage'
 import AboutPage from '@/components/AboutPage'
 import NewsPage from '@/components/NewsPage'
 import SearchPage from '@/components/SearchPage'
+import HyundaiRepairPage from '@/components/HyundaiRepairPage'
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/searchresults',
       name: 'SearchPage',
       component: SearchPage
+    },
+    {
+      path: '/hyundairepair',
+      name: 'HyundaiRepairPage',
+      component: HyundaiRepairPage
     }
   ],
 });

@@ -5,6 +5,7 @@
   width: 100%;
   position: relative;
   height: 50px;
+  font-size: 1.6rem;
   button {
       position: absolute;
       top: 50%;
@@ -31,6 +32,7 @@ input.search-input {
   padding: 15px 130px 15px 50px !important;
   border: none;
   transition: box-shadow .3s ease-in;
+  
   &::placeholder {
       font-size: 1.3rem;
       text-transform: uppercase;
