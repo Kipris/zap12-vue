@@ -4,9 +4,14 @@
 $navbar-height: 60px;
 
 a {
+  color: $dark-grey !important;
   text-decoration: none;
   &:hover {
-    text-decoration: underline;
+     color: $dark-grey !important;
+     text-decoration: underline;
+  }
+  &:visited {
+      color: $dark-grey !important;
   }
 }
 

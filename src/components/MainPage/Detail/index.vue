@@ -4,30 +4,30 @@
         <div class="h1">У нас вы можете приобрести следующие запчасти:</div>  
         <div class="details-wrap">
             <div class="details-item panel body-details">
-                <h4>Кузовные детали</h4>
-                <div class="arrow-wrap"> <span class="arrow back"></span> </div>
+                <h3>Кузовные детали</h3>
+                <!-- <Arrow /> -->
                 <button class="btn full-red">Смотреть</button>
             </div>
             <div class="details-item panel chassis">
-                <h4>Ходовую часть автомобиля</h4>
-                <div class="arrow-wrap"> <span class="arrow back"></span> </div>
+                <h3>Ходовую часть автомобиля</h3>
+                <!-- <Arrow /> -->
                 <button class="btn full-red">Смотреть</button>
             </div> 
         </div>
         <div class="details-wrap">
             <div class="details-item panel optics">
-                <h4>Оптика</h4>
-                <div class="arrow-wrap"> <span class="arrow back"></span> </div>
+                <h3>Оптика</h3>
+                <!-- <Arrow /> -->
                 <button class="btn full-red">Cмотреть</button>
             </div>
             <div class="details-item panel consumables">
-                <h4>Расходные материалы</h4>
-                <div class="arrow-wrap"> <span class="arrow back"></span> </div>
+                <h3>Расходные материалы</h3>
+                <!-- <Arrow /> -->
                 <button class="btn full-red">Смотреть</button>
             </div>
             <div class="details-item panel care">
-                <h4>Средства по уходу</h4>
-                <div class="arrow-wrap"> <span class="arrow back"></span> </div>
+                <h3>Средства по уходу</h3>
+                <!-- <Arrow /> -->
                 <button class="btn full-red">Смотреть</button>
             </div>   
         </div>
@@ -36,10 +36,13 @@
 </template>
 
 <script>
+import Arrow from '@/uikit/Arrow'
 
 export default {
   name: 'Detail',
-  components: {}
+  components: {
+    Arrow
+  }
 }
 </script>
 
