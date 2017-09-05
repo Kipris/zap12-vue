@@ -6,7 +6,9 @@
             Более 20000 оригинальных деталей и запчастей для иномарок, расходных материалов и средств по уходу за автомобилем
         </small>
         <!-- TODO: search input: button = true -->
-        <SearchInput placeholder="Поиск автозапчастей по номеру, по марке машины" button="true" />
+        <SearchInput placeholder="Поиск автозапчастей по номеру, по марке машины"
+                     @enter="search"
+                     :button="true" />
       </div>
     </div>
 </template>
@@ -19,6 +21,15 @@ export default {
   name: 'Intro',
   components: {
     SearchInput
+  },
+  methods: {
+    search($event) {
+      if ($event.length === 0) {
+        this.$router.push({ path: 'searchresults' })
+      } else {
+        this.$router.push({ path: 'searchresults', query: { carModel: $event } })
+      }
+    }
   }
 }
 </script>

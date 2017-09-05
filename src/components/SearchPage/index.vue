@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SearchPanel />
+    <SearchPanel @carSelected="filteredCar = $event" />
     <div class="content"> 
         <div class="container">
           <Filters @carSelected="filteredCar = $event"
