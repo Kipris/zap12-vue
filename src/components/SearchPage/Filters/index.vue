@@ -5,6 +5,7 @@
         <div class="form-group">
           <label>Марка автомобиля</label> 
           <multiselect v-model="selectedMark"
+                      placeholder=""
                       :multiple="true"
                       :options="carOptions"
                       @close="emitCar"></multiselect>
@@ -15,6 +16,7 @@
         <div class="form-group">
           <label>По производителю</label> 
           <multiselect v-model="selectedProducer"
+                      placeholder=""
                       :multiple="true"
                       :options="producerOptions"
                       @close="emitProducer"></multiselect>
@@ -61,4 +63,39 @@ export default {
   @import 'styles';
   @import './../../../../node_modules/pavilion/scss/pavilion';
   @import './../../../assets/theme/buttons';
+</style>
+<style lang="scss">
+  .multiselect__input {
+    width: 100% !important;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(46,46,46,.2);
+  }
+  .multiselect__tag {
+    cursor: pointer;
+  }
+  .multiselect__tag:hover {
+    text-decoration: underline;
+  }
+  .multiselect__tag,
+  .multiselect__content {
+    color: rgba(46,46,46,1);
+  }
+  .multiselect__content-wrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid rgba(46,46,46,.2);
+    margin-top: 10px;
+  }
+  .multiselect__content {
+    list-style: none;
+    padding-left: 20px;
+    li {
+      cursor: pointer;
+      padding: 5px 0;
+    }
+    li:hover {
+      text-decoration: underline;
+    }
+  }
 </style>

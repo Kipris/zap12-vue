@@ -1,11 +1,9 @@
 <template>
-    <!-- TODO: control placeholder -->
     <div class="search-input-group">
         <input type="text" class="search-input"
                :placeholder="placeholder"
                v-model="searchStr"
                @input="handleInput">
-        <!-- TODO: v-if: display if button = true -->
         <button class="btn full-red search-button"
                 @click="search"
                 v-if="button">Найти</button>

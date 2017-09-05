@@ -39,12 +39,16 @@ select {
 }
 
 .sort-by {
+  display: flex;
+  align-items: center;
   select {
     width: 126px;
     margin-right: 20px;
   }  
 }
 .show-record {
+  display: flex;
+  align-items: center;
   select {
     width: 66px;
   }
