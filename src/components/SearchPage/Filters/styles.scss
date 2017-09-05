@@ -130,6 +130,10 @@ form {
 	}
 }
 
+.multiselect__input {
+    height: 40px;
+}
+
 @media (min-width: 430px) and (max-width: 991px) {
   form {
     display: flex;
