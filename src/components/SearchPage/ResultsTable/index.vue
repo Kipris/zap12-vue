@@ -19,7 +19,32 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr v-for="detail in carDetails">
+          <td class="producer">
+            <div>{{detail.detailProducer}}</div>
+          </td>
+          <td class="vendor">
+            <div>
+              {{detail.vendor}}
+            </div>
+          </td>
+          <td class="naming">
+            <div>{{detail.detailName}}</div>
+          </td>  
+          <td class="availability">
+            <div>
+              <label class="chip chip-green">{{detail.storageAmount}}</label>
+              <label class="chip chip-blue">{{detail.deliveryAamount}}</label>
+              <label class="chip chip-grey">{{detail.nonAvailableAamount}}</label>
+            </div>            
+          </td>
+          <td class="price">
+            <div>{{detail.storagePrice}} Р</div>
+            <div>{{detail.deliveryPrice}} Р</div>
+            <div>{{detail.nonAvailablePrice}} Р</div>
+          </td>
+        </tr>
+        <!-- <tr>
           <td class="producer">
             <div>КМК Glass/Бор</div>
           </td>
@@ -68,41 +93,70 @@
             <div>2 750 Р</div>
             <div>2 750 Р</div>
           </td>
-        </tr>
-        <tr>
-          <td class="producer">
-            <div>КМК Glass/Бор</div>
-          </td>
-          <td class="vendor">
-            <div>
-              st.F.audi a6.un97
-            </div>
-          </td>
-          <td class="naming">
-            <div>Датчик включения стоп-сигнала AUDI A3 , A4 , A6/S6 , Allroad , Q7 , R8 , SEAT Altea , Arosa , Exeo , Leon , Toledo III , SKODA Octavia , Superb , VOLKSWAGEN Caddy III , Fox , Golf IV , Golf V , Golf VI , Jetta , Lupo , Passat , Phaeton , Polo , Spacefox ,</div>
-          </td>  
-          <td class="availability">
-            <div>
-              <label class="chip chip-green">1</label>
-              <label class="chip chip-blue">1</label>
-              <label class="chip chip-grey">5</label>
-            </div>            
-          </td>
-          <td class="price">
-            <div>2 750 Р</div>
-            <div>2 750 Р</div>
-            <div>2 750 Р</div>
-          </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
+// import { find } from '@/APIMock/details'
+import axios from 'axios'
 
 export default {
-  name: 'ResultsTable'
+  name: 'ResultsTable',
+  props: {
+    filteredCar: {
+      type: [String, Array]
+    },
+    filteredProducer: {
+      type: [String, Array]
+    }
+  },
+  data() {
+    return {
+      carDetails: []
+    }
+  },
+  methods: {
+    searchDetail(carModel, detailProducer) {
+      const params = {
+        _sort: 'storageAmount',
+        _order: 'desc',
+        _limit: 24
+      }
+      if (carModel) {
+        params.carModel = carModel
+      }
+      if (detailProducer) {
+        params.detailProducer = detailProducer
+      }
+      axios.get('http://localhost:3000/details', {
+        params
+      })
+      .then((res) => {
+        this.carDetails = res.data
+      })
+      .catch(err => console.log(err))
+    }
+  },
+  watch: {
+    filteredCar(val) {
+      this.searchDetail(val, this.filteredProducer)
+    },
+    filteredProducer(val) {
+      this.searchDetail(this.filteredCar, val)
+    }
+  },
+  created() {
+    // const carModel = Object.keys(this.$route.query)[0]
+    const carModel = Object.values(this.$route.query)[0]
+    console.log(this.$route.query, carModel)
+    this.searchDetail(carModel)
+    // const result = find(['carModel', 'detailProducer'], ['BMW', 'HELLA', ''])
+    // console.log('result', result)
+    // this.carDetails = result
+  }
 }
 </script>
 

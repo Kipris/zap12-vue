@@ -4,16 +4,20 @@
       <form>
         <div class="form-group">
           <label>Марка автомобиля</label> 
-          <multiselect v-model="selectedMark" :options="markOptions"></multiselect>
+          <multiselect v-model="selectedMark"
+                      :multiple="true"
+                      :options="carOptions"
+                      @close="emitCar"></multiselect>
           <!-- <select>
             <option value="0" selected>BMW</option>
           </select> -->
         </div>
         <div class="form-group">
           <label>По производителю</label> 
-          <select>
-            <option value="0" selected>VAG, KMK</option>
-          </select>
+          <multiselect v-model="selectedProducer"
+                      :multiple="true"
+                      :options="producerOptions"
+                      @close="emitProducer"></multiselect>
         </div>
         <div class="form-group checkbox-group">
           <label>Учитывать аналоги</label> 
@@ -33,7 +37,17 @@ export default {
   data() {
     return {
       selectedMark: '',
-      markOptions: ['BMW', 'Renault', 'Mercedes']
+      selectedProducer: '',
+      carOptions: ['BMW', 'Renault', 'Mercedes', 'Jeep'],
+      producerOptions: ['VAG', 'HELLA']
+    }
+  },
+  methods: {
+    emitCar() {
+      this.$emit('carSelected', this.selectedMark)
+    },
+    emitProducer() {
+      this.$emit('producerSelected', this.selectedProducer)
     }
   },
   components: {
