@@ -55,7 +55,7 @@
 
 <script>
 // import { find } from '@/APIMock/details'
-import axios from 'axios'
+import api from '@/APIMock/api'
 
 export default {
   name: 'ResultsTable',
@@ -85,7 +85,7 @@ export default {
       if (detailProducer) {
         params.detailProducer = detailProducer
       }
-      axios.get('http://localhost:3000/details', {
+      api.get('/details', {
         params
       })
       .then((res) => {
