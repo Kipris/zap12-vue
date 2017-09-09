@@ -47,6 +47,9 @@
             <div v-if="detail.deliveryAmount">{{detail.deliveryPrice}} Р</div>
             <div v-if="detail.nonAvailableAmount">{{detail.nonAvailablePrice}} Р</div>
           </td>
+          <td>
+            <button @click="addToCart(detail)">Купить</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -54,8 +57,9 @@
 </template>
 
 <script>
-// import { find } from '@/APIMock/details'
-import api from '@/APIMock/api'
+
+import axios from '@/APIMock/api'
+import CartBus from '@/eventBus/CartBus'
 
 export default {
   name: 'ResultsTable',
@@ -85,13 +89,16 @@ export default {
       if (detailProducer) {
         params.detailProducer = detailProducer
       }
-      api.get('/details', {
+      axios.get('/details', {
         params
       })
       .then((res) => {
         this.carDetails = res.data
       })
       .catch(err => console.log(err))
+    },
+    addToCart(detail) {
+      CartBus.addDetail(detail)
     }
   },
   watch: {

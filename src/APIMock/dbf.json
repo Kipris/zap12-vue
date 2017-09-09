@@ -1,6 +1,6 @@
 {
   "details": [
-    {
+    { "id": 1,
       "carModel": "BMW",
       "detailProducer": "REMSA",
       "vendor": "1132.00",
@@ -13,7 +13,7 @@
       "nonAvailableAmount": 1,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 2,
       "carModel": "BMW",
       "detailProducer": "Tyg",
       "vendor": "BM99002GA",
@@ -26,7 +26,7 @@
       "nonAvailableAmount": 1,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 3,
       "carModel": "BMW",
       "detailProducer": "Vite",
       "vendor": "VBS1189PS",
@@ -39,7 +39,7 @@
       "nonAvailableAmount": 1,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 4,
       "carModel": "BMW",
       "detailProducer": "HELLA",
       "vendor": "1K3 134 855-011",
@@ -52,7 +52,7 @@
       "nonAvailableAmount": 1,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 5,
       "carModel": "Audi",
       "detailProducer": "КМК Glass/Бор",
       "vendor": "st.F.audi a6.un97",
@@ -65,7 +65,7 @@
       "nonAvailableAmount": 1,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 6,
       "carModel": "Audi",
       "detailProducer": "VAG",
       "vendor": "06C905115M",
@@ -78,7 +78,7 @@
       "nonAvailableAmount": 10,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 7,
       "carModel": "Audi",
       "detailProducer": "BOSCH",
       "vendor": "1305620524",
@@ -91,7 +91,7 @@
       "nonAvailableAmount": 0,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 8,
       "carModel": "Jeep",
       "detailProducer": "Vite",
       "vendor": "VBS4126PS",
@@ -104,7 +104,7 @@
       "nonAvailableAmount": 0,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 9,
       "carModel": "Lexus",
       "detailProducer": "AMC",
       "vendor": "VBS4126PS",
@@ -117,7 +117,7 @@
       "nonAvailableAmount": 0,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 10,
       "carModel": "Skoda",
       "detailProducer": "VAG",
       "vendor": "1U6959621B01C",
@@ -130,7 +130,7 @@
       "nonAvailableAmount": 16,
       "nonAvailablePrice": 2750
     },
-    {
+    { "id": 11,
       "carModel": "Suzuki",
       "detailProducer": "DAYCO",
       "vendor": "94923",
@@ -143,5 +143,21 @@
       "nonAvailableAmount": 61,
       "nonAvailablePrice": 2750
     }
-  ]
+  ],
+  "user": {
+    "inventory": [
+      {
+        "detailId": 11,
+        "amount": 1
+      },
+      {
+        "detailId": 7,
+        "amount": 3
+      },
+      {
+        "detailId": 10,
+        "amount": 2
+      }
+    ]
+  }
 }
