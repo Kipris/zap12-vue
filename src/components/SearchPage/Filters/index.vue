@@ -62,9 +62,11 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../../node_modules/pavilion/scss/pavilion';
-  @import './../../../assets/theme/buttons';
 </style>
 <style lang="scss">
+  .multiselect {
+    position: relative;
+  }
   .multiselect__input {
     width: 100% !important;
     height: 40px;
@@ -85,7 +87,7 @@ export default {
     content: url('../../../assets/img/red_arrow.svg');
     position: absolute;
     top: 50%;
-    margin-top: -9.5px;
+    margin-top: -11px;
     right: 10px;
   }
   .multiselect__tags-wrap {
@@ -107,11 +109,15 @@ export default {
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid rgba(46,46,46,.2);
-    margin-top: 5px;
+    margin-top: -1px;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
   }
   .multiselect__content {
     list-style: none;
     padding-left: 20px;
+    width: 100%;
     li {
       cursor: pointer;
       padding: 5px 0;

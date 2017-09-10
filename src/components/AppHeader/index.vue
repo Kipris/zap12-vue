@@ -83,8 +83,8 @@
                     </div>
                   </a>
                   <router-link :to="'/news'" tag="a">Новости</router-link>
-                  <a href="#">Доставка</a>
-                  <a href="#">Поставщикам</a>
+                  <router-link :to="'/delivery'" tag="a">Доставка</router-link>
+                  <router-link :to="'/provider'" tag="a">Поставщикам</router-link>
                   <router-link :to="'/about'" tag="a">О Нас</router-link>
               </nav>                        
               <div class="navbar-actions">
@@ -98,11 +98,11 @@
                     <input type="checkbox" name="menu" id="menu" class="toggle-menu-checkbox">
                     <label for="menu" class="toggle-menu-icon"><span></span></label>
                     <nav class="toggle-menu">
-                      <a href="" class="nav-link">Запчасти</a>
-                      <a href="" class="nav-link">Новости</a>
-                      <a href="" class="nav-link">Доставка</a>
-                      <a href="" class="nav-link">Поставщикам</a>
-                      <a href="" class="nav-link">О нас</a>                            
+                      <router-link :to="'/searchresults'" tag="a">Запчасти</router-link>
+                      <router-link :to="'/news'" tag="a">Новости</router-link>
+                      <router-link :to="'/delivery'" tag="a">Доставка</router-link>
+                      <router-link :to="'/provider'" tag="a">Поставщикам</router-link>
+                      <router-link :to="'/about'" tag="a">О Нас</router-link>                            
                       <a href="">+7 (495) 971-02-02</a>
                       <a href="">+7 (915) 471-02-02</a>
                       <a href="">+7 (925) 111-02-02</a>
@@ -149,6 +149,5 @@ export default {
 
 <style lang="scss" scoped>
   @import 'styles';
-  @import './../../../node_modules/pavilion/scss/pavilion';
-  @import './../../assets/theme/buttons';  
+  @import './../../../node_modules/pavilion/scss/pavilion'; 
 </style>

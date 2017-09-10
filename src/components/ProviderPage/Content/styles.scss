@@ -1,0 +1,67 @@
+@import './../../../assets/theme/styles';
+
+.content {
+  padding: 50px 0;
+  background-color: $white-smoke;
+  .container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  small {
+    display: block;
+    max-width: 720px;    
+  }
+  .panel.light {
+    padding: 35px 35px 12px 35px;
+    margin-bottom: 40px;
+  }
+  ul.list {
+    column-count: 2;
+    text-align: left;
+    list-style: none;
+    margin: 0;
+    li {
+      margin-bottom: 23px;
+      position: relative;
+      padding-left: 30px;
+    }
+    span {
+      mask: url('../../../assets/img/Oval.svg') no-repeat;
+      mask-size: cover;
+      background-color: $red;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      position: absolute;
+      top: 2px;
+      left: 0;
+    }
+  }
+  .panel.dark {
+    display: flex;
+    align-items: center;
+    max-width: 550px;
+    padding: 5px 35px 5px 20px;
+    border-color: rgba(0,0,0,.2);
+    color: $dark;
+    text-align: left;
+    font-size: 1.6rem;
+    .alarm {
+      margin-right: 20px;
+      &::after {
+        content: url('../../../assets/img/Alarm.svg');
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .content {
+    ul.list {
+      column-count: 1;
+    }
+  }
+}
+

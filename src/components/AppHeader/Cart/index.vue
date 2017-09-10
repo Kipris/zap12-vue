@@ -2,7 +2,7 @@
   <div class="dropdown-menu cart">
       <!-- TODO: v-if = isCartIsEmpty -->
       <span v-if="inventory.length === 0">Корзина пуста</span>
-      <DetailsPreview :details="list"/>
+      <DetailsPreview v-if="false" :details="list"/>
   </div>
 </template>
 

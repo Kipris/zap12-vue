@@ -1,0 +1,133 @@
+@import './../../../assets/theme/styles';
+
+.about-content {
+  padding: 50px 0;
+  background-color: $white-smoke;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .panel {
+    max-width: 940px;
+    text-align: center;
+  }
+  .intro {
+    margin-bottom: 40px;
+    small {
+      display: block;
+    }
+  }
+}
+
+.contact {
+  margin-bottom: 40px;
+  .h1 {
+      text-align: center;
+      text-transform: uppercase;
+      color: $black;
+  }
+  &-wrap {
+      display: flex;  
+      
+      .h2 {
+        margin-top: 0;
+        margin-bottom: 25px;
+        text-align: left;
+      }
+      .left {
+          margin-right: 40px;
+          flex: 1;
+          text-align: left;
+      }
+      .right {
+          flex: 1;
+          margin-left: 40px;
+          text-align: center;
+          .input-wrap {
+            position: relative;
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              mask-size: cover;
+              background-color: $dark;
+              top: 50%;
+              left: 15px;
+              margin-top: -12px;
+              width: 24px;
+              height: 24px;
+            }
+            &.name::after {
+              mask: url('./../../../assets/img/ic_username.svg');
+            }
+            &.email::after {
+              mask: url('./../../../assets/img/ic_message.svg');
+            }
+          }
+          input, textarea {
+              padding: 11px;
+              border: 1px solid rgba(0,0,0,.4);
+              border-radius: 8px;
+              margin-bottom: 22px;
+              &::placeholder {
+                  font-size: 1.6rem;
+                  color: #000;
+              }
+          }
+          input {
+              padding-left: 48px;
+          }
+          textarea {
+              padding-left: 23px;
+              resize: none;
+          }
+      }
+  }
+  &-nav {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.6rem;
+      line-height: 29px;
+  }
+}
+
+.map { 
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: gray;
+}
+
+@media (max-width: 768px) {
+  .contact {
+      &-wrap {
+          flex-direction: column;
+          .left {
+              margin-right: 0;
+              margin-bottom: 30px;
+          }
+          .right {
+              margin-left: 0;
+          }
+      }
+  }
+}
+
+@media (max-width: 540px) {
+  .about-details {
+      p {
+          font-size: 1.6rem;
+      }
+  }
+  .contact {
+      &-nav {
+          font-size: 1.3rem;
+      }
+  }
+}
+
+

@@ -1,0 +1,53 @@
+@import './../../../assets/theme/styles';
+
+.delivery-content {
+  background-color: $white-smoke;
+  padding: 50px 0;
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .panel-group {
+    display: flex;
+    margin-bottom: 40px;
+    & > .panel:first-child {
+      margin-right: 30px;
+    }
+  }
+  .panel.light {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    .icon {
+      margin-right: 40px;
+    }
+    .icon::after {
+      display: block;
+      width: 80px;
+      height: 80px;
+    }
+    .icon.box::after {
+      content: url('../../../assets/img/box.svg');
+    }
+    .icon.truck::after {
+      content: url('../../../assets/img/truck.svg');
+    }
+  }
+  .panel.dark {
+    display: flex;
+    align-items: center;
+    max-width: 550px;
+    padding: 5px 35px 5px 20px;
+    border-color: rgba(0,0,0,.2);
+    color: $dark;
+    text-align: left;
+    font-size: 1.6rem;
+    .alarm {
+      margin-right: 20px;
+      &::after {
+        content: url('../../../assets/img/Alarm.svg');
+      }
+    }
+  }
+}

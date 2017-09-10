@@ -9,15 +9,23 @@
             <div class="sort-wrap">
                 <div class="sort-by">
                   <label>Сортировать по:</label>
-                  <select>
-                      <option value="0" selected>Наличию</option>
-                  </select>
+                  <multiselect v-model="sortByValue" 
+                               v-bind:class='{singleSelect: true}'
+                               :options="sortByOptions" 
+                               :searchable="false" 
+                               :close-on-select="false" 
+                               :show-labels="false">
+                  </multiselect>
                 </div>
                 <div class="show-record">
                   <label>Показывать:</label>
-                  <select>
-                      <option value="0" selected>24</option>
-                  </select>
+                  <multiselect v-model="showRecordValue" 
+                               v-bind:class='{singleSelect: true}'
+                               :options="showRecordOptions" 
+                               :searchable="false" 
+                               :close-on-select="false" 
+                               :show-labels="false">
+                  </multiselect>
                 </div>
             </div>
         </div>                
@@ -27,6 +35,7 @@
 
 <script>
 import SearchInput from '@/uikit/SearchInput'
+import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'SearchPanel',
@@ -36,7 +45,16 @@ export default {
     }
   },
   components: {
-    SearchInput
+    SearchInput,
+    Multiselect
+  },
+  data() {
+    return {
+      sortByValue: 'Наличию',
+      sortByOptions: ['Наличию', 'Цене'],
+      showRecordValue: '24',
+      showRecordOptions: ['24', '48']
+    }
   }
 }
 </script>
@@ -45,5 +63,34 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../../node_modules/pavilion/scss/pavilion';
-  @import './../../../assets/theme/buttons';
+</style>
+
+<style lang="scss">
+  .sort-by {
+    .singleSelect {
+      width: 126px;
+      margin-right: 20px;
+    }
+  }
+  .show-record {
+    .singleSelect {
+      width: 66px;
+    }
+  }
+  .singleSelect {
+    .multiselect__tags::after {
+      margin-top: -7px;
+    }
+    .multiselect__element {
+      font-size: 1.3rem;
+    }
+  }
+  .multiselect__single {
+    font-size: 1.3rem;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    margin-top: -19px;
+    width: inherit;
+  }
 </style>

@@ -1,5 +1,4 @@
-@import './../../assets/theme/colors';
-@import './../../assets/theme/typography';
+@import './../../assets/theme/styles';
 
 .footer {
   padding: 50px 0 60px 0;
@@ -26,8 +25,21 @@
               text-transform: uppercase;
               color: $white;
               margin-bottom: 15px;
+              opacity: .5;
               &:last-child {
                   margin-bottom: 0;
+              }
+              &:hover {
+                opacity: 1;
+                text-decoration: none;
+              }
+              &:active,
+              &:focus,
+              &:visited {
+                text-decoration: none;
+              }
+              &.router-link-active {
+                opacity: 1;
               }
           }
       }
@@ -115,10 +127,14 @@
           text-align: center;
           width: 100%;
           margin-right: 0;
+          &:nth-child(odd) {
+             margin-right: 0;
+          }
           .description {
               max-width: 100%;
           }
-          .footer-contacts {                
+          .footer-contacts {    
+              margin-left: 0;            
               span {
                   width: 190px;
                   margin-left: -95px;

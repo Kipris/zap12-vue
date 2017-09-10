@@ -2,7 +2,7 @@
 
 @font-face {
     // font-family: 'Bebas Neue';
-    // src: url('../fonts/BebasNeue Regular.otf');
+    // src: url('./../../fonts/BebasNeue/BebasNeueRegular.otf');
 }
 
 html {
@@ -11,7 +11,8 @@ html {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    // font-family: 'Bebas Neue';
+    // font-family: 'Bebas Neue', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
     margin: 0;
 }
 
@@ -63,18 +64,21 @@ p {
     font-size: 1.3rem !important;
     line-height: 1.8rem;
     margin-bottom: 5px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 small {
     font-size: 2rem !important;
     text-align: center;
     margin-bottom: 40px;
-}
-
-small.white {
-    color: $white;
-}
-
-small.grey {
-    color: $dark-grey;
+    font-family: 'Open Sans', sans-serif;
+    &.white {
+      color: $white;
+    }
+    &.grey {
+      color: $dark-grey;
+    }
+    &.dark {
+      color: $dark;
+    }
 }

@@ -35,7 +35,6 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../node_modules/pavilion/scss/pavilion';
-  @import './../../assets/theme/buttons';
 </style>
 
 
