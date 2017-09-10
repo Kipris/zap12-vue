@@ -1,6 +1,4 @@
-@import './../../../assets/theme/colors';
-@import './../../../assets/theme/typography';
-@import './../../../assets/theme/panels';
+@import './../../../assets/theme/styles';
 
 .search-panel {
   background-color: #D8D8D8;
@@ -42,18 +40,11 @@ select {
 
 .sort-by {
   display: flex;
-  align-items: center;
-  select {
-    width: 126px;
-    margin-right: 20px;
-  }  
+  align-items: center;  
 }
 .show-record {
   display: flex;
   align-items: center;
-  select {
-    width: 66px;
-  }
 }
 
 @media (max-width: 991px) {
@@ -70,7 +61,22 @@ select {
 }
 
 @media (max-width: 474px) {
+  .sort-wrap {
+    flex-wrap: nowrap;
+    // margin-bottom: 10px;
+  }
+  .sort-by,
+  .show-record {
+    flex-direction: column;
+    flex: 1;    
+  }
   .sort-by {
-    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .show-record {
+    align-items: flex-end;
+    label {
+      margin-right: 0;
+    }
   }
 }

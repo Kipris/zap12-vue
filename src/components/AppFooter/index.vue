@@ -15,8 +15,8 @@
           <nav class="footer-nav">
               <a href="#">Каталоги</a>
               <router-link :to="'/news'" tag="a">Новости</router-link>
-              <a href="#">Доставка</a>
-              <a href="#">Поставщикам</a>
+              <router-link :to="'/delivery'" tag="a">Доставка</router-link>
+              <router-link :to="'/provider'" tag="a">Поставщикам</router-link>
               <router-link :to="'/about'" tag="a">О Нас</router-link>
           </nav>
       </div>

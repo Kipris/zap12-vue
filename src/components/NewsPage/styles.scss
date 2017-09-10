@@ -1,0 +1,17 @@
+@import './../../assets/theme/styles';
+
+.content {
+  background-color: $white-smoke;
+  padding: 40px 0;    
+  .container {
+      display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    .container {
+        flex-direction: column;            
+    }
+  }
+}

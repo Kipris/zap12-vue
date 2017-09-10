@@ -71,18 +71,16 @@ export default {
       swiperOption: {
         autoplay: 3000,
         slidesPerView: 3,
-        mousewheelControl: true,
+        // mousewheelControl: true,
+        // autoHeight: true,
         setWrapperSize: true,
         spaceBetween: 40,
         loop: true,
         breakpoints: {
-          768: {
+          1200: {
             slidesPerView: 2
           },
-          1024: {
-            slidesPerView: 3
-          },
-          320: {
+          768: {
             slidesPerView: 1
           }
         }

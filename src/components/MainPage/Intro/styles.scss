@@ -1,13 +1,11 @@
-@import './../../../assets/theme/colors';
-@import './../../../assets/theme/typography';
-@import './../../../assets/theme/search-input';
+@import './../../../assets/theme/styles';
 
 //INTRO
 .intro {
   height: 540px;
   background: url(./../../../assets/img/background-min.jpg) no-repeat center center;
   background-size: cover;
-  text-align: center;
+  text-align: center;  
   .container {
       height: inherit;
       display: flex;

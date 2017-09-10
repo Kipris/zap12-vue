@@ -1,0 +1,22 @@
+@import './../../../assets/theme/styles';
+
+.intro {
+  background: url('./../../../assets/img/provider_bg.png') no-repeat bottom right;
+  background-size: cover;
+  padding: 50px 0;
+  position: relative;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  .container {    
+    text-align: center;
+  }
+  h1 {
+    color: $white;
+  }
+  small {
+    display: block;
+    max-width: 720px;
+  }
+}
+
