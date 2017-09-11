@@ -6,9 +6,9 @@
           <div class="price-wrapper">
             <span class="detial-price">{{1500 * i + 1}} P</span>
             <div class="add-more">
-              <button class="sign" @click="subtractDetail(detail)"> - </button>
+              <button class="sign" @click="changeAmount({ detail: detail.id, sign: '-' })"> - </button>
               <input type="text" class="amount" v-model="detail.amount">
-              <button class="sign" @click="addDetail(detail)"> + </button>
+              <button class="sign" @click="changeAmount({ detail: detail.id, sign: '+' })"> + </button>
             </div>
           </div>
         </li>
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'DetailPreview',
   props: {
@@ -36,14 +38,9 @@ export default {
     }
   },
   methods: {
-    // subtractDetail(detail) {
-    //   if (detail.amount > 0) {
-    //     detail.amount = detail.amount - 1
-    //   }
-    // },
-    // addDetail(detail) {
-    //   detail.amount = detail.amount + 1
-    // }
+    ...mapMutations('Cart', [
+      'changeAmount'
+    ])
   }
 }
 </script>

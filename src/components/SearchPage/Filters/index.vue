@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapMutations, mapActions } from 'vuex'
 import Multiselect from 'vue-multiselect'
 
 export default {
@@ -45,11 +46,20 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('Cart', [
+      'setModelFilter',
+      'setProducerFilter'
+    ]),
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
     emitCar() {
-      this.$emit('carSelected', this.selectedMark)
+      this.setModelFilter(this.selectedMark)
+      this.getDetails()
     },
     emitProducer() {
-      this.$emit('producerSelected', this.selectedProducer)
+      this.setProducerFilter(this.selectedProducer)
+      this.getDetails()
     }
   },
   components: {

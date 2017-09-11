@@ -39,6 +39,24 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     "comma-dangle": 0,
     "semi": 0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "state",
+          "acc",
+          "e",
+          "ctx",
+          "req",
+          "request",
+          "res",
+          "response",
+          "$scope"
+        ]
+      }
+    ],
+    "no-shadow": ["error", { "allow": ["state"] }]
   }
 }

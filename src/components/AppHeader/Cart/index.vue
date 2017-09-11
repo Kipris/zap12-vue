@@ -2,13 +2,13 @@
   <div class="dropdown-menu cart">
       <!-- TODO: v-if = isCartIsEmpty -->
       <span v-if="inventory.length === 0">Корзина пуста</span>
-      <DetailsPreview :details="list"/>
+      <DetailsPreview :details="cartItems"/>
   </div>
 </template>
 
 <script>
 import axios from '@/APIMock/api'
-import CartBus from '../../../eventBus/CartBus'
+import { mapState } from 'vuex'
 import DetailsPreview from './DetailsPreview'
 
 export default {
@@ -19,9 +19,9 @@ export default {
     }
   },
   computed: {
-    list() {
-      return CartBus.details
-    }
+    ...mapState('Cart', [
+      'cartItems'
+    ])
   },
   methods: {
     loadDetails() {
@@ -32,9 +32,6 @@ export default {
     }
   },
   created() {
-    CartBus.$on('detailAdded', (detail) => {
-      this.inventory.push(detail)
-    })
     this.loadDetails()
   },
   components: {

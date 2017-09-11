@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="detail in carDetails">
+        <tr v-for="detail in details">
           <td class="producer">
             <div>{{detail.detailProducer}}</div>
           </td>
@@ -58,8 +58,7 @@
 
 <script>
 
-import axios from '@/APIMock/api'
-import CartBus from '@/eventBus/CartBus'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'ResultsTable',
@@ -76,44 +75,32 @@ export default {
       carDetails: []
     }
   },
+  computed: {
+    ...mapState('Cart', [
+      'details'
+    ])
+  },
   methods: {
-    searchDetail(carModel, detailProducer) {
-      const params = {
-        _sort: 'storageAmount',
-        _order: 'desc',
-        _limit: 24
-      }
-      if (carModel) {
-        params.carModel = carModel
-      }
-      if (detailProducer) {
-        params.detailProducer = detailProducer
-      }
-      axios.get('/details', {
-        params
-      })
-      .then((res) => {
-        this.carDetails = res.data
-      })
-      .catch(err => console.log(err))
-    },
-    addToCart(detail) {
-      CartBus.addDetail(detail)
-    }
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
+    ...mapMutations('Cart', [
+      'addToCart'
+    ])
   },
   watch: {
-    filteredCar(val) {
-      this.searchDetail(val, this.filteredProducer)
-    },
-    filteredProducer(val) {
-      this.searchDetail(this.filteredCar, val)
-    }
+    // filteredCar(val) {
+    //   this.searchDetail(val, this.filteredProducer)
+    // },
+    // filteredProducer(val) {
+    //   this.searchDetail(this.filteredCar, val)
+    // }
   },
   created() {
     // const carModel = Object.keys(this.$route.query)[0]
-    const carModel = Object.values(this.$route.query)[0]
-    console.log(this.$route.query, carModel)
-    this.searchDetail(carModel)
+    // const carModel = Object.values(this.$route.query)[0]
+    // console.log(this.$route.query, carModel)
+    this.getDetails()
     // const result = find(['carModel', 'detailProducer'], ['BMW', 'HELLA', ''])
     // console.log('result', result)
     // this.carDetails = result
