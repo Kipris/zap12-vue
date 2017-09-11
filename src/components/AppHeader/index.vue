@@ -51,7 +51,6 @@
                         </div>                                   
                       </div>
                     </transition>
-                    
                   </a>
                   <router-link class="nav-link" :to="'/news'" tag="a">Новости</router-link>
                   <router-link class="nav-link" :to="'/delivery'" tag="a">Доставка</router-link>
@@ -64,8 +63,51 @@
                       <transition name="fade">
                         <Cart v-show="cartShown"/>
                       </transition>
-                  </span>                  
-                  <button class="btn red">Войти</button>
+                  </span>
+
+                  <div class="login">
+                    <button class="btn red" v-on:click="loginShow">Войти</button>
+                    <transition name="fade">
+                      <div class="dropdown-menu" v-show="loginShown">
+                        <div class="h3">Логин</div>  
+                        <form action="javascript:false;">
+                          <input type="text" placeholder="Электронная почта *" required>
+                          <input type="password" placeholder="Пароль" required>
+                          <div class="actions">
+                            <button class="btn default" v-on:click="accountShow">Создать аккаунт</button>
+                            <button class="btn full-red" v-on:click="accountShow">Войти в кабинет</button>
+                          </div>
+                        </form>
+                        <div class="forgot">Забыл пароль?</div>
+                      </div>
+                    </transition>
+                    <transition name="fade">
+                      <div class="dropdown-menu" v-show="accountShown">
+                        <div class="h3">Личный кабинет</div>
+                        <div class="info">
+                          <div class="email">nikolayschneider@gmail.com</div>
+                          <div class="balance">
+                            <span>Баланс</span>
+                            <span>0,00 Р</span>
+                          </div>
+                          <div class="discount">
+                            <span>Скидка</span>
+                            <span>0% (РОЗНИЦА)</span>
+                          </div>
+                        </div>
+
+                        <div class="info-menu">
+
+                        </div>
+                        
+                        <div class="actions">
+                          
+                        </div>
+
+                      </div>  
+                      
+                    </transition>
+                  </div>                  
 
                   <div class="toggle-menu-wrap">
                     <input type="checkbox" name="menu" id="menu" class="toggle-menu-checkbox">
@@ -110,7 +152,9 @@ export default {
       contactsShown: false,
       detailsShown: false,
       cartShown: false,
-      responsiveMenuShown: false
+      responsiveMenuShown: false,
+      loginShown: false,
+      accountShown: false
     }
   },
   methods: {
@@ -140,6 +184,14 @@ export default {
       this.detailsShown = false;
       this.cartShown = false;
       this.responsiveMenuShown = !this.responsiveMenuShown;
+    },
+    loginShow() {
+      this.loginShown = true;
+      this.accountShown = false;
+    },
+    accountShow() {
+      this.loginShown = false;
+      this.accountShown = true;
     }
   },
   components: {
