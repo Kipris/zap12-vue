@@ -3,14 +3,14 @@
 
 .btn {
   border-radius: 100px;
-  padding: 11px 25px;
+  padding: 12px 20px;
   cursor: pointer;
   font-size: 1.3rem;
   line-height: 1.3rem;
   text-transform: uppercase;    
   transition: background-color 0.3s ease-in;
-  max-height: 37px;
-  
+  max-height: 40px;
+  font-family: 'Open Sans', sans-serif;
   //DEFAULT
   &.default {
       background-color: transparent;
@@ -42,6 +42,28 @@
           background-color: transparent;
           color: $red; 
       }
+  }
+
+  //WHITE
+  &.white {
+    background-color: $white;
+    border: 1px solid $white;
+    color: $black;
+    &:hover {
+        background-color: transparent;
+        color: $white; 
+    }
+  }
+
+  //BLACK
+  &.black {
+    background-color: $black;
+    border: 1px solid $black;
+    color: $white;
+    &:hover {
+        background-color: transparent;
+        color: $black; 
+    }
   }
   
   //PAGINATION BUTTONS - TODO: REPLACE

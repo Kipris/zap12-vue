@@ -1,0 +1,27 @@
+@import './../../../assets/theme/styles';
+
+.intro {
+  background: url('../../../assets/img/news_bg.png') no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  padding: 65px 0;
+  height: 320px; 
+  display: flex;
+  align-items: center; 
+  .container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  h1 {
+    display: block;
+    width: 100%;
+    text-align: left; 
+    color: $white;
+    margin-bottom: 0;
+  }
+}
+
+
+
+

@@ -1,5 +1,9 @@
-@import './../../assets/theme/colors';
-@import './../../assets/theme/typography';
+@import './../../assets/theme/styles';
+
+a {
+  text-decoration: none;
+  transition: .3s ease-in;
+}
 
 .footer {
   padding: 50px 0 60px 0;
@@ -24,10 +28,21 @@
               font-size: 1.3rem;
               line-height: 2.9rem;
               text-transform: uppercase;
-              color: $white;
+              color: $light-grey;
               margin-bottom: 15px;
+              &:hover {
+                color: $red;
+              }
               &:last-child {
                   margin-bottom: 0;
+              }
+              &:active,
+              &:focus,
+              &:visited {
+                text-decoration: none;
+              }
+              &.router-link-active {
+                opacity: 1;
               }
           }
       }
@@ -39,7 +54,10 @@
           display: flex;
           flex-direction: column;
           a {
-              color: $white;
+              color: $light-grey;
+              &:hover {
+                color: $red;
+              }
           }
           span {
              position: relative; 
@@ -78,6 +96,7 @@
           margin-left: 40px;
           position: relative;
           margin-bottom: 24px;
+          margin-top: 0;
       }
       .location::before {
           content: url('./../../assets/img/ic_location.png');  
@@ -115,10 +134,14 @@
           text-align: center;
           width: 100%;
           margin-right: 0;
+          &:nth-child(odd) {
+             margin-right: 0;
+          }
           .description {
               max-width: 100%;
           }
-          .footer-contacts {                
+          .footer-contacts {    
+              margin-left: 0;            
               span {
                   width: 190px;
                   margin-left: -95px;

@@ -23,6 +23,12 @@
           <div class="map-wrap">
             <div class="h1">Схема проезда</div>
             <button class="btn full-red">Смотреть</button>
+            <gmap-map
+              :center="{lat:55.8495078, lng:37.6172781}"
+              :zoom="15"
+              map-type-id="terrain">
+              <gmap-marker :position="{lat:55.8495078, lng:37.6172781}"></gmap-marker>
+            </gmap-map>
           </div>
         </div>  
       </div>
@@ -31,6 +37,15 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import * as VueGoogleMaps from 'vue2-google-maps'
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBvWE_sIwKbWkiuJQOf8gSk9qzpO96fhfY',
+    libraries: 'places'
+  }
+})
 
 export default {
   name: 'HyundaiRepairPage'
@@ -41,6 +56,12 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../node_modules/pavilion/scss/pavilion';
-  @import './../../assets/theme/buttons';
-  @import './../../assets/theme/panels';
+</style>
+
+<style lang="scss">
+  .gmnoprint,
+  .gm-style-cc,
+  .gm-fullscreen-control {
+    display: none;
+  }
 </style>

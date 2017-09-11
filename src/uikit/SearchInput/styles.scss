@@ -1,5 +1,4 @@
-@import './../../assets/theme/colors';
-@import './../../assets/theme/typography';
+@import './../../assets/theme/styles';
 
 .search-input-group {
   width: 100%;
@@ -25,7 +24,7 @@
   }
 }
 
-input.search-input {
+input {
   width: 100%;
   height: 50px;
   border-radius: 100px !important;

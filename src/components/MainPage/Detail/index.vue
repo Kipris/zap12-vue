@@ -5,30 +5,30 @@
         <div class="details-wrap">
             <div class="details-item panel body-details">
                 <h3>Кузовные детали</h3>
-                <!-- <Arrow /> -->
-                <button class="btn full-red">Смотреть</button>
+                <Arrow v-bind:class="{ arrowContainer: true }" />
+                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>
             <div class="details-item panel chassis">
                 <h3>Ходовую часть автомобиля</h3>
-                <!-- <Arrow /> -->
-                <button class="btn full-red">Смотреть</button>
+                <Arrow v-bind:class="{ arrowContainer: true }" />
+                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div> 
         </div>
         <div class="details-wrap">
             <div class="details-item panel optics">
                 <h3>Оптика</h3>
-                <!-- <Arrow /> -->
-                <button class="btn full-red">Cмотреть</button>
+                <Arrow v-bind:class="{ arrowContainer: true }" />
+                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>
             <div class="details-item panel consumables">
                 <h3>Расходные материалы</h3>
-                <!-- <Arrow /> -->
-                <button class="btn full-red">Смотреть</button>
+                <Arrow v-bind:class="{ arrowContainer: true }" />
+                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>
             <div class="details-item panel care">
                 <h3>Средства по уходу</h3>
-                <!-- <Arrow /> -->
-                <button class="btn full-red">Смотреть</button>
+                <Arrow v-bind:class="{ arrowContainer: true }" />
+                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>   
         </div>
       </div>
@@ -49,5 +49,23 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../../node_modules/pavilion/scss/pavilion';
-  @import './../../../assets/theme/buttons';
+</style>
+
+<style lang="scss">
+  .details-item {
+    // position: relative;
+    .arrowContainer {
+      position: absolute;
+      left: 40px;
+      bottom: 30px;
+      width: 40px;
+      height: 40px;
+      transform: scale(-1);
+    }
+  }
+  .details-item:hover {
+    .arrowContainer {
+      display: none;
+    }
+  }
 </style>

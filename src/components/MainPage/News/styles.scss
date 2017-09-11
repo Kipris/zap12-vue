@@ -1,6 +1,4 @@
-@import './../../../assets/theme/colors';
-@import './../../../assets/theme/typography';
-@import './../../../assets/theme/panels';
+@import './../../../assets/theme/styles';
 
 .news {
   background-color: $dark;
@@ -18,7 +16,7 @@
     text-align: left;
     padding: 30px;
     background-color: transparentize($white, .9);
-    height: inherit;
+    // height: inherit;
     p {
       font-size: 1.6rem;
       line-height: 2.3rem;
@@ -48,5 +46,14 @@
 }
 .prev {
   left: -40px;
+}
+
+@media (max-width: 580px) {
+  .next {
+    right: -20px;
+  }
+  .prev {
+    left: -20px;
+  }
 }
 

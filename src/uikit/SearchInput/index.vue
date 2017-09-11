@@ -3,7 +3,8 @@
         <input type="text" class="search-input"
                :placeholder="placeholder"
                v-model="searchStr"
-               @input="handleInput">
+               @input="handleInput"
+               @keyup.enter="search">
         <button class="btn full-red search-button"
                 @click="search"
                 v-if="button">Найти</button>
@@ -35,7 +36,6 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   @import './../../../node_modules/pavilion/scss/pavilion';
-  @import './../../assets/theme/buttons';
 </style>
 
 
