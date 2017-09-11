@@ -9,9 +9,9 @@
               <span class="bucket"></span>
             </div>
             <div class="add-more">
-              <button class="sign" @click="changeAmount({ detail: detail.id, sign: '-' })"> - </button>
+              <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
               <input type="text" class="amount" v-model="detail.amount">
-              <button class="sign" @click="changeAmount({ detail: detail.id, sign: '+' })"> + </button>
+              <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '+' })"> + </button>
             </div>
           </div>
         </li>
