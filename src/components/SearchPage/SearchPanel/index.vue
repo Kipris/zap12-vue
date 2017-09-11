@@ -11,9 +11,10 @@
                   <label>Сортировать по:</label>
                   <multiselect v-model="sortByValue" 
                                v-bind:class='{singleSelect: true}'
+                               placeholder=''
                                :options="sortByOptions" 
                                :searchable="false" 
-                               :close-on-select="false" 
+                               :close-on-select="true" 
                                :show-labels="false">
                   </multiselect>
                 </div>
@@ -21,9 +22,10 @@
                   <label>Показывать:</label>
                   <multiselect v-model="showRecordValue" 
                                v-bind:class='{singleSelect: true}'
+                               placeholder=''
                                :options="showRecordOptions" 
                                :searchable="false" 
-                               :close-on-select="false" 
+                               :close-on-select="true" 
                                :show-labels="false">
                   </multiselect>
                 </div>
@@ -79,6 +81,7 @@ export default {
   }
   .singleSelect {
     .multiselect__tags::after {
+      top: 50%;
       margin-top: -7px;
     }
     .multiselect__element {

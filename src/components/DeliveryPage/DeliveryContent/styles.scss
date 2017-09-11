@@ -33,12 +33,15 @@
     .icon.truck::after {
       content: url('../../../assets/img/truck.svg');
     }
+    .link {
+      color: inherit;
+    }
   }
   .panel.dark {
     display: flex;
     align-items: center;
     max-width: 550px;
-    padding: 5px 35px 5px 20px;
+    // padding: 5px 35px 5px 20px;
     border-color: rgba(0,0,0,.2);
     color: $dark;
     text-align: left;
@@ -50,4 +53,23 @@
       }
     }
   }
+}
+
+@media (max-width: 991px) {
+  .delivery-content {
+    .panel-group {
+      flex-direction: column;
+      margin-bottom: 0;
+      .panel {
+        margin-bottom: 40px;
+      }
+      & > .panel:first-child {
+        margin-right: 0;
+      }
+    }
+    .panel.dark {
+      max-width: 100%;
+    }
+  }
+
 }

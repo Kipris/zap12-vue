@@ -82,3 +82,9 @@ small {
       color: $dark;
     }
 }
+
+@media (max-width: 768px) {
+  small {
+    font-size: 1.6rem !important;
+  }
+}
