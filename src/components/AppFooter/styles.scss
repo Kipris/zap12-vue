@@ -1,5 +1,10 @@
 @import './../../assets/theme/styles';
 
+a {
+  text-decoration: none;
+  transition: .3s ease-in;
+}
+
 .footer {
   padding: 50px 0 60px 0;
   background-color: $dark;
@@ -23,15 +28,13 @@
               font-size: 1.3rem;
               line-height: 2.9rem;
               text-transform: uppercase;
-              color: $white;
+              color: $light-grey;
               margin-bottom: 15px;
-              opacity: .5;
+              &:hover {
+                color: $red;
+              }
               &:last-child {
                   margin-bottom: 0;
-              }
-              &:hover {
-                opacity: 1;
-                text-decoration: none;
               }
               &:active,
               &:focus,
@@ -51,7 +54,10 @@
           display: flex;
           flex-direction: column;
           a {
-              color: $white;
+              color: $light-grey;
+              &:hover {
+                color: $red;
+              }
           }
           span {
              position: relative; 
@@ -90,6 +96,7 @@
           margin-left: 40px;
           position: relative;
           margin-bottom: 24px;
+          margin-top: 0;
       }
       .location::before {
           content: url('./../../assets/img/ic_location.png');  

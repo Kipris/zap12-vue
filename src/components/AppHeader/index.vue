@@ -7,107 +7,80 @@
               <img src="./../../assets/img/Icon_Logo.svg" alt="logo">
             </router-link>                   
               <nav class="navbar-menu">
-                  <span class="dropdown contacts" href="#">
+                  <span class="nav-link dropdown contacts" href="#" v-on:click="contactsShow" v-bind:class="{ active: contactsShown}">
                       +7 (495) 971-02-02
-                      <div class="dropdown-menu">
+                      <transition name="fade">
+                        <div class="dropdown-menu" v-show="contactsShown">
                           <nav>                                         
                             <a href="tel:+7(495)971-02-02">+7 (495) 971-02-02</a>                                          
                             <a href="tel:+7(915)471-02-02">+7 (915) 471-02-02</a>                                          
                             <a href="tel:+7(925)111-02-02">+7 (925) 111-02-02</a>                                          
                             <a href="mailto:zap12@gmail.com">zap12@gmail.com</a>
                           </nav>
-                      </div>
+                        </div>
+                      </transition>
+                      
                   </span>
                   
                   
-                  <a class="navbar-dropdown" href="#">
+                  <a class="nav-link navbar-dropdown" v-on:click="detailsShow" v-bind:class="{ active: detailsShown }">
                     <span>Запчасти</span>
-                    <div class="dropdown">
-                      <div class="container">
-                          <div class="car-row">
-                             <div v-for="car in cars.row1"
-                                  @click="goTo(car)"><span>{{car}}</span></div>
-                              <!-- <div><span>Audi</span></div>
-                              <div><span>BMW</span></div>
-                              <div><span>Chevrolet</span></div>
-                              <div><span>Crysler</span></div>
-                              <div><span>Citroen</span></div>
-                              <div><span>Daewoo</span></div>
-                              <div><span>Dodge</span></div> -->
-                          </div>
-                          <div class="car-row">
-                              <div v-for="car in cars.row2"
-                                   @click="goTo(car)"><span>{{car}}</span></div>
-                              <!-- <div> <span>Fiat</span> </div>
-                              <div> <span>Ford</span> </div>
-                              <div> <span>Honda</span> </div>
-                              <div> <span>Hyundai</span> </div>
-                              <div> <span>Infinity</span> </div>
-                              <div> <span>Isuzu</span> </div>
-                              <div> <span>Jaguar</span> </div> -->
-                          </div>         
-                          <div class="car-row">
-                            <div v-for="car in cars.row3"
-                                   @click="goTo(car)"><span>{{car}}</span></div>
-                            <!-- <div><span>Jeep</span></div>
-                            <div><span>Kia</span></div>
-                            <div><span>Lexus</span></div>
-                            <div><span>Mazda</span></div>
-                            <div><span>Mercedes-benz</span></div>
-                            <div><span>Mini</span></div>
-                            <div><span>Mitsubushi</span> </div>  -->
-                          </div>
-                          <div class="car-row">
-                            <div v-for="car in cars.row4"
-                                   @click="goTo(car)"><span>{{car}}</span></div>
-                            <!-- <div><span>Nissan</span></div>
-                            <div><span>Opel</span></div>
-                            <div><span>Peugeot</span></div>
-                            <div><span>Porshe</span></div>
-                            <div><span>Renault</span></div>
-                            <div><span>Saab</span></div>
-                            <div><span>Seat</span> </div> -->
-                          </div>  
-                          <div class="car-row">
-                            <div v-for="car in cars.row5"
-                                   @click="goTo(car)"><span>{{car}}</span></div>
-                            <!-- <div><span>Skoda</span></div>
-                            <div><span>Ssangyong</span></div>
-                            <div><span>Subaru</span></div>
-                            <div><span>Suzuki</span></div>
-                            <div><span>Toyota</span></div>
-                            <div><span>Volvo</span></div>
-                            <div><span>Vokswagen</span> </div> -->
-                          </div>
-                      </div>                                   
-                    </div>
+                    <transition name="fade">
+                      <div class="dropdown" v-show="detailsShown">
+                        <div class="container">
+                            <div class="car-row">
+                              <div v-for="car in cars.row1"
+                                    @click="goTo(car)"><span>{{car}}</span></div>
+                            </div>
+                            <div class="car-row">
+                                <div v-for="car in cars.row2"
+                                    @click="goTo(car)"><span>{{car}}</span></div>
+                            </div>         
+                            <div class="car-row">
+                              <div v-for="car in cars.row3"
+                                    @click="goTo(car)"><span>{{car}}</span></div>
+                            </div>
+                            <div class="car-row">
+                              <div v-for="car in cars.row4"
+                                    @click="goTo(car)"><span>{{car}}</span></div>
+                            </div>  
+                            <div class="car-row">
+                              <div v-for="car in cars.row5"
+                                    @click="goTo(car)"><span>{{car}}</span></div>
+                            </div>
+                        </div>                                   
+                      </div>
+                    </transition>
+                    
                   </a>
-                  <router-link :to="'/news'" tag="a">Новости</router-link>
-                  <router-link :to="'/delivery'" tag="a">Доставка</router-link>
-                  <router-link :to="'/provider'" tag="a">Поставщикам</router-link>
-                  <router-link :to="'/about'" tag="a">О Нас</router-link>
+                  <router-link class="nav-link" :to="'/news'" tag="a">Новости</router-link>
+                  <router-link class="nav-link" :to="'/delivery'" tag="a">Доставка</router-link>
+                  <router-link class="nav-link" :to="'/provider'" tag="a">Поставщикам</router-link>
+                  <router-link class="nav-link" :to="'/about'" tag="a">О Нас</router-link>
               </nav>                        
               <div class="navbar-actions">
-                  <span class="cart dropdown">
-                      <img src="./../../assets/img/ic_cart.svg" alt="Корзина">
-                      <Cart />
+                  <span class="cart dropdown" v-on:click="cartShow" v-bind:class="{ active: cartShown}">
+                      <span class="cart-img"></span>
+                      <transition name="fade">
+                        <Cart v-show="cartShown"/>
+                      </transition>
                   </span>                  
                   <button class="btn red">Войти</button>
 
                   <div class="toggle-menu-wrap">
                     <input type="checkbox" name="menu" id="menu" class="toggle-menu-checkbox">
-                    <label for="menu" class="toggle-menu-icon"><span></span></label>
+                    <label for="menu" class="toggle-menu-icon" v-on:click="responsiveMenuShow" v-bind:class="{ opened: responsiveMenuShown}"><span></span></label>
                     <nav class="toggle-menu">
                       <router-link :to="'/searchresults'" tag="a">Запчасти</router-link>
                       <router-link :to="'/news'" tag="a">Новости</router-link>
                       <router-link :to="'/delivery'" tag="a">Доставка</router-link>
                       <router-link :to="'/provider'" tag="a">Поставщикам</router-link>
                       <router-link :to="'/about'" tag="a">О Нас</router-link>                            
-                      <a href="">+7 (495) 971-02-02</a>
-                      <a href="">+7 (915) 471-02-02</a>
-                      <a href="">+7 (925) 111-02-02</a>
-                      <a href="">zap12@gmail.com</a>
-                      <a href="" class="nav-enter">Войти</a>
+                      <a href="tel:+7(495)971-02-02">+7 (495) 971-02-02</a>
+                      <a href="tel:+7(915)471-02-02">+7 (915) 471-02-02</a>
+                      <a href="tel:+7(925)111-02-02">+7 (925) 111-02-02</a>
+                      <a href="mailto:zap12@gmail.com" class="nav-email">zap12@gmail.com</a>
+                      <button class="btn red">Войти</button>
                     </nav>
                   </div>
 
@@ -133,12 +106,40 @@ export default {
         row3: ['Jeep', 'Kia', 'Lexus', 'Mazda', 'Mercedes-benz', 'Mini', 'Mitsubishi'],
         row4: ['Nissan', 'Opel', 'Peugeot', 'Porshe', 'Renault', 'Saab', 'Seat'],
         row5: ['Skoda', 'Ssangyong', 'Subary', 'Suzuki', 'Toyota', 'Volvo', 'Volkswagen']
-      }
+      },
+      contactsShown: false,
+      detailsShown: false,
+      cartShown: false,
+      responsiveMenuShown: false
     }
   },
   methods: {
     goTo(car) {
       this.$router.push({ path: 'searchresults', query: { carModel: car } })
+    },
+    contactsShow() {
+      this.contactsShown = !this.contactsShown;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.responsiveMenuShown = false;
+    },
+    detailsShow() {
+      this.contactsShown = false;
+      this.detailsShown = !this.detailsShown;
+      this.cartShown = false;
+      this.responsiveMenuShown = false;
+    },
+    cartShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = !this.cartShown;
+      this.responsiveMenuShown = false;
+    },
+    responsiveMenuShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.responsiveMenuShown = !this.responsiveMenuShown;
     }
   },
   components: {

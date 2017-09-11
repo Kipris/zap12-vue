@@ -36,16 +36,16 @@
         margin-top: -14px; 
     }
     &:nth-child(1)::after {
-        content: url('./../../../assets/img/settings.png');            
+        content: url('./../../../assets/img/settings.svg');            
     }
     &:nth-child(2)::after {
-        content: url('./../../../assets/img/shopping-cart-4.png');
+        content: url('./../../../assets/img/delivery.svg');
     }
     &:nth-child(3)::after {
-        content: url('./../../../assets/img/speech-bubble-1.png');
+        content: url('./../../../assets/img/speech-bubble.svg');
     }
     &:nth-child(4)::after {
-        content: url('./../../../assets/img/like-1.png');
+        content: url('./../../../assets/img/garanty.svg');
     }
   }
 }

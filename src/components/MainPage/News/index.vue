@@ -54,7 +54,7 @@
               </swiper>
             <Arrow class="next" @click.native="nextSlide"/> 
         </div>
-        <button class="btn full-red">Читать еще</button>
+        <router-link class="btn full-red" :to="'/news'" tag="button">Читать еще</router-link>
       </div>
     </section>
 </template>
@@ -69,7 +69,7 @@ export default {
     return {
       notNextTick: true,
       swiperOption: {
-        autoplay: 3000,
+        // autoplay: 3000,
         slidesPerView: 3,
         // mousewheelControl: true,
         // autoHeight: true,

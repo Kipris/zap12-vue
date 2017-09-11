@@ -2,10 +2,10 @@
 
 .search-panel {
   min-width: 250px;
-  height: 100%;
-  padding: 20px;
   margin-top: 0;
-  &.dark {
+  position: relative;
+  .panel.dark {
+    padding: 20px;
     border-color: rgba(0, 0, 0, 0.2);
   }
   p {
