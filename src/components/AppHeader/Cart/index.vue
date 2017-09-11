@@ -1,8 +1,9 @@
 <template>
   <div class="dropdown-menu cart">
       <!-- TODO: v-if = isCartIsEmpty -->
-      <span v-if="inventory.length === 0">Корзина пуста</span>
-      <DetailsPreview v-if="false" :details="list"/>
+      <!-- <span v-if="inventory.length === 0">Корзина пуста</span> -->
+      <span v-if="false">Корзина пуста</span>
+      <DetailsPreview :details="list"/>
   </div>
 </template>
 
