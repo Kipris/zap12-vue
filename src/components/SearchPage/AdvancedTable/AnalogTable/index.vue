@@ -1,15 +1,15 @@
 <template>
   <div class="result-table-wrap">
-    <div class="table-title">
+    <!-- <div class="table-title">
       <h1>Поиск по запросу</h1>
       <div class="chips-wrap">
         <label class="chip chip-grey">Нет в наличии</label>
         <label class="chip chip-green">На складе</label>
         <label class="chip chip-blue">Доставка</label>
       </div> 
-    </div>
+    </div> -->
     <table class="table">
-      <thead>
+      <!-- <thead>
         <tr>
           <th class="producer">Производитель</th>
           <th class="vendor">Артикул</th>
@@ -17,7 +17,7 @@
           <th class="availability">Нал.</th>
           <th class="price">Цена</th>
         </tr>
-      </thead>
+      </thead> -->
       <tbody>
         <tr v-for="detail in details"
             @click="handleDetailSelect(detail)">
@@ -48,9 +48,9 @@
             <div v-if="detail.deliveryAmount">{{detail.deliveryPrice}} Р</div>
             <div v-if="detail.nonAvailableAmount">{{detail.nonAvailablePrice}} Р</div>
           </td>
-          <!-- <td>
+          <td>
             <button @click="addToCart(detail)">Купить</button>
-          </td> -->
+          </td>
         </tr>
       </tbody>
     </table>
@@ -88,5 +88,5 @@ export default {
 
 <style lang="scss" scoped>
   @import 'styles';
-  @import './../../../../node_modules/pavilion/scss/pavilion';
+  @import './../../../../../node_modules/pavilion/scss/pavilion';
 </style>

@@ -5,8 +5,9 @@
         <div class="container">
           <Filters @carSelected="filteredCar = $event"
                    @producerSelected="filteredProducer = $event"/>
-          <ResultsTable :filteredCar="filteredCar"
-                        :filteredProducer="filteredProducer"/>
+          <router-view @detailWasSelected="handleSelect"
+                       :details="details"></router-view>
+          <!-- <ResultsTable /> -->
         </div>    
     </div> 
     <Repair />      
@@ -14,18 +15,37 @@
 </template>
 
 <script>
+import { mapState, mapMutations, mapActions } from 'vuex'
 import SearchPanel from './SearchPanel';
 import Filters from './Filters';
 import ResultsTable from './ResultsTable';
 import Repair from './../Repair'
 
+
 export default {
   name: 'SearchPage',
   data() {
     return {
-      filteredCar: '',
-      filteredProducer: ''
     }
+  },
+  computed: {
+    ...mapState('Cart', [
+      'details'
+    ])
+  },
+  methods: {
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
+    ...mapMutations('Cart', [
+      'addToCart'
+    ]),
+    handleSelect(detail) {
+      this.$router.push({ path: `/searchresults/${detail.id}` })
+    }
+  },
+  created() {
+    this.getDetails()
   },
   components: {
     SearchPanel,

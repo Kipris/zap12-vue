@@ -5,6 +5,9 @@ import MainPage from '@/components/MainPage'
 import AboutPage from '@/components/AboutPage'
 import NewsPage from '@/components/NewsPage'
 import SearchPage from '@/components/SearchPage'
+import ResultTable from '@/components/SearchPage/ResultsTable'
+import AdvancedTable from '@/components/SearchPage/AdvancedTable'
+
 import HyundaiRepairPage from '@/components/HyundaiRepairPage'
 import ProviderPage from '@/components/ProviderPage'
 import DeliveryPage from '@/components/DeliveryPage'
@@ -32,7 +35,17 @@ export default new Router({
     {
       path: '/searchresults',
       name: 'SearchPage',
-      component: SearchPage
+      component: SearchPage,
+      children: [
+        {
+          path: '',
+          component: ResultTable
+        },
+        {
+          path: ':id',
+          component: AdvancedTable
+        }
+      ]
     },
     {
       path: '/hyundairepair',
