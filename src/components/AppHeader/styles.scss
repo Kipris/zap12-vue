@@ -238,7 +238,7 @@ a {
 .toggle-menu-icon {
   width: 46px;
   height: 46px;
-  padding: 10px 25px;
+  padding: 10px;
   span {
     cursor: pointer;
     display: block;
@@ -366,10 +366,10 @@ label.opened + nav {
     .navbar-menu {
         display: none;
     }
-    .navbar-actions {
-        & > button {
-            display: none;    
-        }
+    .login {
+      & > .btn {
+        display: none;
+      }
     }
     .toggle-menu-wrap {
       display: block;

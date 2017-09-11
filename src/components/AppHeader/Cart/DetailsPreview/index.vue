@@ -6,8 +6,8 @@
           <div class="detail-name">{{detail.detailName}}</div>
           <div class="price-wrapper">
             <div class="detial-price">
-              <span class="price">{{detail.amount * detail.deliveryPrice}} P</span>
-              <span class="bucket">Удалить</span>
+              <span class="price">{{detail.deliveryPrice}} P</span>
+              <span class="bucket" @click="removeFromCart">Удалить</span>
             </div>
             <div class="add-more">
               <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
@@ -51,6 +51,9 @@ export default {
   methods: {
     ...mapMutations('Cart', [
       'changeAmount'
+    ]),
+    ...mapMutations('Cart', [
+      'removeFromCart'
     ])
   }
 }
