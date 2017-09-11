@@ -136,6 +136,7 @@
 </template>
 
 <script>
+import { mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
 
 export default {
@@ -158,8 +159,19 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('Cart', [
+      'setModelFilter'
+    ]),
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
     goTo(car) {
-      this.$router.push({ path: 'searchresults', query: { carModel: car } })
+      this.setModelFilter(car)
+      if (this.$route.path === '/') {
+        this.$router.push({ path: 'searchresults' })
+      } else {
+        this.getDetails()
+      }
     },
     contactsShow() {
       this.contactsShown = !this.contactsShown;

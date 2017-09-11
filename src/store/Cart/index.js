@@ -29,7 +29,6 @@ const mutations = {
   },
   changeAmount(state, { detailId, sign }) {
     const detail = state.cartItems.find(item => item.id === detailId)
-    console.log(detail)
     if (sign === '+') {
       detail.amount += 1
     } else if (sign === '-' && detail.amount > 1) {
@@ -45,7 +44,7 @@ const actions = {
       _limit: 24
     }
     if (state.search.carModel) {
-      params.carModel = state.search.carModel
+      params.carModel_like = state.search.carModel
     }
     if (state.search.detailProducer) {
       params.detailProducer = state.search.detailProducer

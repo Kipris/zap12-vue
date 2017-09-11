@@ -15,7 +15,9 @@
 
 <script>
 
+import { mapActions, mapMutations } from 'vuex'
 import SearchInput from '@/uikit/SearchInput'
+import debounce from 'debounce'
 
 export default {
   name: 'Intro',
@@ -23,12 +25,17 @@ export default {
     SearchInput
   },
   methods: {
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
+    ...mapMutations('Cart', [
+      'setModelFilter'
+    ]),
     search($event) {
-      if ($event.length === 0) {
-        this.$router.push({ path: 'searchresults' })
-      } else {
-        this.$router.push({ path: 'searchresults', query: { carModel: $event } })
-      }
+      this.setModelFilter($event)
+      const debounced = debounce(this.getDetails, 1000)
+      debounced()
+      this.$router.push({ path: 'searchresults' })
     }
   }
 }

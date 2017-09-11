@@ -36,14 +36,24 @@
 </template>
 
 <script>
+import { mapActions, mapMutations } from 'vuex'
+import debounce from 'debounce'
 import SearchInput from '@/uikit/SearchInput'
 import Multiselect from 'vue-multiselect'
 
 export default {
   name: 'SearchPanel',
   methods: {
+    ...mapMutations('Cart', [
+      'setModelFilter'
+    ]),
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
     handleInput($event) {
-      this.$emit('carSelected', $event)
+      this.setModelFilter($event)
+      const debounced = debounce(this.getDetails, 1000)
+      debounced()
     }
   },
   components: {
