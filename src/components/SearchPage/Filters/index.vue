@@ -62,7 +62,7 @@ export default {
   name: 'Filters',
   data() {
     return {
-      selectedMark: '',
+      selectedMark: [],
       carOptions: [
         { name: 'BMW' },
         { name: 'Renault' },
@@ -71,7 +71,7 @@ export default {
         { name: 'Mitsubishi' },
         { name: 'Volvo' }
       ],
-      selectedProducer: '',
+      selectedProducer: [],
       producerOptions: [
         { name: 'VAG' },
         { name: 'HELLA' },

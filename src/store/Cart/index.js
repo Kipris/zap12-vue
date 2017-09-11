@@ -18,6 +18,9 @@ const mutations = {
     Vue.set(detailToCart, 'amount', 1)
     state.cartItems.push(detailToCart)
   },
+  removeFromCart() {
+    console.log('This detail should be removed')
+  },
   setDetails(state, payload) {
     state.details = payload
   },
