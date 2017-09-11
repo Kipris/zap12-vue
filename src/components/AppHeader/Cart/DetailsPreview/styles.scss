@@ -3,10 +3,17 @@
 ul.items {
   padding-left: 0;
   list-style: none;
-  margin: 0;
+  margin: 0 0 25px 0;
+  max-height: 400px;
+  overflow-y: auto;
 }
 .item {
   border-bottom: 1px solid $light-grey;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   .detail-name {
     font-size: 1.4rem;
     text-align: left;
@@ -38,7 +45,7 @@ ul.items {
 }
 
 .total {
-  margin: 25px 0;
+  margin-bottom: 25px;
   & > div {
     display: flex;
     justify-content: space-between;

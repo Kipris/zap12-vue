@@ -1,12 +1,13 @@
 <template>
+  <div>
   <div class="wrapper">
     <ul class="items">
         <li class="item" v-for="(detail, i) in details">
-          <div class="detail-name">Стекло</div>
+          <div class="detail-name">{{detail.detailName}}</div>
           <div class="price-wrapper">
             <div class="detial-price">
-              <span class="price">{{1500 * i + 1}} P</span>
-              <span class="bucket"></span>
+              <span class="price">{{detail.amount * detail.deliveryPrice}} P</span>
+              <span class="bucket">Удалить</span>
             </div>
             <div class="add-more">
               <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
@@ -19,13 +20,14 @@
       <div class="total">
         <div>
           <span>На сумму: </span>
-          <span>{{totalPrice}} Р</span>
+          <span>{{getTotalPrice}} Р</span>
         </div>        
       </div>
       <div class="actions">
         <button class="btn black">В корзину</button>
         <button class="btn full-red">к оплате</button>
       </div>
+  </div>
   </div>
 </template>
 
@@ -41,8 +43,9 @@ export default {
     }
   },
   computed: {
-    totalPrice() {
-      return 10000
+    getTotalPrice() {
+      const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
+      return mapped.reduce((a, b) => a + b);
     }
   },
   methods: {
