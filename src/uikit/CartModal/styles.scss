@@ -1,0 +1,13 @@
+@import './../../../../assets/theme/styles';
+.modal-backdrop {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparentize($dark, .5);
+}
+.modal {
+  width: 900px;
+  height: 600px;
+  position: absolute;
+  z-index: 10000;
+}
