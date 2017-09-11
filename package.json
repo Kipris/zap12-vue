@@ -9,7 +9,7 @@
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "mock": "npx json-server --watch src/APIMock/dbf.json"
+    "mock": "json-server --watch src/APIMock/dbf.json"
   },
   "dependencies": {
     "axios": "^0.16.2",
