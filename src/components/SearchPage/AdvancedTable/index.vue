@@ -1,11 +1,12 @@
 <template>
   <div>
-    <ResultsTable :details="details" />
-    <AnalogTable />
+    <ResultsTable :details="[detail]" />
+    <AnalogTable :details="analogDetails"/>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import ResultsTable from '../ResultsTable'
 import AnalogTable from './AnalogTable'
 
@@ -15,7 +16,37 @@ export default {
     details: {
       type: Array,
       default: () => []
+    },
+    selectedDetail: {
+      type: Object,
+      default: {}
     }
+  },
+  computed: {
+    ...mapState('Cart', [
+      'analogDetails',
+      'reloadedSelectedDetail'
+    ]),
+    detail() {
+      if (Object.keys(this.selectedDetail).length !== 0) {
+        return this.selectedDetail
+      }
+      return this.reloadedSelectedDetail
+    },
+    trimmedAnalogs() {
+      return this.details.splice(0, 4)
+    }
+  },
+  methods: {
+    ...mapActions('Cart', [
+      'getAnalogs',
+      'getDetail'
+    ])
+  },
+  created() {
+    this.getDetail(this.$route.params.id)
+    // TODO for reloading on /searchresults/:id route
+    this.getAnalogs(this.detail.analogIds)
   },
   components: {
     ResultsTable,

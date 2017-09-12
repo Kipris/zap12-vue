@@ -170,6 +170,7 @@ export default {
       }
     }
   }
+  name: 'CartModal'
 }
 </script>
 

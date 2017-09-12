@@ -6,7 +6,8 @@
           <Filters @carSelected="filteredCar = $event"
                    @producerSelected="filteredProducer = $event"/>
           <router-view @detailWasSelected="handleSelect" class="table-container"
-                       :details="details"></router-view>
+                       :details="details"
+                       :selectedDetail="selectedDetail"></router-view>
           <!-- <ResultsTable /> -->
         </div>    
     </div> 
@@ -26,6 +27,7 @@ export default {
   name: 'SearchPage',
   data() {
     return {
+      selectedDetail: {}
     }
   },
   computed: {
@@ -41,6 +43,7 @@ export default {
       'addToCart'
     ]),
     handleSelect(detail) {
+      this.selectedDetail = detail
       this.$router.push({ path: `/searchresults/${detail.id}` })
     }
   },

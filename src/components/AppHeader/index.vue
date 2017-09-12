@@ -236,7 +236,7 @@
         </div>               
       </div>
     </header>
-    <CartModal />
+    <CartModal v-if="false" />
     <OrderHistoryModal v-if="false" />
   </div>
   
