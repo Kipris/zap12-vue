@@ -1,0 +1,24 @@
+<svg width="18" height="15" viewBox="0 0 18 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>ic_home</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-5974 1033)">
+<g id="ic_home">
+<g id="home">
+<g id="Rectangle 6">
+<use xlink:href="#path0_stroke" transform="translate(5975 -1032)"/>
+</g>
+<g id="Rectangle">
+<use xlink:href="#path1_stroke" transform="translate(5977 -1028)"/>
+</g>
+<g id="Rectangle 2">
+<use xlink:href="#path2_stroke" transform="translate(5981 -1024)"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 2 0L 2 -1C 1.62123 -1 1.27496 -0.785998 1.10557 -0.447214L 2 0ZM 14 0L 14.8944 -0.447214C 14.725 -0.785998 14.3788 -1 14 -1L 14 0ZM 16 4L 16 5C 16.3466 5 16.6684 4.82055 16.8507 4.52573C 17.0329 4.23091 17.0494 3.86277 16.8944 3.55279L 16 4ZM 0 4L -0.894427 3.55279C -1.04942 3.86277 -1.03286 4.23091 -0.850651 4.52573C -0.668444 4.82055 -0.346578 5 1.98603e-16 5L 0 4ZM 2 1L 14 1L 14 -1L 2 -1L 2 1ZM 13.1056 0.447214L 15.1056 4.44721L 16.8944 3.55279L 14.8944 -0.447214L 13.1056 0.447214ZM 16 3L 0 3L 0 5L 16 5L 16 3ZM 0.894427 4.44721L 2.89443 0.447214L 1.10557 -0.447214L -0.894427 3.55279L 0.894427 4.44721Z"/>
+<path id="path1_stroke" d="M 0 0L 0 -1C -0.552285 -1 -1 -0.552285 -1 2.22045e-16L 0 0ZM 12 0L 13 0C 13 -0.552285 12.5523 -1 12 -1L 12 0ZM 12 9L 12 10C 12.5523 10 13 9.55228 13 9L 12 9ZM 0 9L -1 9C -1 9.55228 -0.552285 10 2.22045e-16 10L 0 9ZM 0 1L 12 1L 12 -1L 0 -1L 0 1ZM 11 0L 11 9L 13 9L 13 0L 11 0ZM 12 8L 0 8L 0 10L 12 10L 12 8ZM 1 9L 1 0L -1 0L -1 9L 1 9Z"/>
+<path id="path2_stroke" d="M 0 0L 0 -1C -0.552285 -1 -1 -0.552285 -1 2.22045e-16L 0 0ZM 4 0L 5 0C 5 -0.552285 4.55228 -1 4 -1L 4 0ZM 4 5L 4 6C 4.55228 6 5 5.55228 5 5L 4 5ZM 0 5L -1 5C -1 5.55228 -0.552285 6 2.22045e-16 6L 0 5ZM 0 1L 4 1L 4 -1L 0 -1L 0 1ZM 3 0L 3 5L 5 5L 5 0L 3 0ZM 4 4L 0 4L 0 6L 4 6L 4 4ZM 1 5L 1 0L -1 0L -1 5L 1 5Z"/>
+</defs>
+</svg>

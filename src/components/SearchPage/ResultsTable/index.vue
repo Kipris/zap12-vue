@@ -44,13 +44,19 @@
             </div>        
           </td>
           <td class="price">
-            <div v-if="detail.storageAmount">{{detail.storagePrice}} Р</div>
-            <div v-if="detail.deliveryAmount">{{detail.deliveryPrice}} Р</div>
-            <div v-if="detail.nonAvailableAmount">{{detail.nonAvailablePrice}} Р</div>
+            <div v-if="detail.storageAmount">
+              <span>{{detail.storagePrice}} Р</span>
+              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+            </div>
+            <div v-if="detail.deliveryAmount">
+              <span>{{detail.deliveryPrice}} Р</span>
+              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+            </div>
+            <div v-if="detail.nonAvailableAmount">
+              <span>{{detail.nonAvailablePrice}} Р</span>
+              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+            </div>
           </td>
-          <!-- <td>
-            <button @click="addToCart(detail)">Купить</button>
-          </td> -->
         </tr>
       </tbody>
     </table>

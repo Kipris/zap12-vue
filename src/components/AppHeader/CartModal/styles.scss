@@ -1,0 +1,137 @@
+@import './../../../assets/theme/styles';
+
+.modal-backdrop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: transparentize(#000, .5);
+}
+.modal {
+  width: 900px;
+  height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -450px;
+  z-index: 10000;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.modal-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-body {
+  
+}
+
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  .h1 {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cross {
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  th, td {
+    font-size: 1.6rem;
+    color: $dark;
+  }
+  th {
+    padding: 10px 30px 10px 0;
+    border-bottom: 2px solid $white-smoke;
+    white-space: nowrap;
+    text-align: left;
+  }
+  th:last-child {
+    padding-left: 30px;
+    padding-right: 0;
+  }
+  td {
+    padding: 10px 5px 10px 0;
+    border-bottom: 1px solid $white-smoke;
+  }
+  td:last-child {
+    padding-left: 5px;
+    padding-right: 0;
+  }
+  .amount-row {
+    white-space: nowrap;
+    input.amount {
+      width: 30px;
+      height: 35px;
+      border-radius: 8px;
+      border: 1px solid $light-grey;
+    }
+    button.sign {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      font-size: 1.8rem;
+    }
+  }
+  .price-row {
+    white-space: nowrap;
+  }
+}
+
+.options {
+  div {
+    margin-bottom: 20px;
+  }
+  .promocode,
+  .delivery {
+    font-size: 2rem;
+    display: flex;
+    .title {
+      display: block; 
+      margin-right: auto;
+    }
+  }
+  .delivery {
+    padding-bottom: 20px;
+    border-bottom: 2px solid $white-smoke;
+  }
+}
+
+.total-sum {
+  .total,
+  .discount {
+    display: flex;
+    justify-content: space-between;
+  }
+  .total {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
+  .discount {
+    font-size: 2rem;
+    margin-bottom: 35px;
+  }
+  .red {
+    color: $red;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

@@ -113,6 +113,30 @@ table {
   }  
 }
 
+.price {
+  & > div {
+    display: flex;
+  }
+  span {
+    white-space: nowrap;
+  }
+  .buy-icon {
+    width: 25px;
+    height: 17px;
+  }
+  .buy-icon::after {
+    content: '';
+    mask: url('../../../assets/img/ic_bag.svg');
+    mask-size: cover;
+    background-color: $dark-grey;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    position: absolute;
+  }
+}
+
 @media (max-width: 1200px) {
   .table-title {
     flex-direction: column;
