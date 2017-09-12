@@ -237,6 +237,7 @@
       </div>
     </header>
     <CartModal v-if="false" />
+    <OrderHistoryModal v-if="false" />
   </div>
   
 </template>
@@ -245,6 +246,7 @@
 import { mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
 import CartModal from './CartModal'
+import OrderHistoryModal from './OrderHistoryModal'
 
 export default {
   name: 'AppHeader',
@@ -364,7 +366,8 @@ export default {
   },
   components: {
     Cart,
-    CartModal
+    CartModal,
+    OrderHistoryModal
   }
 }
 </script>

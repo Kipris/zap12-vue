@@ -22,11 +22,11 @@
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
-  overflow-x: hidden;
 }
 
 .modal-content {
   padding: 20px;
+  height: 560px;
   overflow-y: auto;
 }
 
@@ -91,24 +91,101 @@ table {
   .price-row {
     white-space: nowrap;
   }
+  .detail-name {
+    display: flex;
+    align-items: center;
+    & > span:first-child {
+      max-width: 310px;
+    }
+  }
+  .trash {
+    width: 24px;
+    height: 24px;
+    display: block;
+    padding-left: 5px;
+    &::after {
+      content: '';
+      mask: url('../../../assets/img/trash.svg');
+      mask-size: cover;
+      width: 24px;
+      height: 24px;
+      display: block;
+      background-color: $light-grey;
+    }
+  }
 }
 
 .options {
-  div {
+  & > div {
     margin-bottom: 20px;
+    &:last-child {
+      padding-bottom: 20px;
+      border-bottom: 2px solid $white-smoke;
+    }
   }
   .promocode,
-  .delivery {
+  .delivery,
+  .payment-variants {
     font-size: 2rem;
     display: flex;
+    flex-direction: column;
     .title {
       display: block; 
       margin-right: auto;
+      padding-left: 15px;
+    }
+    .heading {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .heading.disabled {
+      color: $light-grey;
+      cursor: default;
+      .chevron-icon,
+      .icon::after {
+        opacity: .3;
+      }
+    }
+    .body {
+      font-size: 1.6rem;
+      margin-top: 30px;
+      overflow: hidden;
+      & > div:not(:last-child) {
+        margin-bottom: 15px;
+      }
+      input[type="radio"] {
+        margin-left: 0;
+      }
     }
   }
-  .delivery {
-    padding-bottom: 20px;
-    border-bottom: 2px solid $white-smoke;
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    padding: 0;
+  }
+  .icon::after {
+    background-color: $black;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+  .promocode-icon::after {
+    content: '';
+    mask: url('../../../assets/img/ic_offer.svg');
+    mask-size: cover;
+    
+  }
+  .delivery-icon::after {
+    content: url('../../../assets/img/ic_swipe.svg');
+    mask-size: cover;
+    background-color: transparent;
+  }
+  .payment-icon::after {
+    content: '';
+    mask: url('../../../assets/img/ic_services.svg');
+    mask-size: cover;
   }
 }
 
@@ -128,6 +205,35 @@ table {
   }
   .red {
     color: $red;
+  }
+}
+
+.input-wrap {
+  width: 340px;
+  input {
+    width: 100%;
+    padding: 10px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $light-grey;
+    transition: .3s ease-in;
+    &::placeholder {
+      text-transform: uppercase;
+    }
+  }
+}
+
+.chevron-icon {
+  mask: url('../../../assets/img/chevron.svg');
+  mask-size: cover;
+  display: block;
+  width: 10px;
+  height: 5px;
+  background-color: $black;
+  padding: 0;
+  transition: .3s ease-in;
+  &.opened {
+    transform: rotate(180deg);
   }
 }
 

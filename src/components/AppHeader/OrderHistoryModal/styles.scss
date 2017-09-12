@@ -1,0 +1,181 @@
+@import './../../../assets/theme/styles';
+
+.modal-backdrop {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: transparentize(#000, .5);
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10000;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  .modal-content {
+    padding: 20px;
+    overflow-y: auto;
+  }
+  &.small {
+    width: 400px;
+    max-height: 250px;
+    margin-top: -175px;
+    margin-left: -200px;
+    .modal-content {
+      max-height: 210px;
+    }
+  }
+  &.wide {
+    width: 900px;
+    max-height: 600px;
+    margin-top: -300px;
+    margin-left: -450px;
+    .modal-content {
+      max-height: 560px;
+    }
+  }
+}
+
+
+
+.modal-body {
+  
+}
+
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  .h1 {
+    margin-bottom: 20px;
+  }
+  .cross {
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+}
+
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  .content {
+    margin-top: 10px;
+    font-size: 1.8rem;
+  }
+}
+
+.history {
+  .order {
+    .heading {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .chevron {
+        mask: url('../../../assets/img/chevron.svg');
+        mask-size: cover;
+        display: block;
+        width: 10px;
+        height: 5px;
+        background-color: $black;
+        padding: 0;
+        transition: .3s ease-in;
+        &.opened {
+          transform: rotate(180deg);
+        }
+      }
+      .order-id {
+        display: flex;
+      }
+      .order-icon {
+        mask: url('../../../assets/img/ic_ad.svg');
+        mask-size: cover;
+        display: block;
+        width: 18px;
+        height: 21px;
+        background-color: $black;
+        margin-right: 10px;
+      }
+      .order-price {
+        white-space: nowrap;
+      }
+      & > span {
+        padding: 10px;
+        font-size: 1.6rem;
+      }
+      & > span:first-child {
+        padding-left: 0;
+      }
+      & > span:last-child {
+        padding-right: 0;
+      }
+      .order-status {
+        margin-right: auto;
+      }
+      .red {
+        color: $red;
+      }
+    }
+  }
+  .actions {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $white-smoke;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  th, td {
+    font-size: 1.6rem;
+    color: $dark;
+  }
+  th {
+    padding: 10px 30px 10px 0;
+    border-bottom: 2px solid $white-smoke;
+    white-space: nowrap;
+    text-align: left;
+  }
+  th:last-child {
+    padding-left: 30px;
+    padding-right: 0;
+    text-align: right;
+  }
+  td {
+    padding: 10px 5px 10px 0;
+    border-bottom: 1px solid $white-smoke;
+  }
+  td:last-child {
+    padding-left: 5px;
+    padding-right: 0;
+    text-align: right;
+  }
+  .amount,
+  .price {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 991px) {
+  .modal {
+    width: 100% !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+  }
+}
+
+
+
+

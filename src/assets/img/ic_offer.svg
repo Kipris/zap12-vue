@@ -1,0 +1,20 @@
+<svg width="24" height="24" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>ic_offer</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-750 433)">
+<g id="ic_offer">
+<g id="Path 5">
+<use xlink:href="#path0_stroke" transform="matrix(0.707107 -0.707107 0.707107 0.707107 748.101 -426.414)"/>
+</g>
+<g id="Oval">
+<use xlink:href="#path1_fill" transform="matrix(0.707107 -0.707107 0.707107 0.707107 755.172 -426.414)"/>
+<use xlink:href="#path2_stroke" transform="matrix(0.707107 -0.707107 0.707107 0.707107 755.172 -426.414)"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 0 5L -0.640184 4.23178C -0.868177 4.42177 -1 4.70322 -1 5L 0 5ZM 6 0L 6.64018 -0.768221C 6.26934 -1.07726 5.73066 -1.07726 5.35982 -0.768221L 6 0ZM 12 5L 13 5C 13 4.70322 12.8682 4.42177 12.6402 4.23178L 12 5ZM 12 16L 12 17C 12.5523 17 13 16.5523 13 16L 12 16ZM 0 16L -1 16C -1 16.5523 -0.552285 17 2.22045e-16 17L 0 16ZM 0.640184 5.76822L 6.64018 0.768221L 5.35982 -0.768221L -0.640184 4.23178L 0.640184 5.76822ZM 5.35982 0.768221L 11.3598 5.76822L 12.6402 4.23178L 6.64018 -0.768221L 5.35982 0.768221ZM 11 5L 11 16L 13 16L 13 5L 11 5ZM 12 15L 0 15L 0 17L 12 17L 12 15ZM 1 16L 1 5L -1 5L -1 16L 1 16Z"/>
+<path id="path1_fill" fill-rule="evenodd" d="M 1 2C 1.55228 2 2 1.55228 2 1C 2 0.447715 1.55228 0 1 0C 0.447715 0 0 0.447715 0 1C 0 1.55228 0.447715 2 1 2Z"/>
+<path id="path2_stroke" d="M 1 3C 2.10457 3 3 2.10457 3 1L 1 1L 1 3ZM 3 1C 3 -0.10457 2.10457 -1 1 -1L 1 1L 3 1ZM 1 -1C -0.10457 -1 -1 -0.10457 -1 1L 1 1L 1 -1ZM -1 1C -1 2.10457 -0.10457 3 1 3L 1 1L -1 1Z"/>
+</defs>
+</svg>
