@@ -41,33 +41,22 @@
 
         <div class="options">
           <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
-          
-            <div class="promocode" 
-                 @click="openPromo = !openPromo">
-              <span class="promocode-icon"></span>
-              <span class="title">Промокод</span>
-              <span class="chevron-icon"></span>
-                <transition name="fade">
-                  <div class="transition-wrap"
-                        v-if="openPromo">
-                        Content
-                  </div>
-                </transition>
-            </div>
-          <transition name="fade">
-            <div class="delivery">
-              <span class="promocode-icon"></span>
-              <span class="title">Доставка</span>
+          <div class="promocode">
+            <span class="promocode-icon"></span>
+            <span class="title">Промокод</span>
+            <span class="chevron-icon"></span>
+          </div>
+          <div class="delivery">
+            <span class="promocode-icon"></span>
+            <span class="title">Доставка</span>
+            <span class="chevron-icon"></span>
+          </div>
+          <div class="payment-variants">
+            <div class="heading">
+              <span class="payment-icon"></span>
+              <span class="title">Варианты оплаты</span>
               <span class="chevron-icon"></span>
             </div>
-          </transition> 
-          <transition name="fade">
-            <div class="payment-variants">
-              <div class="heading">
-                <span class="payment-icon"></span>
-                <span class="title">Варианты оплаты</span>
-                <span class="chevron-icon"></span>
-              </div>
             <div class="body">
               <div>Оплата электронными способами оплаты с помощью Robokassa 
                 (Электронным кошельком, Через интернет-банк, Банковской картой, 
@@ -87,7 +76,7 @@
             </div>
             
           </div>
-          </transition>
+
 
 
         </div>
@@ -118,22 +107,10 @@
 <script>
 
 export default {
-  name: 'CartModal',
-  data() {
-    return {
-      openPromo: false
-    }
-  }
+  name: 'CartModal'
 }
 </script>
 
 <style lang="scss" scoped>
   @import 'styles';
-  
-  .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0
-}
 </style>

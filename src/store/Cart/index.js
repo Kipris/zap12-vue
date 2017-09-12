@@ -4,6 +4,8 @@ import Vue from 'vue'
 const state = {
   cartItems: [],
   details: [],
+  analogDetails: [],
+  reloadedSelectedDetail: {},
   search: {
     carModel: [],
     detailProducer: []
@@ -37,6 +39,12 @@ const mutations = {
     } else if (sign === '-' && detail.amount > 1) {
       detail.amount -= 1
     }
+  },
+  setAnalogs(state, payload) {
+    state.analogDetails = payload
+  },
+  selectDetail(state, payload) {
+    state.reloadedSelectedDetail = payload
   }
 }
 const actions = {
@@ -57,6 +65,33 @@ const actions = {
     })
     .then((res) => {
       commit('setDetails', res.data)
+    })
+    .catch(err => console.log(err))
+  },
+  getDetail({ state, commit }, payload) {
+    axios.get('/details', {
+      params: {
+        id: payload
+      }
+    })
+    .then((res) => {
+      commit('selectDetail', res.data[0])
+    })
+    .catch(err => console.log(err))
+  },
+  getAnalogs({ state, commit }, payload) {
+    console.log('analogs payload', payload)
+    axios.get('/details', {
+      params: {
+        _sort: 'storageAmount',
+        _order: 'desc',
+        _limit: 24,
+        id: payload
+      }
+    })
+    .then((res) => {
+      console.log('analogs res', res)
+      commit('setAnalogs', res.data)
     })
     .catch(err => console.log(err))
   }
