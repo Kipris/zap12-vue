@@ -119,10 +119,12 @@ export default {
     width: 100% !important;
     height: 40px;
     border-radius: 8px;
-    border: 1px solid rgba(46,46,46,.2);
+    border: none;
+    border-bottom: 1px solid rgba(46,46,46,.2);
     position: absolute;
     top: 0;
-    z-index: -1;
+    padding: 0 10px;
+    z-index: 9;
   }
   .multiselect__tags {
     position: relative;
@@ -137,6 +139,7 @@ export default {
     top: 9px;
     right: 10px;
     transition: .3s ease-in;
+    z-index: 9;
   }
   .multiselect__tags-wrap {
     padding: 10px 20px 5px 10px;

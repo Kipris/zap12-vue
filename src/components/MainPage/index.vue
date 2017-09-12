@@ -5,6 +5,7 @@
     <Detail />
     <News />
     <Repair />
+    <CartModal />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Service from './Service';
 import Detail from './Detail';
 import News from './News';
 import Repair from './../Repair';
+import CartModal from './../Modals/CartModal';
 
 export default {
   name: 'MainPage',
@@ -22,7 +24,8 @@ export default {
     Service,
     Detail,
     News,
-    Repair
+    Repair,
+    CartModal
   }
 }
 </script>
