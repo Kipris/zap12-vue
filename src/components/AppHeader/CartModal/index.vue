@@ -41,34 +41,53 @@
 
         <div class="options">
           <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
-          
-            <div class="promocode" 
-                 @click="openPromo = !openPromo">
+          <div class="promocode">
+            <div class="heading" @click="promocodeCollapse">
               <span class="promocode-icon"></span>
               <span class="title">Промокод</span>
               <span class="chevron-icon"></span>
-                <transition name="fade">
-                  <div class="transition-wrap"
-                        v-if="openPromo">
-                        Content
-                  </div>
-                </transition>
-            </div>
-          <transition name="fade">
-            <div class="delivery">
+            </div>  
+            <div class="body" v-show="promocodeAccordion">
+              <div class="input-wrap">
+                <input type="text" placeholder="Введите промокод">
+              </div>
+            </div> 
+          </div>
+          <div class="delivery">
+            <div class="heading" @click="deliveryCollapse">
               <span class="promocode-icon"></span>
               <span class="title">Доставка</span>
               <span class="chevron-icon"></span>
-            </div>
-          </transition> 
-          <transition name="fade">
-            <div class="payment-variants">
-              <div class="heading">
-                <span class="payment-icon"></span>
-                <span class="title">Варианты оплаты</span>
-                <span class="chevron-icon"></span>
+            </div> 
+            <div class="body" v-show="deliveryAccordion">
+              <div>
+                <label>
+                  <input type="radio" name="delivery">
+                  Курьером
+                </label>
               </div>
-            <div class="body">
+              <div>
+                <label>
+                  <input type="radio" name="delivery">
+                  Самовывоз
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input type="radio" name="delivery">
+                  Почтой России
+                </label>
+              </div>
+            </div> 
+          </div>
+
+          <div class="payment-variants">
+            <div class="heading" @click="paymentCollapse">
+              <span class="payment-icon"></span>
+              <span class="title">Варианты оплаты</span>
+              <span class="chevron-icon"></span>
+            </div>
+            <div class="body" v-show="paymentAccordion">
               <div>Оплата электронными способами оплаты с помощью Robokassa 
                 (Электронным кошельком, Через интернет-банк, Банковской картой, 
                 В терминале, Сотовые операторы, Другие способы)</div>
@@ -85,9 +104,11 @@
                 </label>
               </div>  
             </div>
+
+            
             
           </div>
-          </transition>
+
 
 
         </div>
@@ -121,7 +142,26 @@ export default {
   name: 'CartModal',
   data() {
     return {
-      openPromo: false
+      promocodeAccordion: false,
+      deliveryAccordion: false,
+      paymentAccordion: false
+    }
+  },
+  methods: {
+    promocodeCollapse() {
+      this.promocodeAccordion = !this.promocodeAccordion
+      this.deliveryAccordion = false
+      this.paymentAccordion = false
+    },
+    deliveryCollapse() {
+      this.promocodeAccordion = false
+      this.deliveryAccordion = !this.deliveryAccordion
+      this.paymentAccordion = false
+    },
+    paymentCollapse() {
+      this.promocodeAccordion = false
+      this.deliveryAccordion = false
+      this.paymentAccordion = !this.paymentAccordion
     }
   }
 }
@@ -129,11 +169,4 @@ export default {
 
 <style lang="scss" scoped>
   @import 'styles';
-  
-  .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0
-}
 </style>
