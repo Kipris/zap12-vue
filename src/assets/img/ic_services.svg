@@ -1,0 +1,24 @@
+<svg width="24" height="24" viewBox="0 0 20 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>ic_services</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-749 355)">
+<g id="ic_services">
+<g id="Rectangle 10">
+<use xlink:href="#path0_stroke" transform="translate(754 -354)"/>
+</g>
+<g id="Rectangle 10 Copy">
+<use xlink:href="#path0_stroke" transform="translate(750 -342)"/>
+</g>
+<g id="Line">
+<use xlink:href="#path1_stroke" transform="translate(750 -339)"/>
+</g>
+<g id="Line Copy">
+<use xlink:href="#path1_stroke" transform="translate(762 -351)"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 0 0L 0 -1C -0.552285 -1 -1 -0.552285 -1 2.22045e-16L 0 0ZM 14 0L 15 0C 15 -0.552285 14.5523 -1 14 -1L 14 0ZM 14 8L 14 9C 14.5523 9 15 8.55228 15 8L 14 8ZM 0 8L -1 8C -1 8.55228 -0.552285 9 2.22045e-16 9L 0 8ZM 0 1L 14 1L 14 -1L 0 -1L 0 1ZM 13 0L 13 8L 15 8L 15 0L 13 0ZM 14 7L 0 7L 0 9L 14 9L 14 7ZM 1 8L 1 0L -1 0L -1 8L 1 8Z"/>
+<path id="path1_stroke" d="M 0 0C -0.552285 0 -1 0.447715 -1 1C -1 1.55228 -0.552285 2 0 2L 0 0ZM 6 2C 6.55228 2 7 1.55228 7 1C 7 0.447715 6.55228 0 6 0L 6 2ZM 0 2L 6 2L 6 0L 0 0L 0 2Z"/>
+</defs>
+</svg>

@@ -91,6 +91,28 @@ table {
   .price-row {
     white-space: nowrap;
   }
+  .detail-name {
+    display: flex;
+    align-items: center;
+    & > span:first-child {
+      max-width: 310px;
+    }
+  }
+  .trash {
+    width: 24px;
+    height: 24px;
+    display: block;
+    padding-left: 5px;
+    &::after {
+      content: '';
+      mask: url('../../../assets/img/trash.svg');
+      mask-size: cover;
+      width: 24px;
+      height: 24px;
+      display: block;
+      background-color: $light-grey;
+    }
+  }
 }
 
 .options {
@@ -110,9 +132,20 @@ table {
     .title {
       display: block; 
       margin-right: auto;
+      padding-left: 15px;
     }
     .heading {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .heading.disabled {
+      color: $light-grey;
+      cursor: default;
+      .chevron-icon,
+      .icon::after {
+        opacity: .3;
+      }
     }
     .body {
       font-size: 1.6rem;
@@ -125,6 +158,34 @@ table {
         margin-left: 0;
       }
     }
+  }
+  .icon {
+    width: 24px;
+    height: 24px;
+    display: block;
+    padding: 0;
+  }
+  .icon::after {
+    background-color: $black;
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+  .promocode-icon::after {
+    content: '';
+    mask: url('../../../assets/img/ic_offer.svg');
+    mask-size: cover;
+    
+  }
+  .delivery-icon::after {
+    content: url('../../../assets/img/ic_swipe.svg');
+    mask-size: cover;
+    background-color: transparent;
+  }
+  .payment-icon::after {
+    content: '';
+    mask: url('../../../assets/img/ic_services.svg');
+    mask-size: cover;
   }
 }
 
@@ -159,6 +220,20 @@ table {
     &::placeholder {
       text-transform: uppercase;
     }
+  }
+}
+
+.chevron-icon {
+  mask: url('../../../assets/img/chevron.svg');
+  mask-size: cover;
+  display: block;
+  width: 10px;
+  height: 5px;
+  background-color: $black;
+  padding: 0;
+  transition: .3s ease-in;
+  &.opened {
+    transform: rotate(180deg);
   }
 }
 

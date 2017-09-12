@@ -8,7 +8,7 @@
         </div>
 
         <div class="modal-body">
-<table>
+        <table>
           <thead>
             <th>Производитель</th>
             <th>Артикул</th>
@@ -20,7 +20,7 @@
             <tr>
               <td>Mapco</td>
               <td>63110</td>
-              <td>
+              <td class="detail-name">
                 <span>Фильтр топливный ДИЗЕЛЬ FIAT, FORD, OPEL, VW, RENAULT, SEAT</span>
                 <span class="trash"></span>
               </td>
@@ -42,10 +42,12 @@
         <div class="options">
           <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
           <div class="promocode">
-            <div class="heading" @click="promocodeCollapse">
-              <span class="promocode-icon"></span>
+            <div class="heading" 
+                 @click="promocodeCollapse" 
+                 :class="{ disabled: promocodeIsDisabled }">
+              <span class="icon promocode-icon"></span>
               <span class="title">Промокод</span>
-              <span class="chevron-icon"></span>
+              <span class="chevron-icon" :class="{ opened: promocodeAccordion }"></span>
             </div>  
             <div class="body" v-show="promocodeAccordion">
               <div class="input-wrap">
@@ -54,10 +56,12 @@
             </div> 
           </div>
           <div class="delivery">
-            <div class="heading" @click="deliveryCollapse">
-              <span class="promocode-icon"></span>
+            <div class="heading" 
+                 @click="deliveryCollapse" 
+                 :class="{ disabled: deliveryIsDisabled }">
+              <span class="icon delivery-icon"></span>
               <span class="title">Доставка</span>
-              <span class="chevron-icon"></span>
+              <span class="chevron-icon" :class="{ opened: deliveryAccordion }"></span>
             </div> 
             <div class="body" v-show="deliveryAccordion">
               <div>
@@ -82,10 +86,12 @@
           </div>
 
           <div class="payment-variants">
-            <div class="heading" @click="paymentCollapse">
-              <span class="payment-icon"></span>
+            <div class="heading" 
+                 @click="paymentCollapse"
+                 :class="{ disabled: paymentIsDisabled }">
+              <span class="icon payment-icon"></span>
               <span class="title">Варианты оплаты</span>
-              <span class="chevron-icon"></span>
+              <span class="chevron-icon" :class="{ opened: paymentAccordion }"></span>
             </div>
             <div class="body" v-show="paymentAccordion">
               <div>Оплата электронными способами оплаты с помощью Robokassa 
@@ -103,14 +109,8 @@
                   Вся сумма заказа
                 </label>
               </div>  
-            </div>
-
-            
-            
+            </div>            
           </div>
-
-
-
         </div>
         
         <div class="total-sum">
@@ -123,14 +123,11 @@
             <span class="red">2 149 Р</span>
           </div>
         </div>
-
         <div class="actions">
           <button class="btn black">Пересчитать</button>
           <button class="btn full-red">Оформить</button>
         </div>
         </div>
-        
-
       </div>
     </div>
   </div>
@@ -144,24 +141,33 @@ export default {
     return {
       promocodeAccordion: false,
       deliveryAccordion: false,
-      paymentAccordion: false
+      paymentAccordion: false,
+      promocodeIsDisabled: true,
+      deliveryIsDisabled: false,
+      paymentIsDisabled: false
     }
   },
   methods: {
     promocodeCollapse() {
-      this.promocodeAccordion = !this.promocodeAccordion
-      this.deliveryAccordion = false
-      this.paymentAccordion = false
+      if (this.promocodeIsDisabled === false) {
+        this.promocodeAccordion = !this.promocodeAccordion
+        this.deliveryAccordion = false
+        this.paymentAccordion = false
+      }
     },
     deliveryCollapse() {
-      this.promocodeAccordion = false
-      this.deliveryAccordion = !this.deliveryAccordion
-      this.paymentAccordion = false
+      if (this.deliveryIsDisabled === false) {
+        this.promocodeAccordion = false
+        this.deliveryAccordion = !this.deliveryAccordion
+        this.paymentAccordion = false
+      }
     },
     paymentCollapse() {
-      this.promocodeAccordion = false
-      this.deliveryAccordion = false
-      this.paymentAccordion = !this.paymentAccordion
+      if (this.paymentIsDisabled === false) {
+        this.promocodeAccordion = false
+        this.deliveryAccordion = false
+        this.paymentAccordion = !this.paymentAccordion
+      }
     }
   }
 }

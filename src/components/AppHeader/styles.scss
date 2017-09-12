@@ -112,7 +112,7 @@ a {
     justify-content: space-between;
     align-items: center;
     height: $navbar-height;
-    position: relative;
+    // position: relative;
     .cart {
         // padding: ($navbar-height/2px - 12px) 15px;
         margin-right: 18px;
@@ -408,6 +408,21 @@ label.opened + nav {
 }
 
 .login {
+  padding: 10.5px 0;
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  .signed-in {
+    color: $red;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    padding: 21px 0;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   .dropdown-menu {
     background-color: $white;
     position: absolute;
@@ -467,18 +482,6 @@ label.opened + nav {
     justify-content: space-between;
   }
 }
-
-.signed-in {
-  color: $red;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-
 
 .login-menu {
   form {

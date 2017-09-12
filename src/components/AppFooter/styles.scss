@@ -32,6 +32,7 @@ a {
               margin-bottom: 15px;
               &:hover {
                 color: $red;
+                text-decoration: none;
               }
               &:last-child {
                   margin-bottom: 0;
@@ -57,6 +58,7 @@ a {
               color: $light-grey;
               &:hover {
                 color: $red;
+                text-decoration: none;
               }
           }
           span {
