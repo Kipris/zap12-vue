@@ -20,7 +20,8 @@
       <div class="total">
         <div>
           <span>На сумму: </span>
-          <span>{{getTotalPrice}} Р</span>
+          <span>10000 Р</span>
+          <!-- <span>{{getTotalPrice}} Р</span> -->
         </div>        
       </div>
       <div class="actions">
@@ -43,18 +44,18 @@ export default {
     }
   },
   computed: {
-    getTotalPrice() {
-      const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
-      return mapped.reduce((a, b) => a + b);
-    }
+    // getTotalPrice() {
+    //   const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
+    //   return mapped.reduce((a, b) => a + b);
+    // }
   },
   methods: {
     ...mapMutations('Cart', [
       'changeAmount'
     ]),
-    ...mapMutations('Cart', [
-      'removeFromCart'
-    ])
+    // ...mapMutations('Cart', [
+    //   'removeFromCart'
+    // ])
   }
 }
 </script>

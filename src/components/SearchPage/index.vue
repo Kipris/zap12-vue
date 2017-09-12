@@ -5,7 +5,7 @@
         <div class="container">
           <Filters @carSelected="filteredCar = $event"
                    @producerSelected="filteredProducer = $event"/>
-          <router-view @detailWasSelected="handleSelect"
+          <router-view @detailWasSelected="handleSelect" class="table-container"
                        :details="details"></router-view>
           <!-- <ResultsTable /> -->
         </div>    
