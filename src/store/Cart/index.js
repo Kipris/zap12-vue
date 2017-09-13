@@ -15,10 +15,13 @@ const getters = {
 
 }
 const mutations = {
-  addToCart(state, payload) {
+  setCartItem(state, payload) {
     const detailToCart = payload
     Vue.set(detailToCart, 'amount', 1)
     state.cartItems.push(detailToCart)
+  },
+  setInventory(state, payload) {
+    state.cartItems = payload
   },
   removeFromCart() {
     console.log('This detail should be removed')
@@ -80,7 +83,6 @@ const actions = {
     .catch(err => console.log(err))
   },
   getAnalogs({ state, commit }, payload) {
-    console.log('analogs payload', payload)
     axios.get('/details', {
       params: {
         _sort: 'storageAmount',
@@ -90,10 +92,24 @@ const actions = {
       }
     })
     .then((res) => {
-      console.log('analogs res', res)
       commit('setAnalogs', res.data)
     })
     .catch(err => console.log(err))
+  },
+  getInventory({ commit }) {
+    axios.get('/user')
+    .then((res) => {
+      commit('setInventory', res.data.inventory)
+    })
+  },
+  addToCart({ state, commit }, payload) {
+    if (state.cartItems.find(item => item.detailId === payload.id)) {
+      console.log('in if')
+      commit('changeAmount', { detailId: payload.id, sign: '+' })
+    } else {
+      console.log('else')
+      commit('setCartItem', payload.detail)
+    }
   }
 }
 

@@ -1,7 +1,9 @@
 <template>
   <div>
-    <ResultsTable :details="[detail]" />
-    <AnalogTable :details="analogDetails"/>
+    <ResultsTable :details="[detail]"
+                  :buy="true" />
+    <AnalogTable :details="analogDetails"
+                 :buy="true"/>
   </div>
 </template>
 

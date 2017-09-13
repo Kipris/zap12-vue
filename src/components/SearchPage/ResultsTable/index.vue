@@ -19,7 +19,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="detail in details"
+        <TableItem v-for="detail in details"
+                   :detail="detail"
+                   :buy="buy"
+                   @detailWasSelected="handleDetailSelect($event)" />
+        <!-- <tr v-for="detail in details"
             @click="handleDetailSelect(detail)">
           <td class="producer">
             <div>{{detail.detailProducer}}</div>
@@ -46,25 +50,25 @@
           <td class="price">
             <div v-if="detail.storageAmount">
               <span>{{detail.storagePrice}} Р</span>
-              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+              <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
             </div>
             <div v-if="detail.deliveryAmount">
               <span>{{detail.deliveryPrice}} Р</span>
-              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+              <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
             </div>
             <div v-if="detail.nonAvailableAmount">
               <span>{{detail.nonAvailablePrice}} Р</span>
               <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
             </div>
           </td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-
+import TableItem from './TableItem'
 
 export default {
   name: 'ResultsTable',
@@ -72,6 +76,10 @@ export default {
     details: {
       type: Array,
       defaul: () => []
+    },
+    buy: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -83,11 +91,10 @@ export default {
     handleDetailSelect(detail) {
       this.$emit('detailWasSelected', detail)
     }
+  },
+  components: {
+    TableItem
   }
-  // },
-  // created() {
-  //   this.getDetails()
-  // }
 }
 </script>
 

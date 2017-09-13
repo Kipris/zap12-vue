@@ -6,6 +6,7 @@
           <div class="detail-name">{{detail.detailName}}</div>
           <div class="price-wrapper">
             <div class="detial-price">
+              <!-- TODO computed for universal price -->
               <span class="price">{{detail.deliveryPrice}} P</span>
               <span class="bucket" @click="removeFromCart">Удалить</span>
             </div>
@@ -51,11 +52,9 @@ export default {
   },
   methods: {
     ...mapMutations('Cart', [
-      'changeAmount'
+      'changeAmount',
+      'removeFromCart'
     ]),
-    // ...mapMutations('Cart', [
-    //   'removeFromCart'
-    // ])
   }
 }
 </script>

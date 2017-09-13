@@ -152,14 +152,17 @@
     "inventory": [
       {
         "detailId": 11,
+        "detailName": "Ремень ГРМ CITROEN , FIAT , FORD , LANCIA , MAZDA , PEUGEOT , SUZUKI , TOYOTA",
         "amount": 1
       },
       {
         "detailId": 7,
+        "detailName": "Стекло фары левое AUDI 100 (44) до 91 г.в. 443941115F",
         "amount": 3
       },
       {
         "detailId": 10,
+        "detailName": "Кнопка обогрева заднего стекла skoda octavia",
         "amount": 2
       }
     ]

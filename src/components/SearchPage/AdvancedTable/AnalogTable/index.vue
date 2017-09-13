@@ -1,57 +1,11 @@
 <template>
   <div class="result-table-wrap">
-    <!-- <div class="table-title">
-      <h1>Поиск по запросу</h1>
-      <div class="chips-wrap">
-        <label class="chip chip-grey">Нет в наличии</label>
-        <label class="chip chip-green">На складе</label>
-        <label class="chip chip-blue">Доставка</label>
-      </div> 
-    </div> -->
     <table class="table">
-      <!-- <thead>
-        <tr>
-          <th class="producer">Производитель</th>
-          <th class="vendor">Артикул</th>
-          <th class="naming">Наименование</th>
-          <th class="availability">Нал.</th>
-          <th class="price">Цена</th>
-        </tr>
-      </thead> -->
       <tbody>
-        <tr v-for="detail in details"
-            @click="handleDetailSelect(detail)">
-          <td class="producer">
-            <div>{{detail.detailProducer}}</div>
-          </td>
-          <td class="vendor">
-            <div>
-              {{detail.vendor}}
-            </div>
-          </td>
-          <td class="naming">
-            <div>{{detail.detailName}}</div>
-          </td>  
-          <td class="availability">
-            <div v-if="detail.storageAmount">
-              <label class="chip chip-green">{{detail.storageAmount}}</label>
-            </div>
-            <div v-if="detail.deliveryAmount">
-              <label class="chip chip-blue">{{detail.deliveryAmount}}</label>
-            </div>
-            <div v-if="detail.nonAvailableAmount">
-              <label class="chip chip-grey">{{detail.nonAvailableAmount}}</label>
-            </div>        
-          </td>
-          <td class="price">
-            <div v-if="detail.storageAmount">{{detail.storagePrice}} Р</div>
-            <div v-if="detail.deliveryAmount">{{detail.deliveryPrice}} Р</div>
-            <div v-if="detail.nonAvailableAmount">{{detail.nonAvailablePrice}} Р</div>
-          </td>
-          <td>
-            <button @click="addToCart(detail)">Купить</button>
-          </td>
-        </tr>
+        <TableItem v-for="detail in details"
+                   :detail="detail"
+                   :buy="true"
+                   @detailWasSelect="handleDetailSelect($event)" />
       </tbody>
     </table>
   </div>
@@ -59,29 +13,32 @@
 
 <script>
 
+import TableItem from '../../ResultsTable/TableItem'
 
 export default {
-  name: 'ResultsTable',
+  name: 'AnalogTable',
   props: {
     details: {
       type: Array,
-      defaul: () => []
+      default: () => []
+    },
+    buy: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
-      carDetails: []
     }
   },
   methods: {
     handleDetailSelect(detail) {
       this.$emit('detailWasSelected', detail)
     }
+  },
+  components: {
+    TableItem
   }
-  // },
-  // created() {
-  //   this.getDetails()
-  // }
 }
 </script>
 

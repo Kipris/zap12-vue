@@ -73,46 +73,46 @@ table {
       text-align: left;
     }
   }
-  tbody {
-    tr {
-      cursor: pointer;
-    }
-    tr:hover {
-      background-color: transparentize($black, .9);
-    }
-    td {
-      font-size: 1.3rem;
-      color: transparentize($black, .2);      
-      vertical-align: top;
-      border-spacing: 0 0;
-      border-bottom: 1px solid transparentize($black, .85); 
-      padding: 0 !important;     
-      &:nth-child(odd) {
-        background-color: transparentize($light-grey, .8);
-      }
-      & > div {
-        width: inherit;
-        padding: 10px 8px;
-        border-bottom: 1px solid transparentize($black, .85);
-        .chip::after {
-          right: 10px;
-        }
-      }
-      & > div:last-child {
-        border: none;
-      }
-      &.naming {
-        max-width: 410px;
-      }
-      label {
-        display: block;
-        margin: 0;
-        position: relative;
-      }
-    }    
-  }  
+//   tbody {
+//     tr {
+//       cursor: pointer;
+//     }
+//     tr:hover {
+//       background-color: transparentize($black, .9);
+//     }
+//     td {
+//       font-size: 1.3rem;
+//       color: transparentize($black, .2);      
+//       vertical-align: top;
+//       border-spacing: 0 0;
+//       border-bottom: 1px solid transparentize($black, .85); 
+//       padding: 0 !important;     
+//       &:nth-child(odd) {
+//         background-color: transparentize($light-grey, .8);
+//       }
+//       & > div {
+//         width: inherit;
+//         padding: 10px 8px;
+//         border-bottom: 1px solid transparentize($black, .85);
+//         .chip::after {
+//           right: 10px;
+//         }
+//       }
+//       & > div:last-child {
+//         border: none;
+//       }
+//       &.naming {
+//         max-width: 410px;
+//       }
+//       label {
+//         display: block;
+//         margin: 0;
+//         position: relative;
+//       }
+//     }    
+//   }  
+// }
 }
-
 .price {
   & > div {
     display: flex;
@@ -154,14 +154,14 @@ table {
       justify-content: flex-start;
     }
   }
-  table {
-    .producer {
-      display: none;
-    }
-    .vendor {
-      display: none;
-    }
-  }
+  // table {
+  //   .producer {
+  //     display: none;
+  //   }
+  //   .vendor {
+  //     display: none;
+  //   }
+  // }
 }
 
 
