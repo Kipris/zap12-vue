@@ -208,12 +208,10 @@ a {
           border-radius: 50px;
           padding: 10px 20px;
           transition: .2s ease-in;
-          color: $white;
-          opacity: .7;
+          color: transparentize($white, .3);
           &:hover {
               background-color: $white;
               color: $black;
-              opacity: 1;
           }            
       }
   }
