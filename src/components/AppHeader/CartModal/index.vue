@@ -41,76 +41,81 @@
 
         <div class="options">
           <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
-          <div class="promocode">
-            <div class="heading" 
-                 @click="promocodeCollapse" 
-                 :class="{ disabled: promocodeIsDisabled }">
-              <span class="icon promocode-icon"></span>
-              <span class="title">Промокод</span>
-              <span class="chevron-icon" :class="{ opened: promocodeAccordion }"></span>
-            </div>  
-            <div class="body" v-show="promocodeAccordion">
-              <div class="input-wrap">
-                <input type="text" placeholder="Введите промокод">
-              </div>
-            </div> 
-          </div>
-          <div class="delivery">
-            <div class="heading" 
-                 @click="deliveryCollapse" 
-                 :class="{ disabled: deliveryIsDisabled }">
-              <span class="icon delivery-icon"></span>
-              <span class="title">Доставка</span>
-              <span class="chevron-icon" :class="{ opened: deliveryAccordion }"></span>
-            </div> 
-            <div class="body" v-show="deliveryAccordion">
-              <div>
-                <label>
-                  <input type="radio" name="delivery">
-                  Курьером
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input type="radio" name="delivery">
-                  Самовывоз
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input type="radio" name="delivery">
-                  Почтой России
-                </label>
-              </div>
-            </div> 
-          </div>
 
-          <div class="payment-variants">
-            <div class="heading" 
-                 @click="paymentCollapse"
-                 :class="{ disabled: paymentIsDisabled }">
-              <span class="icon payment-icon"></span>
-              <span class="title">Варианты оплаты</span>
-              <span class="chevron-icon" :class="{ opened: paymentAccordion }"></span>
-            </div>
-            <div class="body" v-show="paymentAccordion">
-              <div>Оплата электронными способами оплаты с помощью Robokassa 
-                (Электронным кошельком, Через интернет-банк, Банковской картой, 
-                В терминале, Сотовые операторы, Другие способы)</div>
-              <div>
-                <label>
-                  <input type="radio" name="payment">
-                  50% от суммы заказа
+          <section>
+              <div class="promocode accordion">
+                <input class="accordion-checkbox" id="ac-1" type="checkbox" />
+                <label  class="accordion-label heading" for="ac-1">
+                  <span class="icon promocode-icon"></span>
+                  <span class="title">Промокод</span>
+                  <span class="chevron-icon"></span>
                 </label>
+                <div class="accordion-body">
+                  <div class="input-wrap">
+                    <input type="text" placeholder="Введите промокод">
+                  </div>
+                </div>
               </div>
-              <div>
-                <label>
-                  <input type="radio" name="payment">
-                  Вся сумма заказа
+          </section>
+
+          <section>
+              <div class="delivery accordion">
+                <input class="accordion-checkbox" id="ac-2" type="checkbox" />
+                <label  class="accordion-label heading" for="ac-2">
+                  <span class="icon delivery-icon"></span>
+                  <span class="title">Доставка</span>
+                  <span class="chevron-icon"></span>
                 </label>
-              </div>  
-            </div>            
-          </div>
+                <div class="accordion-body">
+                  <div>
+                    <label>
+                      <input type="radio" name="delivery">
+                      Курьером
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" name="delivery">
+                      Самовывоз
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" name="delivery">
+                      Почтой России
+                    </label>
+                  </div>
+                </div>
+              </div>
+          </section>
+
+          <section>
+              <div class="payment-variants accordion">
+                <input class="accordion-checkbox" id="ac-3" type="checkbox" />
+                <label  class="accordion-label heading" for="ac-3">
+                  <span class="icon payment-icon"></span>
+                  <span class="title">Промокод</span>
+                  <span class="chevron-icon"></span>
+                </label>
+                <div class="accordion-body">
+                  <div>Оплата электронными способами оплаты с помощью Robokassa 
+                    (Электронным кошельком, Через интернет-банк, Банковской картой, 
+                    В терминале, Сотовые операторы, Другие способы)</div>
+                  <div>
+                    <label>
+                      <input type="radio" name="payment">
+                      50% от суммы заказа
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" name="payment">
+                      Вся сумма заказа
+                    </label>
+                  </div> 
+                </div>
+              </div>
+          </section>
         </div>
         
         <div class="total-sum">

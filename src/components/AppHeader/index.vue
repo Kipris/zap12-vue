@@ -25,29 +25,29 @@
                     
                     
                     <a class="nav-link navbar-dropdown" v-bind:class="{ active: detailsShown }">
-                      <span v-on:click="detailsShow">Запчасти</span>
+                      <span class="" v-on:click="detailsShow">Запчасти</span>
                       <transition name="fade">
-                        <div class="dropdown" v-show="detailsShown">
+                        <div class="details-dropdown dropdown" v-show="detailsShown">
                           <div class="container">
                               <div class="car-row">
                                 <div v-for="car in cars.row1"
-                                      @click="goTo(car)"><span>{{car}}</span></div>
+                                      @click="goTo(car)"><span class="detail-link">{{car}}</span></div>
                               </div>
                               <div class="car-row">
                                   <div v-for="car in cars.row2"
-                                      @click="goTo(car)"><span>{{car}}</span></div>
+                                      @click="goTo(car)"><span class="detail-link">{{car}}</span></div>
                               </div>         
                               <div class="car-row">
                                 <div v-for="car in cars.row3"
-                                      @click="goTo(car)"><span>{{car}}</span></div>
+                                      @click="goTo(car)"><span class="detail-link">{{car}}</span></div>
                               </div>
                               <div class="car-row">
                                 <div v-for="car in cars.row4"
-                                      @click="goTo(car)"><span>{{car}}</span></div>
+                                      @click="goTo(car)"><span class="detail-link">{{car}}</span></div>
                               </div>  
                               <div class="car-row">
                                 <div v-for="car in cars.row5"
-                                      @click="goTo(car)"><span>{{car}}</span></div>
+                                      @click="goTo(car)"><span class="detail-link">{{car}}</span></div>
                               </div>
                           </div>                                   
                         </div>
