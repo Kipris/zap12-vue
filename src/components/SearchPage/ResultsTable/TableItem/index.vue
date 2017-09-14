@@ -25,11 +25,11 @@
     <td class="price">
       <div v-if="detail.storageAmount">
         <span>{{detail.storagePrice}} Р</span>
-        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, priceType: 'storagePrice' })"></span> 
+        <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
       </div>
       <div v-if="detail.deliveryAmount">
         <span>{{detail.deliveryPrice}} Р</span>
-        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, priceType: 'deliveryPrice' })"></span> 
+        <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
       </div>
       <div v-if="detail.nonAvailableAmount">
         <span>{{detail.nonAvailablePrice}} Р</span>

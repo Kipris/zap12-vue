@@ -23,8 +23,9 @@ const mutations = {
   setInventory(state, payload) {
     state.cartItems = payload
   },
-  removeFromCart() {
-    console.log('This detail should be removed')
+  removeFromCart(state, { id }) {
+    const itemToRemove = state.cartItems.findIndex(ci => ci.id === id)
+    state.cartItems.splice(itemToRemove, 1)
   },
   setDetails(state, payload) {
     state.details = payload
@@ -99,16 +100,31 @@ const actions = {
   getInventory({ commit }) {
     axios.get('/user')
     .then((res) => {
-      commit('setInventory', res.data.inventory)
+      const ids = res.data.inventory.map(inv => inv.detailId)
+      return new Promise((resolve, reject) => {
+        axios.get('/details', {
+          params: {
+            _sort: 'storageAmount',
+            _order: 'desc',
+            _limit: 24,
+            id: ids
+          }
+        })
+        .then((details) => {
+          resolve(details.data)
+        })
+        .catch(err => reject(err))
+      })
+    })
+    .then((res) => {
+      res.forEach(invItem => commit('setCartItem', invItem))
     })
   },
   addToCart({ state, commit }, payload) {
-    if (state.cartItems.find(item => item.detailId === payload.id)) {
-      console.log('in if')
+    if (state.cartItems.find(item => item.id === payload.id)) {
       commit('changeAmount', { detailId: payload.id, sign: '+' })
     } else {
-      console.log('else')
-      commit('setCartItem', payload.detail)
+      commit('setCartItem', payload)
     }
   }
 }

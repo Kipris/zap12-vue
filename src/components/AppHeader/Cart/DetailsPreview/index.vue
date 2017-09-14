@@ -8,7 +8,7 @@
             <div class="detial-price">
               <!-- TODO computed for universal price -->
               <span class="price">{{detail.deliveryPrice}} P</span>
-              <span class="bucket" @click="removeFromCart">Удалить</span>
+              <span class="bucket" @click="removeFromCart({ id: detail.id })">Удалить</span>
             </div>
             <div class="add-more">
               <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
@@ -21,8 +21,8 @@
       <div class="total">
         <div>
           <span>На сумму: </span>
-          <span>10000 Р</span>
-          <!-- <span>{{getTotalPrice}} Р</span> -->
+          <!-- <span>10000 Р</span> -->
+          <span>{{getTotalPrice}} Р</span>
         </div>        
       </div>
       <div class="actions">
@@ -45,10 +45,10 @@ export default {
     }
   },
   computed: {
-    // getTotalPrice() {
-    //   const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
-    //   return mapped.reduce((a, b) => a + b);
-    // }
+    getTotalPrice() {
+      const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
+      return mapped.reduce((a, b) => a + b);
+    }
   },
   methods: {
     ...mapMutations('Cart', [
