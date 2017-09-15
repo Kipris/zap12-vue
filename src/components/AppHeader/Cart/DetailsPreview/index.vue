@@ -7,7 +7,7 @@
           <div class="price-wrapper">
             <div class="detial-price">
               <!-- TODO computed for universal price -->
-              <span class="price">{{detail.deliveryPrice}} P</span>
+              <span class="price">{{detail.selectedPrice}} P</span>
               <span class="bucket" @click="removeFromCart({ id: detail.id })">Удалить</span>
             </div>
             <div class="add-more">
@@ -26,15 +26,19 @@
         </div>        
       </div>
       <div class="actions">
-        <button class="btn black">В корзину</button>
+        <button class="btn black" @click="showCartModal = true">В корзину</button>
         <button class="btn full-red">к оплате</button>
       </div>
   </div>
+  <CartModal v-if="showCartModal"
+             @close="showCartModal = false"
+             :cartItems="details"/>
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
+import CartModal from '@/components/AppHeader/CartModal'
 
 export default {
   name: 'DetailPreview',
@@ -42,6 +46,11 @@ export default {
     details: {
       type: Array,
       default: () => []
+    }
+  },
+  data() {
+    return {
+      showCartModal: false
     }
   },
   computed: {
@@ -54,7 +63,10 @@ export default {
     ...mapMutations('Cart', [
       'changeAmount',
       'removeFromCart'
-    ]),
+    ])
+  },
+  components: {
+    CartModal
   }
 }
 </script>

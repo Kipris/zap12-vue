@@ -15,9 +15,10 @@ const getters = {
 
 }
 const mutations = {
-  setCartItem(state, payload) {
-    const detailToCart = payload
+  setCartItem(state, { detail, selectedPrice }) {
+    const detailToCart = detail
     Vue.set(detailToCart, 'amount', 1)
+    Vue.set(detailToCart, 'selectedPrice', selectedPrice)
     state.cartItems.push(detailToCart)
   },
   setInventory(state, payload) {
@@ -120,11 +121,11 @@ const actions = {
       res.forEach(invItem => commit('setCartItem', invItem))
     })
   },
-  addToCart({ state, commit }, payload) {
-    if (state.cartItems.find(item => item.id === payload.id)) {
-      commit('changeAmount', { detailId: payload.id, sign: '+' })
+  addToCart({ state, commit }, { detail, selectedPrice }) {
+    if (state.cartItems.find(item => item.id === detail.id)) {
+      commit('changeAmount', { detailId: detail.id, sign: '+' })
     } else {
-      commit('setCartItem', payload)
+      commit('setCartItem', { detail, selectedPrice })
     }
   }
 }

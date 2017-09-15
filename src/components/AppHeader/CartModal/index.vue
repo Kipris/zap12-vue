@@ -4,7 +4,7 @@
         <div class="modal-content">
           <div class="modal-title">
           <div class="h1">1 товар в корзине</div>
-          <span class="cross">✖</span>
+          <span class="cross" @click="close">✖</span>
         </div>
 
         <div class="modal-body">
@@ -17,23 +17,23 @@
             <th>Цена</th>
           </thead>
           <tbody>
-            <tr>
-              <td>Mapco</td>
-              <td>63110</td>
+            <tr v-for="detail in cartItems">
+              <td>{{detail.detailProducer}}</td>
+              <td>{{detail.vendor}}</td>
               <td class="detail-name">
-                <span>Фильтр топливный ДИЗЕЛЬ FIAT, FORD, OPEL, VW, RENAULT, SEAT</span>
-                <span class="trash"></span>
+                <span>{{detail.detailName}}</span>
+                <span class="trash" @click="removeFromCart({ id: detail.id })"></span>
               </td>
               <td class="amount-row">
                 <!-- <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
                 <input type="text" class="amount" v-model="detail.amount">
                 <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '+' })"> + </button> -->
-                <button class="sign"> - </button>
-                <input type="text" class="amount">
-                <button class="sign"> + </button>
+                <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
+                <input type="text" class="amount" :value="detail.amount">
+                <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '+' })"> + </button>
               </td>
               <td class="price-row">
-                2 439,00 Р
+                {{detail.selectedPrice}} Р
               </td>
             </tr>
           </tbody>
@@ -139,9 +139,16 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 
 export default {
   name: 'CartModal',
+  props: {
+    cartItems: {
+      type: Array
+    }
+  },
   data() {
     return {
       promocodeAccordion: false,
@@ -153,6 +160,10 @@ export default {
     }
   },
   methods: {
+    ...mapMutations('Cart', [
+      'changeAmount',
+      'removeFromCart'
+    ]),
     promocodeCollapse() {
       if (this.promocodeIsDisabled === false) {
         this.promocodeAccordion = !this.promocodeAccordion
@@ -173,6 +184,9 @@ export default {
         this.deliveryAccordion = false
         this.paymentAccordion = !this.paymentAccordion
       }
+    },
+    close() {
+      this.$emit('close')
     }
   }
 }
