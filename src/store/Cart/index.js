@@ -8,7 +8,8 @@ const state = {
   reloadedSelectedDetail: {},
   search: {
     carModel: [],
-    detailProducer: []
+    detailProducer: [],
+    detailType: ''
   }
 }
 const getters = {
@@ -37,6 +38,9 @@ const mutations = {
   setProducerFilter(state, payload) {
     state.search.detailProducer = payload
   },
+  setDetailType(state, payload) {
+    state.search.detailType = payload
+  },
   changeAmount(state, { detailId, sign }) {
     const detail = state.cartItems.find(item => item.id === detailId)
     if (sign === '+') {
@@ -64,6 +68,9 @@ const actions = {
     }
     if (state.search.detailProducer) {
       params.detailProducer = state.search.detailProducer
+    }
+    if (state.search.detailType) {
+      params.detailType = state.search.detailType
     }
     axios.get('/details', {
       params

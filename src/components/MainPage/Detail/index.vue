@@ -6,19 +6,19 @@
             <div class="details-item panel body-details">
                 <h3>Кузовные детали</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
+                <button class="btn full-red"  @click="handleSelect('body-details')">Смотреть</button>
             </div>
             <div class="details-item panel chassis">
                 <h3>Ходовую часть автомобиля</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
+                <button class="btn full-red"  @click="handleSelect('chassis')">Смотреть</button>
             </div> 
         </div>
         <div class="details-wrap">
             <div class="details-item panel optics">
                 <h3>Оптика</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
+                <button class="btn full-red" @click="handleSelect('optics')" >Смотреть</button>
             </div>
             <div class="details-item panel consumables">
                 <h3>Расходные материалы</h3>
@@ -36,10 +36,23 @@
 </template>
 
 <script>
+import { mapActions, mapMutations } from 'vuex'
 import Arrow from '@/uikit/Arrow'
 
 export default {
   name: 'Detail',
+  methods: {
+    ...mapActions('Cart', [
+      'getDetails'
+    ]),
+    ...mapMutations('Cart', [
+      'setDetailType'
+    ]),
+    handleSelect(detailType) {
+      this.setDetailType(detailType)
+      this.$router.push('/searchresults')
+    }
+  },
   components: {
     Arrow
   }
