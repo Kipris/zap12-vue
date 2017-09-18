@@ -291,6 +291,9 @@ a {
     &.router-link-active {
       color: $red !important;
     }
+    &.signed-in {
+      color: $red !important;
+    }
   }
   button {
     margin-top: 10px;
@@ -349,23 +352,26 @@ label.opened + nav {
 }
 
 @media (max-width: 1200px) {
-    .navbar-wrap {
-        height: $navbar-height;
+  .navbar-wrap {
+      height: $navbar-height;
+  }
+  .navbar-logo {
+      margin-right: auto;
+  }
+  .navbar-menu {
+      display: none;
+  }
+  .login {
+    & > .btn {
+      display: none;
     }
-    .navbar-logo {
-        margin-right: auto;
+    & > .signed-in {
+      font-size: 0 !important;
     }
-    .navbar-menu {
-        display: none;
-    }
-    .login {
-      & > .btn {
-        display: none;
-      }
-    }
-    .toggle-menu-wrap {
-      display: block;
-    }
+  }
+  .toggle-menu-wrap {
+    display: block;
+  }
 }
 
 //TODO: Replace to DROPDOWN.SCSS

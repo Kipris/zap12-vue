@@ -1,13 +1,16 @@
 <template>
-  <div class="result-table-wrap">
-    <table class="table">
-      <tbody>
-        <TableItem v-for="detail in details"
-                   :detail="detail"
-                   :buy="true"
-                   @detailWasSelect="handleDetailSelect($event)" />
-      </tbody>
-    </table>
+  <div>
+    <h1>АНАЛОГИЧНЫЕ ТОВАРЫ</h1>
+    <div class="result-table-wrap">
+      <table class="table">
+        <tbody>
+          <TableItem v-for="detail in details"
+                    :detail="detail"
+                    :buy="true"
+                    @detailWasSelect="handleDetailSelect($event)" />
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 

@@ -45,14 +45,15 @@
           <section>
               <div class="promocode accordion">
                 <input class="accordion-checkbox" id="ac-1" type="checkbox" />
-                <label  class="accordion-label heading" for="ac-1">
+                <label class="accordion-label heading" for="ac-1" :class="{ disabled: promocodeIsDisabled }">
                   <span class="icon promocode-icon"></span>
                   <span class="title">Промокод</span>
                   <span class="chevron-icon"></span>
                 </label>
-                <div class="accordion-body">
+                <div class="accordion-body" v-if="!promocodeIsDisabled">
                   <div class="input-wrap">
                     <input type="text" placeholder="Введите промокод">
+                    <button class="btn black">Применить промокод</button>
                   </div>
                 </div>
               </div>
@@ -60,13 +61,13 @@
 
           <section>
               <div class="delivery accordion">
-                <input class="accordion-checkbox" id="ac-2" type="checkbox" />
-                <label  class="accordion-label heading" for="ac-2">
+                <input class="accordion-checkbox" id="ac-2" type="checkbox"/>
+                <label  class="accordion-label heading" for="ac-2" :class="{ disabled: deliveryIsDisabled }">
                   <span class="icon delivery-icon"></span>
                   <span class="title">Доставка</span>
                   <span class="chevron-icon"></span>
                 </label>
-                <div class="accordion-body">
+                <div class="accordion-body" v-if="!deliveryIsDisabled">
                   <div>
                     <label>
                       <input type="radio" name="delivery">
@@ -92,12 +93,12 @@
           <section>
               <div class="payment-variants accordion">
                 <input class="accordion-checkbox" id="ac-3" type="checkbox" />
-                <label  class="accordion-label heading" for="ac-3">
+                <label class="accordion-label heading" for="ac-3" :class="{ disabled: paymentIsDisabled }">
                   <span class="icon payment-icon"></span>
-                  <span class="title">Промокод</span>
+                  <span class="title">Варианты оплаты</span>
                   <span class="chevron-icon"></span>
                 </label>
-                <div class="accordion-body">
+                <div class="accordion-body" v-if="!paymentIsDisabled">
                   <div>Оплата электронными способами оплаты с помощью Robokassa 
                     (Электронным кошельком, Через интернет-банк, Банковской картой, 
                     В терминале, Сотовые операторы, Другие способы)</div>
@@ -165,21 +166,21 @@ export default {
       'removeFromCart'
     ]),
     promocodeCollapse() {
-      if (this.promocodeIsDisabled === false) {
+      if (this.promocodeIsDisabled !== false) {
         this.promocodeAccordion = !this.promocodeAccordion
         this.deliveryAccordion = false
         this.paymentAccordion = false
       }
     },
     deliveryCollapse() {
-      if (this.deliveryIsDisabled === false) {
+      if (this.deliveryIsDisabled !== false) {
         this.promocodeAccordion = false
         this.deliveryAccordion = !this.deliveryAccordion
         this.paymentAccordion = false
       }
     },
     paymentCollapse() {
-      if (this.paymentIsDisabled === false) {
+      if (this.paymentIsDisabled !== false) {
         this.promocodeAccordion = false
         this.deliveryAccordion = false
         this.paymentAccordion = !this.paymentAccordion

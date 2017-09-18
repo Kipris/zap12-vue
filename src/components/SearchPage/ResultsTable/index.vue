@@ -2,6 +2,7 @@
   <div class="result-table-wrap">
     <div class="table-title">
       <h1>Поиск по запросу</h1>
+      <div class="h1" v-if="false">Запрошенный артикул</div>
       <div class="chips-wrap">
         <label class="chip chip-grey">Нет в наличии</label>
         <label class="chip chip-green">На складе</label>
