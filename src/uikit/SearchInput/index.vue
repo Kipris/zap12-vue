@@ -4,7 +4,7 @@
                :placeholder="placeholder"
                v-model="searchStr"
                @input="handleInput"
-               @keyup.enter="search">
+               @keyup.enter="handleInput">
         <button class="btn full-red search-button"
                 @click="search"
                 v-if="button">Найти</button>
@@ -22,9 +22,9 @@ export default {
     }
   },
   methods: {
-    search() {
-      this.$emit('enter', this.searchStr)
-    },
+    // search() {
+    //   this.$emit('enter', this.searchStr)
+    // },
     handleInput() {
       this.$emit('input', this.searchStr)
     }
