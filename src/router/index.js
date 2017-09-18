@@ -63,4 +63,7 @@ export default new Router({
       component: DeliveryPage
     }
   ],
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  }
 });
