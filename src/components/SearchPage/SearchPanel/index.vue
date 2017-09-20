@@ -53,6 +53,7 @@ export default {
     handleInput($event) {
       this.setModelFilter($event)
       const debounced = debounce(this.getDetails, 1000)
+      this.$router.push('/searchresults')
       debounced()
     }
   },

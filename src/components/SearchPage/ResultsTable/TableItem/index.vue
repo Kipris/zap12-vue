@@ -1,7 +1,7 @@
 <template>
   <tr @click="handleDetailSelect(detail)">
     <td class="producer">
-      <div>{{detail.detailProducer}}</div>
+      <div>{{detail.producer}}</div>
     </td>
     <td class="vendor">
       <div>
@@ -9,32 +9,38 @@
       </div>
     </td>
     <td class="naming">
-      <div>{{detail.detailName}}</div>
+      <div>{{detail.name}}</div>
     </td>  
     <td class="availability">
-      <div v-if="detail.storageAmount">
-        <label class="chip chip-green">{{detail.storageAmount}}</label>
+      <div v-if="offer.isAvailable"
+           v-for="(offer, i) in detail.offers">
+        <label class="chip" 
+               :class="[{'chip-green': i === 0 },
+                       {'chip-blue': i === 1 },
+                       {'chip-grey': i === 2 }]" >{{offer.count}}</label>
       </div>
-      <div v-if="detail.deliveryAmount">
-        <label class="chip chip-blue">{{detail.deliveryAmount}}</label>
+      <!-- <div v-if="detail.deliveryAmount">
+        <label class="chip chip-blue">{{detail.offers[1].count}}</label>
       </div>
       <div v-if="detail.nonAvailableAmount">
-        <label class="chip chip-grey">{{detail.nonAvailableAmount}}</label>
-      </div>        
+        <label class="chip chip-grey">{{detail.offers[2].count}}</label>
+      </div>         -->
     </td>
     <td class="price">
-      <div v-if="detail.storageAmount">
-        <span>{{detail.storagePrice}} Р</span>
+      <div v-if="offer.isAvailable"
+           v-for="offer in detail.offers">
+        <span>{{offer.price}} Р</span>
         <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, selectedPrice: detail.storagePrice })"></span> 
       </div>
-      <div v-if="detail.deliveryAmount">
-        <span>{{detail.deliveryPrice}} Р</span>
+      <!-- <div v-if="detail.offers[1].isAvailable">
+        <span>{{detail.offers[1].price}} Р</span>
         <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, selectedPrice: detail.deliveryPrice })"></span> 
       </div>
-      <div v-if="detail.nonAvailableAmount">
-        <span>{{detail.nonAvailablePrice}} Р</span>
+      <div v-if="detail.offers[2].isAvailable">
+        <span>{{detail.offers[2].price}} Р</span>
         <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
-      </div>
+        <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
+      </div> -->
     </td>
   </tr>
 </template>

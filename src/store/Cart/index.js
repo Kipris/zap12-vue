@@ -59,35 +59,42 @@ const mutations = {
 const actions = {
   getDetails({ state, commit }) {
     const params = {
-      _sort: 'storageAmount',
-      _order: 'desc',
-      _limit: 24
+      // _sort: 'storageAmount',
+      // _order: 'desc',
+      // _limit: 24
+      limit: 24
     }
+    // if (state.search.carModel) {
+    //   params.carModel_like = state.search.carModel
+    // }
+    // if (state.search.detailProducer) {
+    //   params.detailProducer = state.search.detailProducer
+    // }
+    // if (state.search.detailType) {
+    //   params.detailType = state.search.detailType
+    // }
     if (state.search.carModel) {
-      params.carModel_like = state.search.carModel
+      params.q = state.search.carModel
     }
-    if (state.search.detailProducer) {
-      params.detailProducer = state.search.detailProducer
-    }
-    if (state.search.detailType) {
-      params.detailType = state.search.detailType
-    }
-    axios.get('/details', {
+    axios.get('/search', {
       params
     })
     .then((res) => {
-      commit('setDetails', res.data)
+      console.log(res)
+      commit('setDetails', res.data.products)
     })
     .catch(err => console.log(err))
   },
   getDetail({ state, commit }, payload) {
-    axios.get('/details', {
+    axios.get('search/product', {
       params: {
         id: payload
       }
     })
     .then((res) => {
-      commit('selectDetail', res.data[0])
+      console.log(res)
+      commit('selectDetail', res.data.currentCode)
+      commit('setAnalogs', res.data.analogs)
     })
     .catch(err => console.log(err))
   },
