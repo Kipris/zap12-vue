@@ -12,8 +12,7 @@
       <div>{{detail.name}}</div>
     </td>  
     <td class="availability">
-      <div v-if="offer.isAvailable"
-           v-for="(offer, i) in detail.offers">
+      <div v-for="(offer, i) in detail.offers">
         <label class="chip" 
                :class="[{'chip-green': i === 0 },
                        {'chip-blue': i === 1 },
@@ -27,10 +26,9 @@
       </div>         -->
     </td>
     <td class="price">
-      <div v-if="offer.isAvailable"
-           v-for="offer in detail.offers">
+      <div v-for="offer in detail.offers">
         <span>{{offer.price}} Р</span>
-        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, selectedPrice: detail.storagePrice })"></span> 
+        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, selectedPrice: offer.price})"></span> 
       </div>
       <!-- <div v-if="detail.offers[1].isAvailable">
         <span>{{detail.offers[1].price}} Р</span>
