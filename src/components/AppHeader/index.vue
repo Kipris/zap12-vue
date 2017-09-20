@@ -59,7 +59,7 @@
                     <router-link class="nav-link" :to="'/about'" tag="a">О Нас</router-link>
                 </nav>                        
                 <div class="navbar-actions">
-                    <span class="cart dropdown" v-bind:class="{ active: cartShown}">
+                    <span class="cart dropdown" v-bind:class="{ active: cartShown }">
                         <span class="cart-img" @click="cartShow"></span>
                         <transition name="fade">
                           <Cart v-show="cartShown"/>
@@ -215,7 +215,11 @@
 
                     <div class="toggle-menu-wrap">
                       <input type="checkbox" name="menu" id="menu" class="toggle-menu-checkbox">
-                      <label for="menu" class="toggle-menu-icon" v-on:click="responsiveMenuShow" v-bind:class="{ opened: responsiveMenuShown}"><span></span></label>
+                      <label for="menu" class="toggle-menu-icon" 
+                        @click="responsiveMenuShow" 
+                        :class="{ opened: responsiveMenuShown && !loginShown }">
+                        <span></span>
+                      </label>
                       <nav class="toggle-menu">
                         <router-link :to="'/searchresults'" tag="a">Запчасти</router-link>
                         <router-link :to="'/news'" tag="a">Новости</router-link>
@@ -226,7 +230,8 @@
                         <a href="tel:+7(915)471-02-02">+7 (915) 471-02-02</a>
                         <a href="tel:+7(925)111-02-02">+7 (925) 111-02-02</a>
                         <a href="mailto:zap12@gmail.com" class="nav-email">zap12@gmail.com</a>
-                        <button class="btn red">Войти</button>
+                        <button class="btn red" @click="loginShow" v-if="!signedIn">Войти</button>
+                        <a class="signed-in" v-if="signedIn" @click="accountShow">{{user.email}}</a>
                       </nav>
                     </div>
 
@@ -297,36 +302,54 @@ export default {
       this.detailsShown = false;
       this.cartShown = false;
       this.responsiveMenuShown = false;
+      this.loginShown = false;
     },
     detailsShow() {
       this.contactsShown = false;
       this.detailsShown = !this.detailsShown;
       this.cartShown = false;
       this.responsiveMenuShown = false;
+      this.loginShown = false;
     },
     cartShow() {
       this.contactsShown = false;
       this.detailsShown = false;
       this.cartShown = !this.cartShown;
       this.responsiveMenuShown = false;
+      this.loginShown = false;
     },
     responsiveMenuShow() {
       this.contactsShown = false;
       this.detailsShown = false;
       this.cartShown = false;
+      this.loginShown = false;
+      this.accountShown = false;
+      this.forgotPasswordIsShown = false;
+      this.personalInfoIsShown = false;
+      this.ordersIsShown = false;
+      this.garageIsShown = false;
       this.responsiveMenuShown = !this.responsiveMenuShown;
     },
     loginShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
       this.loginShown = !this.loginShown;
       this.accountShown = false;
       this.signedIn = false;
+      this.forgotPasswordIsShown = false;
+      this.responsiveMenuShown = false;
     },
     accountShow() {
       if (this.user.email !== '' && this.user.password !== '') {
+        this.contactsShown = false;
+        this.detailsShown = false;
+        this.cartShown = false;
         this.loginShown = false;
         this.accountShown = !this.accountShown;
         this.signedIn = true;
         this.personalInfoIsShown = false;
+        this.responsiveMenuShown = false;
       }
     },
     isSignedIn() {
@@ -336,32 +359,49 @@ export default {
       this.passwordVisible = !this.passwordVisible;
     },
     forgotPasswordShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.loginShown = false;
       this.accountShown = false;
       this.forgotPasswordIsShown = true;
       this.personalInfoIsShown = false;
       this.ordersIsShown = false;
       this.garageIsShown = false;
+      this.responsiveMenuShown = false;
     },
     personalInfoShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
       this.accountShown = false;
       this.forgotPasswordIsShown = false;
       this.personalInfoIsShown = true;
       this.ordersIsShown = false;
       this.garageIsShown = false;
+      this.responsiveMenuShown = false;
     },
     ordersShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
       this.accountShown = false;
       this.forgotPasswordIsShown = false;
       this.personalInfoIsShown = false;
       this.ordersIsShown = true;
       this.garageIsShown = false;
+      this.responsiveMenuShown = false;
     },
     garageShow() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
       this.accountShown = false;
       this.forgotPasswordIsShown = false;
       this.personalInfoIsShown = false;
       this.ordersIsShown = false;
       this.garageIsShown = true;
+      this.responsiveMenuShown = false;
     }
   },
   components: {

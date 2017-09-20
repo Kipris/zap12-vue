@@ -50,11 +50,14 @@ tbody {
       padding: 10px 8px;
       border-bottom: 1px solid transparentize($black, .85);
       .chip::after {
-        right: 10px;
+        right: 5px;
       }
     }
     & > div:last-child {
       border: none;
+    }
+    &.availability {
+      width: 60px;
     }
     &.naming {
       max-width: 410px;
@@ -69,8 +72,10 @@ tbody {
 
 
 .price {
+  width: 101px;
   & > div {
     display: flex;
+    justify-content: space-between;
   }
   span {
     white-space: nowrap;

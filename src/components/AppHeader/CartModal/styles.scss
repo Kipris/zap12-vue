@@ -66,10 +66,12 @@ table {
     padding-right: 0;
   }
   td {
+    text-align: left;
     padding: 10px 5px 10px 0;
     border-bottom: 1px solid $white-smoke;
   }
   td:last-child {
+    text-align: right;
     padding-left: 5px;
     padding-right: 0;
   }
@@ -80,6 +82,7 @@ table {
       height: 35px;
       border-radius: 8px;
       border: 1px solid $light-grey;
+      text-align: center;
     }
     button.sign {
       cursor: pointer;
@@ -116,11 +119,15 @@ table {
 }
 
 .options {
+  text-align: left;
   & > div {
     &:last-child {
       padding-bottom: 20px;
       border-bottom: 2px solid $white-smoke;
     }
+  }
+  .h1 {
+    margin-bottom: 30px;
   }
   .promocode,
   .delivery,
@@ -141,6 +148,7 @@ table {
     .heading.disabled {
       color: $light-grey;
       cursor: default;
+      margin-bottom: 20px;
       .chevron-icon,
       .icon::after {
         opacity: .3;
@@ -197,14 +205,15 @@ table {
 }
 
 .input-wrap {
-  width: 340px;
+  display: flex;
   input {
-    width: 100%;
+    width: 340px;
     padding: 10px;
     height: 40px;
     border-radius: 8px;
     border: 1px solid $light-grey;
     transition: .3s ease-in;
+    margin-right: 10px;
     &::placeholder {
       text-transform: uppercase;
     }
@@ -248,26 +257,26 @@ table {
       margin-left: 0;
     }
   }
-  &-checkbox:checked + &-label + &-body {
+  &-checkbox:checked + &-label:not(.disabled) + &-body {
     transition: height 0.3s ease-in;
   }
-  &-checkbox:checked + &-label {
+  &-checkbox:checked + &-label:not(.disabled) {
     .chevron-icon {
       transform: rotate(180deg);
     }
   }
   &.promocode {
-    .accordion-checkbox:checked + .accordion-label + .accordion-body {
+    .accordion-checkbox:checked + .accordion-label:not(.disabled) + .accordion-body {
       height: 70px;
     }
   }
   &.delivery {
-    .accordion-checkbox:checked + .accordion-label + .accordion-body {
+    .accordion-checkbox:checked + .accordion-label:not(.disabled) + .accordion-body {
       height: 120px;
     }
   }
   &.payment-variants {
-    .accordion-checkbox:checked + .accordion-label + .accordion-body {
+    .accordion-checkbox:checked + .accordion-label:not(.disabled) + .accordion-body {
       height: 140px;
     }
   }

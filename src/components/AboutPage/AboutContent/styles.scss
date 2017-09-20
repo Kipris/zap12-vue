@@ -16,6 +16,7 @@
     margin-bottom: 40px;
     small {
       display: block;
+      margin-bottom: 10px;
     }
   }
 }
@@ -80,7 +81,7 @@
                 color: $black;
               }
               &:focus {
-                border-color: $red !important;
+                border-color: #333 !important;
               }
           }
           input {
@@ -162,6 +163,36 @@
           font-size: 1.3rem;
       }
   }
+}
+
+.accordion {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+.collapse {
+  display: none;
+}
+
+.collapse.show {
+  display: block;
+}
+
+tr.collapse.show {
+  display: table-row;
+}
+
+tbody.collapse.show {
+  display: table-row-group;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+.mt-2 {
+  margin-top: 0.5rem !important;
 }
 
 
