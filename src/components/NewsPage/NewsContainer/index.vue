@@ -59,7 +59,7 @@
 <script>
 
 export default {
-  name: 'NewsContainer'
+  name: 'NewsContainer',
 }
 </script>
 

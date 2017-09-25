@@ -65,8 +65,19 @@
         color: $black; 
     }
   }
+
+  //LIGHT
+  &.light {
+    background-color: transparent;
+    color: $dark;
+    border: 2px solid #EFEFEF;
+    &:hover {
+      background-color: #EFEFEF;
+      color: $black; 
+    }
+  }
   
-  //PAGINATION BUTTONS - TODO: REPLACE
+  //PAGINATION BUTTONS
   &.prev,
   &.next {
       cursor: default;

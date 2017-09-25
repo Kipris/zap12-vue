@@ -3,7 +3,7 @@
       <div class="container">           
         <div class="h1">Последние новости</div>
         <!-- TODO: CAROUSEL -->
-        <div class="news-wrap">
+        <div class="news-wrap" v-scroll-reveal>
             <Arrow class="prev" @click.native="prevSlide"/>
               <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
                 <swiper-slide>
@@ -62,6 +62,10 @@
 <script>
 import Arrow from '@/uikit/Arrow'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import Vue from 'vue'
+import VueScrollReveal from 'vue-scroll-reveal'
+
+Vue.use(VueScrollReveal)
 
 export default {
   name: 'News',

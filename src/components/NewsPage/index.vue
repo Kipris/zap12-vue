@@ -4,6 +4,7 @@
     <section class="content">
       <div class="container">
         <NewsContainer />
+        <!-- <SearchPanel v-sticky='stickyOptions'/> -->
         <SearchPanel />
       </div>
     </section> 
@@ -12,10 +13,14 @@
 </template>
 
 <script>
+// import Vue from 'vue'
+// import VueSticky from 'vue-sticky-js'
 import Intro from './Intro'
 import NewsContainer from './NewsContainer'
 import SearchPanel from './SearchPanel'
 import Repair from './../Repair'
+
+// Vue.use(VueSticky.install)
 
 export default {
   name: 'NewsPage',
@@ -24,6 +29,15 @@ export default {
     NewsContainer,
     SearchPanel,
     Repair
+  },
+  data() {
+    return {
+      stickyOptions: {
+        marginTop: 20,
+        forName: 0,
+        className: 'stuck'
+      }
+    }
   }
 }
 </script>

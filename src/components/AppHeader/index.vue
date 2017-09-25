@@ -79,10 +79,10 @@
                             </div>
                             <div class="input-wrap password">
                               <span @click="passwordIsVisible" :class="{active: passwordVisible}"></span>
-                              <input type="password" v-model="user.password" placeholder="Пароль" required>
+                              <input id="input-password" type="password" v-model="user.password" placeholder="Пароль" required>
                             </div>
                             <div class="actions">
-                              <button class="btn default" @click="accountShow">Создать аккаунт</button>
+                              <button class="btn light" @click="accountShow">Создать аккаунт</button>
                               <button class="btn full-red" @click="accountShow">Войти в кабинет</button>
                             </div>
                           </form>
@@ -110,7 +110,7 @@
                             <div class="garage" @click="garageShow">Мой гараж</div>
                           </div>
                           <div class="actions">
-                            <button class="btn default" @click="loginShow">Выйти</button>
+                            <button class="btn light" @click="loginShow">Выйти</button>
                             <button class="btn full-red">Пополнить баланс</button>
                           </div>
                         </div>  
@@ -138,7 +138,7 @@
                               <input type="password" placeholder="Подтверждение нового пароля">
                             </div>
                             <div class="actions">
-                              <button class="btn default" @click="accountShow">Отмена</button>
+                              <button class="btn light" @click="accountShow">Отмена</button>
                               <button class="btn full-red" @click="accountShow">Сохранить</button>
                             </div>
                           </form>
@@ -185,7 +185,7 @@
                               <input type="text" placeholder="VIN">
                             </div>
                             <div class="actions">
-                              <button class="btn default" @click="accountShow">Отмена</button>
+                              <button class="btn light" @click="accountShow">Отмена</button>
                               <button class="btn full-red">Сохранить</button>
                             </div>
                           </form>
@@ -204,7 +204,7 @@
                               <input type="email" placeholder="Электронная почта">
                             </div>
                             <div class="actions">
-                              <button class="btn default" @click="accountShow">Отмена</button>
+                              <button class="btn light" @click="accountShow">Отмена</button>
                               <button class="btn full-red" @click="accountShow">Отправить запрос</button>
                             </div>
                           </form>
@@ -241,13 +241,14 @@
         </div>               
       </div>
     </header>
-    <CartModal v-if="false" />
-    <OrderHistoryModal v-if="false" />
+    <CartModal v-if="false"/>
+    <OrderHistoryModal v-if="false"/>
   </div>
   
 </template>
 
 <script>
+// import Vue from 'vue'
 import { mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
 import CartModal from './CartModal'
@@ -357,6 +358,11 @@ export default {
     },
     passwordIsVisible() {
       this.passwordVisible = !this.passwordVisible;
+      if (this.passwordVisible) {
+        document.getElementById('input-password').setAttribute('type', 'text')
+      } else {
+        document.getElementById('input-password').setAttribute('type', 'password')
+      }
     },
     forgotPasswordShow() {
       this.contactsShown = false;
@@ -408,6 +414,19 @@ export default {
     Cart,
     CartModal,
     OrderHistoryModal
+  },
+  watch: {
+    $route() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.accountShown = false;
+      this.forgotPasswordIsShown = false;
+      this.personalInfoIsShown = false;
+      this.ordersIsShown = false;
+      this.garageIsShown = false;
+      this.responsiveMenuShown = false;
+    }
   }
 }
 </script>

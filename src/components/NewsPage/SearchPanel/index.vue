@@ -45,8 +45,7 @@ export default {
   name: 'SearchPanel',
   components: {
     SearchInput
-  },
-  methods: {}
+  }
 }
 </script>
 

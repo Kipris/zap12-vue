@@ -1,39 +1,5 @@
 @import './../../../assets/theme/styles';
 
-.modal-backdrop {
-  display: block;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  background-color: transparentize(#000, .5);
-}
-.modal {
-  width: 900px;
-  height: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -300px;
-  margin-left: -450px;
-  z-index: 10000;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.modal-content {
-  padding: 20px;
-  height: 560px;
-  overflow-y: auto;
-}
-
-.modal-body {
-  
-}
-
 .modal-title {
   display: flex;
   justify-content: space-between;
@@ -236,7 +202,7 @@ table {
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .accordion {
@@ -281,3 +247,33 @@ table {
     }
   }
 }
+
+@media (max-width: 768px) {
+  .modal .h1 {
+    font-size: 2.4rem !important;
+  }
+  table th, 
+  table td {
+    font-size: 1.3rem;
+  }
+  .options {
+    .promocode, 
+    .delivery, 
+    .payment-variants {
+      font-size: 1.6rem;
+    }
+  }
+  .total-sum {
+    .total {
+    font-size: 1.8rem;
+    }
+    .discount {
+      font-size: 1.6rem;
+    }
+  }
+  .accordion-body {
+    font-size: 1.3rem;
+  }
+}
+
+
