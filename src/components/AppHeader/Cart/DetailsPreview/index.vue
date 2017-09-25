@@ -3,7 +3,7 @@
   <div class="wrapper">
     <ul class="items">
         <li class="item" v-for="(detail, i) in details">
-          <div class="detail-name">{{detail.detailName}}</div>
+          <div class="detail-name">{{detail.name}}</div>
           <div class="price-wrapper">
             <div class="detial-price">
               <!-- TODO computed for universal price -->
@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     getTotalPrice() {
-      const mapped = this.details.map(detail => detail.amount * detail.deliveryPrice);
+      const mapped = this.details.map(detail => detail.amount * detail.selectedPrice);
       return mapped.reduce((a, b) => a + b);
     }
   },

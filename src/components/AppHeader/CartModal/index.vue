@@ -18,10 +18,10 @@
                 </thead>
                 <tbody>
                   <tr v-for="detail in cartItems">
-                    <td>{{detail.detailProducer}}</td>
+                    <td>{{detail.producer}}</td>
                     <td>{{detail.vendor}}</td>
                     <td class="detail-name">
-                      <span>{{detail.detailName}}</span>
+                      <span>{{detail.name}}</span>
                       <span class="trash" @click="removeFromCart({ id: detail.id })"></span>
                     </td>
                     <td class="amount-row">
@@ -41,8 +41,8 @@
             </div>
             
 
-            <div class="options">
-              <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
+        <div class="options">
+          <div class="h1">ДОПОЛНИТЕЛЬНЫЕ ОПЦИИ</div>
 
               <section>
                   <div class="promocode accordion">
@@ -124,7 +124,7 @@
             <div class="total-sum">
               <div class="total">
                 <span>Сумма заказа</span>
-                <span>2 439 Р</span>
+                <span>{{totalPrice}}</span>
               </div>
               <div class="discount">
                 <span>Со скидкой</span>
@@ -159,6 +159,12 @@ export default {
       promocodeIsDisabled: true,
       deliveryIsDisabled: false,
       paymentIsDisabled: false
+    }
+  },
+  computed: {
+    totalPrice() {
+      const mapped = this.cartItems.map(detail => detail.amount * detail.selectedPrice);
+      return mapped.reduce((a, b) => a + b);
     }
   },
   methods: {

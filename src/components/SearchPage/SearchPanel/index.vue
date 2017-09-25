@@ -51,6 +51,7 @@ export default {
       'getDetails'
     ]),
     handleInput($event) {
+      console.log($event)
       this.setModelFilter($event)
       const debounced = debounce(this.getDetails, 1000)
       this.$router.push('/searchresults')
