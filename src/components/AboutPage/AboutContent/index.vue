@@ -52,7 +52,7 @@
 
       <div class="panel map">    
         <div class="h1">Мы на карте</div>
-        <button class="btn white">Смотреть</button>
+        <button class="btn white" @click="resizeMap">Смотреть</button>
         <gmap-map
           :center="{lat:55.8495078, lng:37.6172781}"
           :zoom="15"
@@ -62,6 +62,7 @@
       </div>
 
     </div>
+    <MapModal v-if="false"/>
   </div>
 </template>
 
@@ -70,6 +71,7 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import { bCollapse } from 'bootstrap-vue/lib/components'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import MapModal from './../../MapModal'
 
 Vue.use(BootstrapVue)
 
@@ -88,7 +90,8 @@ export default {
     }
   },
   components: {
-    bCollapse
+    bCollapse,
+    MapModal
   }
 }
 </script>

@@ -40,12 +40,22 @@
       </div>
     </div>
     </div>
+    <MapModal v-if="false"/>
   </footer>
 </template>
 
 <script>
+import Vue from 'vue'
+import VueScrollReveal from 'vue-scroll-reveal'
+import MapModal from './../MapModal'
+
+Vue.use(VueScrollReveal);
+
 export default {
-  name: 'AppFooter'
+  name: 'AppFooter',
+  components: {
+    MapModal
+  }
 }
 </script>
 

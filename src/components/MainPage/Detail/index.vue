@@ -3,29 +3,29 @@
       <div class="container">
         <div class="h1">У нас вы можете приобрести следующие запчасти:</div>  
         <div class="details-wrap">
-            <div class="details-item panel body-details">
+            <div class="details-item panel body-details" v-scroll-reveal>
                 <h3>Кузовные детали</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
                 <button class="btn full-red"  @click="handleSelect('body-details')">Смотреть</button>
             </div>
-            <div class="details-item panel chassis">
+            <div class="details-item panel chassis" v-scroll-reveal>
                 <h3>Ходовую часть автомобиля</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
                 <button class="btn full-red"  @click="handleSelect('chassis')">Смотреть</button>
             </div> 
         </div>
         <div class="details-wrap">
-            <div class="details-item panel optics">
+            <div class="details-item panel optics" v-scroll-reveal>
                 <h3>Оптика</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
                 <button class="btn full-red" @click="handleSelect('optics')" >Смотреть</button>
             </div>
-            <div class="details-item panel consumables">
+            <div class="details-item panel consumables" v-scroll-reveal>
                 <h3>Расходные материалы</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
                 <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>
-            <div class="details-item panel care">
+            <div class="details-item panel care" v-scroll-reveal>
                 <h3>Средства по уходу</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
                 <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
@@ -38,6 +38,10 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 import Arrow from '@/uikit/Arrow'
+import Vue from 'vue'
+import VueScrollReveal from 'vue-scroll-reveal'
+
+Vue.use(VueScrollReveal)
 
 export default {
   name: 'Detail',

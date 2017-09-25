@@ -474,7 +474,7 @@ label.opened + nav {
       color: $black;
       transition: .3s ease-in;
       &:focus {
-        border-color: $red !important;
+        border-color: rgba(0,0,0,0.8) !important;
       }
       &::placeholder {
         color: $dark;
