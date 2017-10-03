@@ -67,23 +67,33 @@
                     </span>
 
                     <div class="login">
-                      <button class="btn red" @click="loginShow" v-if="!signedIn">Войти</button>
-                      <span class="signed-in" v-if="signedIn" @click="accountShow">{{user.email}}</span>
+                      <button class="btn red" @click="loginShow" v-if="!signedIn && !hasAuth">Войти</button>
+                      <span class="signed-in" v-if="signedIn || hasAuth" @click="accountShow">{{profile.email}}</span>
                       <transition name="fade">
                         <div class="dropdown-menu login-menu" v-show="loginShown">
                           <div class="h3">Логин</div>  
                           <form action="javascript:false;">
                             <div class="input-wrap email">
                               <span></span>
-                              <input type="email" v-model="user.email" placeholder="Электронная почта" required>
+                              <input type="email"
+                                     v-model="user.email"
+                                     @keyup.enter="handleLogIn"
+                                     placeholder="Электронная почта"
+                                     required>
                             </div>
                             <div class="input-wrap password">
                               <span @click="passwordIsVisible" :class="{active: passwordVisible}"></span>
-                              <input id="input-password" type="password" v-model="user.password" placeholder="Пароль" required>
+                              <input id="input-password"
+                                     type="password"
+                                     @keyup.enter="handleLogIn"
+                                     v-model="user.password"
+                                     placeholder="Пароль"
+                                     required>
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Создать аккаунт</button>
-                              <button class="btn full-red" @click="accountShow">Войти в кабинет</button>
+                              <button class="btn full-red"
+                                      @click.prevent="handleLogIn">Войти в кабинет</button>
                             </div>
                           </form>
                           <div class="forgot" @click="forgotPasswordShow">Забыл пароль?</div>
@@ -94,14 +104,14 @@
                         <div class="dropdown-menu account-menu" v-show="accountShown">
                           <div class="h3">Личный кабинет</div>
                           <div class="info">
-                            <div class="email">nikolayschneider@gmail.com</div>
+                            <div class="email">{{profile.email}}</div>
                             <div class="balance">
                               <span>Баланс</span>
-                              <span>0,00 Р</span>
+                              <span>{{profile.balance}} Р</span>
                             </div>
                             <div class="discount">
                               <span>Скидка</span>
-                              <span><span class="red">0%</span>  (РОЗНИЦА)</span>
+                              <span><span class="red">{{profile.discount}}%</span>  ({{profile.groupName}})</span>
                             </div>
                           </div>
                           <div class="info-menu">
@@ -110,7 +120,7 @@
                             <div class="garage" @click="garageShow">Мой гараж</div>
                           </div>
                           <div class="actions">
-                            <button class="btn light" @click="loginShow">Выйти</button>
+                            <button class="btn light" @click="handleLogOut">Выйти</button>
                             <button class="btn full-red">Пополнить баланс</button>
                           </div>
                         </div>  
@@ -125,10 +135,10 @@
                           <form action="">
                             <label for="phone">Изменить телефон</label>
                             <div class="input-wrap">
-                              <input id="phone" type="text" placeholder="Основной телефон">
+                              <input id="phone" type="text" v-model="mainPhone" placeholder="Основной телефон">
                             </div>
                             <div class="input-wrap">
-                              <input type="text" placeholder="Дополнительный телефон">
+                              <input type="text" v-model="secondaryPhone" placeholder="Дополнительный телефон">
                             </div>
                             <label for="password">Изменить пароль</label>
                             <div class="input-wrap">
@@ -201,11 +211,14 @@
                             <label>Для восстановления, введите электронную почту при регистрации</label>
                             <div class="input-wrap email">
                               <span></span>
-                              <input type="email" placeholder="Электронная почта">
+                              <input type="email"
+                                     v-model="emailToRestore"
+                                     @keyup.enter="restore({ value: emailToRestore })"
+                                     placeholder="Электронная почта">
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Отмена</button>
-                              <button class="btn full-red" @click="accountShow">Отправить запрос</button>
+                              <button class="btn full-red" @click="handleRestorePassword">Отправить запрос</button>
                             </div>
                           </form>
                         </div>
@@ -230,8 +243,8 @@
                         <a href="tel:+7(915)471-02-02">+7 (915) 471-02-02</a>
                         <a href="tel:+7(925)111-02-02">+7 (925) 111-02-02</a>
                         <a href="mailto:zap12@gmail.com" class="nav-email">zap12@gmail.com</a>
-                        <button class="btn red" @click="loginShow" v-if="!signedIn">Войти</button>
-                        <a class="signed-in" v-if="signedIn" @click="accountShow">{{user.email}}</a>
+                        <button class="btn red" @click="loginShow" v-if="!signedIn && !hasAuth">Войти</button>
+                        <a class="signed-in" v-if="signedIn || hasAuth" @click="accountShow">{{profile.email}}</a>
                       </nav>
                     </div>
 
@@ -249,7 +262,7 @@
 
 <script>
 // import Vue from 'vue'
-import { mapMutations, mapActions } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
 import CartModal from './CartModal'
 import OrderHistoryModal from './OrderHistoryModal'
@@ -258,6 +271,7 @@ export default {
   name: 'AppHeader',
   data() {
     return {
+      emailToRestore: '',
       user: {
         email: '',
         password: ''
@@ -283,12 +297,35 @@ export default {
       forgotPasswordIsShown: false
     }
   },
+  computed: {
+    ...mapState('Auth', [
+      'profile'
+    ]),
+    mainPhone: {
+      get() {
+        return this.profile.phone1
+      }
+    },
+    secondaryPhone: {
+      get() {
+        return this.profile.phone2
+      }
+    },
+    hasAuth() {
+      return this.profile.email
+    }
+  },
   methods: {
     ...mapMutations('Cart', [
       'setModelFilter'
     ]),
     ...mapActions('Cart', [
       'getDetails'
+    ]),
+    ...mapActions('Auth', [
+      'logIn',
+      'logOut',
+      'restoreEmail'
     ]),
     goTo(car) {
       this.setModelFilter(car)
@@ -297,6 +334,29 @@ export default {
       } else {
         this.getDetails()
       }
+    },
+    handleLogIn() {
+      if (this.user.email.length > 0 &&
+      this.user.password.length > 0) {
+        this.logIn({
+          login: this.user.email,
+          password: this.user.password
+        })
+        .then((res) => {
+          if (res.status === 200) this.accountShow()
+        })
+        .catch(() => {
+        })
+      }
+    },
+    handleLogOut() {
+      this.loginShow()
+      this.logOut()
+    },
+    handleRestorePassword() {
+      this.restoreEmail({ email: this.emailToRestore })
+      .then(() => this.accountShow())
+      .catch(() => {})
     },
     contactsShow() {
       this.contactsShown = !this.contactsShown;
@@ -408,6 +468,11 @@ export default {
       this.ordersIsShown = false;
       this.garageIsShown = true;
       this.responsiveMenuShown = false;
+    }
+  },
+  created() {
+    if (this.profile.email) {
+      this.accountShow()
     }
   },
   components: {

@@ -1,0 +1,225 @@
+
+@media (max-width: 1200px) {
+  .login {
+    & > .btn {
+      display: none;
+    }
+    & > .signed-in {
+      font-size: 0 !important;
+    }
+  }
+}
+
+.login-menu {
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    .input-wrap { 
+      width: 340px;     
+      span {
+        width: 26px;
+        height: 26px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 14px;
+      }
+      &.password span {
+        cursor: pointer;
+      }
+      span::after {
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        transition: .3s ease-in;
+      }
+      &.email span::after {
+        mask: url('../../assets/img/ic_message.svg');
+        mask-size: cover;
+        background-color: $dark;
+        margin-top: -22px;
+      }
+      &.password span::after {
+        mask: url('../../assets/img/ic_visibility.svg');
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        background-color: $dark;
+        margin-top: -17px;
+      }
+      &.password span.active::after {
+        background-color: $red;
+      }
+    }
+    input {
+      padding-left: 50px;
+    }
+  }
+  .forgot {
+    text-decoration: underline;
+    color: $dark-grey;
+    cursor: pointer;
+    font-size: 1.6rem;
+  }
+}
+
+.account-menu {
+  .info {
+    font-size: 1.3rem;
+    color: $dark-grey;
+    border-bottom: 1px solid $white-smoke;
+    margin-bottom: 20px;
+    & > div {
+      margin-bottom: 20px;
+    }
+    .balance,
+    .discount {
+      display: flex;
+      justify-content: space-between;
+      & > span:last-child {
+        color: $black;
+      }
+      span.red {
+        color: $red;
+      }
+    }
+  }
+  .info-menu {
+    font-size: 1.8rem;
+    color: $black;
+    div {
+      margin-bottom: 20px;
+      cursor: pointer;
+      position: relative;
+      padding-left: 40px;
+      &:hover {
+        text-decoration: underline;
+      }
+      &::before {
+        content: '';        
+        mask-size: 100%;
+        mask-repeat: no-repeat;
+        background-color: $dark;
+        position: absolute;
+        top: 50%;
+        left: 0;
+      }
+      &.personal-info::before {
+        mask: url('../../assets/img/ic_profile_info.svg');
+        width: 24px;
+        height: 22px;
+        margin-top: -11px;
+      }
+      &.orders::before {
+        mask: url('../../assets/img/ic_payreceipt.svg');
+        width: 22px;
+        height: 22px;
+        margin-top: -11px;
+      }
+      &.garage::before {
+        mask: url('../../assets/img/ic_home.svg');
+        width: 18px;
+        height: 15px;
+        margin-top: -7.5px;
+      }
+    }
+  }
+}
+
+.personal-info-menu {
+  form {
+    margin-bottom: 0;
+    .input-wrap {
+      width: 340px;
+    }
+  }
+}
+
+.orders-menu {
+
+}
+
+.garage-menu {
+  .panel {
+    background-color: $dark;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    .car-img {
+      margin-right: 15px;
+      &::before {
+        content: url('../../assets/img/bmw.svg');
+      }
+    }
+    .car-info {
+      margin-right: auto;
+      .car-model {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+      }
+      .car-vin {
+        opacity: .7;
+      }
+    }
+    .car-delete {
+      cursor: pointer;
+      &::before {
+        content: url('../../assets/img/Trash.svg');
+      }
+    }
+  }
+  form {
+    margin-bottom: 0;
+    .input-wrap.mark {
+      max-width: 170px;        
+    }
+    .input-wrap.model {
+      max-width: 160px;        
+    }
+    .input-wrap.modification {
+      max-width: 190px;        
+    }
+    .input-wrap.year {
+      max-width: 140px;        
+    }
+    .input-wrap.vin {
+      max-width: auto;        
+    }
+    .input-wrap:nth-child(odd) {
+      margin-right: 10px;
+    }
+  }
+}
+
+.forgot-menu {
+  form {
+    margin-bottom: 0;
+    .input-wrap {
+      span {
+        width: 26px;
+        height: 26px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 14px;
+      }
+      span::after {
+        content: '';
+        position: absolute;
+        width: 26px;
+        height: 26px;
+        transition: .3s ease-in;
+      }
+      &.email span::after {
+        mask: url('../../assets/img/ic_message.svg');
+        mask-size: cover;
+        background-color: $dark;
+        margin-top: -22px;
+      }
+      input {
+        padding-left: 50px;
+      }
+    }
+  }
+}

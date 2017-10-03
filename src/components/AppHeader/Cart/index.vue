@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import DetailsPreview from './DetailsPreview'
 
 export default {
@@ -26,14 +26,14 @@ export default {
       }
     }
   },
-  methods: {
-    ...mapActions('Cart', [
-      'getInventory'
-    ])
-  },
-  created() {
-    this.getInventory()
-  },
+  // methods: {
+  //   ...mapActions('Cart', [
+  //     'getInventory'
+  //   ])
+  // },
+  // created() {
+  //   this.getInventory()
+  // },
   components: {
     DetailsPreview
   }

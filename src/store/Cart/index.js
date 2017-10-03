@@ -80,10 +80,9 @@ const actions = {
       params
     })
     .then((res) => {
-      console.log(res)
       commit('setDetails', res.data.products)
     })
-    .catch(err => console.log(err))
+    .catch(() => {})
   },
   getDetail({ state, commit }, payload) {
     axios.get('search/product', {
@@ -92,11 +91,10 @@ const actions = {
       }
     })
     .then((res) => {
-      console.log(res)
       commit('selectDetail', res.data.currentCode)
       commit('setAnalogs', res.data.analogs)
     })
-    .catch(err => console.log(err))
+    .catch(() => {})
   },
   getAnalogs({ state, commit }, payload) {
     axios.get('/details', {
@@ -110,31 +108,31 @@ const actions = {
     .then((res) => {
       commit('setAnalogs', res.data)
     })
-    .catch(err => console.log(err))
+    .catch(() => {})
   },
-  getInventory({ commit }) {
-    axios.get('/user')
-    .then((res) => {
-      const ids = res.data.inventory.map(inv => inv.detailId)
-      return new Promise((resolve, reject) => {
-        axios.get('/details', {
-          params: {
-            _sort: 'storageAmount',
-            _order: 'desc',
-            _limit: 24,
-            id: ids
-          }
-        })
-        .then((details) => {
-          resolve(details.data)
-        })
-        .catch(err => reject(err))
-      })
-    })
-    .then((res) => {
-      res.forEach(invItem => commit('setCartItem', invItem))
-    })
-  },
+  // getInventory({ commit }) {
+  //   axios.get('/user')
+  //   .then((res) => {
+  //     const ids = res.data.inventory.map(inv => inv.detailId)
+  //     return new Promise((resolve, reject) => {
+  //       axios.get('/details', {
+  //         params: {
+  //           _sort: 'storageAmount',
+  //           _order: 'desc',
+  //           _limit: 24,
+  //           id: ids
+  //         }
+  //       })
+  //       .then((details) => {
+  //         resolve(details.data)
+  //       })
+  //       .catch(err => reject(err))
+  //     })
+  //   })
+  //   .then((res) => {
+  //     res.forEach(invItem => commit('setCartItem', invItem))
+  //   })
+  // },
   addToCart({ state, commit }, { detail, selectedPrice }) {
     if (state.cartItems.find(item => item.id === detail.id)) {
       commit('changeAmount', { detailId: detail.id, sign: '+' })

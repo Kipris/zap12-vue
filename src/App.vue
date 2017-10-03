@@ -7,11 +7,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 
 export default {
   name: 'app',
+  methods: {
+    ...mapActions('Auth', [
+      'getProfile'
+    ])
+  },
+  created() {
+    this.getProfile()
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  },
   components: {
     AppHeader,
     AppFooter
