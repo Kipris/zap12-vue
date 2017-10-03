@@ -135,21 +135,41 @@
                           <form action="">
                             <label for="phone">Изменить телефон</label>
                             <div class="input-wrap">
-                              <input id="phone" type="text" v-model="mainPhone" placeholder="Основной телефон">
+                              <the-mask 
+                                id="phone"
+                                type="text"
+                                v-model="mainPhone"
+                                :mask="'+7 (###) ###-##-##'"
+                                placeholder="Основной телефон"
+                               />
                             </div>
                             <div class="input-wrap">
-                              <input type="text" v-model="secondaryPhone" placeholder="Дополнительный телефон">
+                              <the-mask
+                                type="text"
+                                :mask="'+7 (###) ###-##-##'"
+                                v-model="secondaryPhone"
+                                placeholder="Дополнительный телефон"
+                              />
                             </div>
                             <label for="password">Изменить пароль</label>
                             <div class="input-wrap">
-                              <input id="password" type="password" placeholder="Новый пароль">
+                              <input
+                                id="password"
+                                type="password"
+                                v-model="oldPassword"
+                                placeholder="Старый пароль">
+                                <!-- placeholder="Новый пароль" -->
                             </div>
                             <div class="input-wrap">
-                              <input type="password" placeholder="Подтверждение нового пароля">
+                              <input
+                                type="password"
+                                v-model="newPassword"
+                                placeholder="Новый пароль">
+                                <!-- placeholder="Подтверждение нового пароля" -->
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Отмена</button>
-                              <button class="btn full-red" @click="accountShow">Сохранить</button>
+                              <button class="btn full-red" @click.prevent="handleSave">Сохранить</button>
                             </div>
                           </form>
                         </div>
@@ -161,7 +181,7 @@
                             <span class="back" @click="accountShow"></span>
                             <div class="h3">Мой гараж</div>
                           </div>
-                          <form action="">
+                          <form>
                             <label>Мои автомобили</label>
                             <div class="panel">
                               <div class="car-img"></div>
@@ -196,7 +216,7 @@
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Отмена</button>
-                              <button class="btn full-red">Сохранить</button>
+                              <button class="btn full-red" @click.prevent="accountShow">Сохранить</button>
                             </div>
                           </form>
                         </div>
@@ -262,6 +282,7 @@
 
 <script>
 // import Vue from 'vue'
+import { TheMask } from 'vue-the-mask'
 import { mapState, mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
 import CartModal from './CartModal'
@@ -274,8 +295,12 @@ export default {
       emailToRestore: '',
       user: {
         email: '',
-        password: ''
+        password: '',
+        phone1: '',
+        phone2: ''
       },
+      oldPassword: '',
+      newPassword: '',
       cars: {
         row1: ['Audi', 'BMW', 'Chevrolet', 'Crysler', 'Citroen', 'Daewo0', 'Dodge'],
         row2: ['Fiat', 'Ford', 'Honda', 'Hyundai', 'Infinity', 'Isuzu', 'Jaguar'],
@@ -304,11 +329,17 @@ export default {
     mainPhone: {
       get() {
         return this.profile.phone1
+      },
+      set(val) {
+        this.user.phone1 = val
       }
     },
     secondaryPhone: {
       get() {
         return this.profile.phone2
+      },
+      set(val) {
+        this.user.phone2 = val
       }
     },
     hasAuth() {
@@ -325,7 +356,9 @@ export default {
     ...mapActions('Auth', [
       'logIn',
       'logOut',
-      'restoreEmail'
+      'restoreEmail',
+      'updatePhones',
+      'updatePassword'
     ]),
     goTo(car) {
       this.setModelFilter(car)
@@ -352,6 +385,20 @@ export default {
     handleLogOut() {
       this.loginShow()
       this.logOut()
+    },
+    handleSave() {
+      this.updatePhones({
+        phone1: this.user.phone1,
+        phone2: this.user.phone2
+      })
+      if (this.oldPassword.length > 0) {
+        this.updatePassword({
+          oldPassword: this.oldPassword,
+          newPassword: this.newPassword
+        })
+        // .then(() => this.accountShow())
+      }
+      // TODO: password change
     },
     handleRestorePassword() {
       this.restoreEmail({ email: this.emailToRestore })
@@ -402,16 +449,16 @@ export default {
       this.responsiveMenuShown = false;
     },
     accountShow() {
-      if (this.user.email !== '' && this.user.password !== '') {
-        this.contactsShown = false;
-        this.detailsShown = false;
-        this.cartShown = false;
-        this.loginShown = false;
-        this.accountShown = !this.accountShown;
-        this.signedIn = true;
-        this.personalInfoIsShown = false;
-        this.responsiveMenuShown = false;
-      }
+      // if (this.user.email !== '' && this.user.password !== '') {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.loginShown = false;
+      this.accountShown = !this.accountShown;
+      this.signedIn = true;
+      this.personalInfoIsShown = false;
+      this.responsiveMenuShown = false;
+      // }
     },
     isSignedIn() {
       return this.signedIn
@@ -478,7 +525,8 @@ export default {
   components: {
     Cart,
     CartModal,
-    OrderHistoryModal
+    OrderHistoryModal,
+    TheMask
   },
   watch: {
     $route() {
