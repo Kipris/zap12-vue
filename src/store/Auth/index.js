@@ -2,7 +2,8 @@ import axios from '@/APIMock/api'
 // import Vue from 'vue'
 
 const state = {
-  profile: {}
+  profile: {},
+  userCars: []
 }
 const getters = {
 }
@@ -12,6 +13,16 @@ const mutations = {
   },
   clearProfile(state) {
     state.profile = {}
+  },
+  setUserCars(state, payload) {
+    state.userCars = payload
+  },
+  addGarageCar(state, payload) {
+    state.userCars.push(payload)
+  },
+  deleteUserCar(state, { id }) {
+    const carIndex = state.userCars.findIndex(car => car.id === id)
+    state.userCars.splice(carIndex, 1)
   }
 }
 const actions = {
@@ -46,7 +57,7 @@ const actions = {
       .catch(err => reject(err))
     })
   },
-  updatePhones(state, { phone1, phone2 }) {
+  updatePhones(ctx, { phone1, phone2 }) {
     const data = {}
     if (phone1.length > 0) {
       data.phone1 = phone1
@@ -63,7 +74,7 @@ const actions = {
       .catch(err => reject(err))
     })
   },
-  updatePassword(state, { oldPassword, newPassword }) {
+  updatePassword(ctx, { oldPassword, newPassword }) {
     return new Promise((resolve, reject) => {
       axios.put('password', {
         current_password: oldPassword,
@@ -76,10 +87,46 @@ const actions = {
       .catch(err => reject(err))
     })
   },
-  restoreEmail(state, { email }) {
+  restoreEmail(ctx, { email }) {
     return new Promise((resolve, reject) => {
       resolve(email)
       reject('kdsa')
+    })
+  },
+  loadGarage({ commit }) {
+    return new Promise((resolve, reject) => {
+      axios.get('cars/list', { withCredentials: true })
+      .then((res) => {
+        commit('setUserCars', res.data)
+        resolve(res.data)
+      })
+      .catch(err => reject(err))
+    })
+  },
+  addCar({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      axios.post('cars/add', {
+        brand: payload.brand,
+        model: payload.model,
+        modification: payload.modification,
+        year: payload.year,
+        vin: payload.vin
+      }, { withCredentials: true })
+      .then((res) => {
+        commit('addGarageCar', res.data)
+        resolve(res)
+      })
+      .catch(err => reject(err))
+    })
+  },
+  deleteCar({ commit }, { id }) {
+    return new Promise((resolve, reject) => {
+      axios.delete(`cars/delete/${id}`, { withCredentials: true })
+      .then((res) => {
+        commit('deleteUserCar', { id })
+        resolve(res)
+      })
+      .catch(err => reject(err))
     })
   }
 }

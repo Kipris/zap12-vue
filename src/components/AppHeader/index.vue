@@ -117,7 +117,7 @@
                           <div class="info-menu">
                             <div class="personal-info" @click="personalInfoShow">Личная информация</div>
                             <div class="orders" @click="ordersShow">Мои заказы (0)</div>
-                            <div class="garage" @click="garageShow">Мой гараж</div>
+                            <div class="garage" @click="handleGarage">Мой гараж</div>
                           </div>
                           <div class="actions">
                             <button class="btn light" @click="handleLogOut">Выйти</button>
@@ -178,7 +178,7 @@
                       <transition name="fade">
                         <div class="dropdown-menu garage-menu" v-show="garageIsShown">
                           <div class="menu-title">
-                            <span class="back" @click="accountShow"></span>
+                            <span class="back" @click="handleBackGarage"></span>
                             <div class="h3">Мой гараж</div>
                           </div>
                           <form>
@@ -187,36 +187,59 @@
                               <div class="car-img"></div>
 
                               <!-- v-for -->
-                              <div class="car-info">
-                                <div class="car-model">BMW M8 2016</div>
-                                <div class="car-vin">VIN: 432453459355893</div>
+                              <div
+                                class="car-info"
+                                v-for="(car, i) in userCars"
+                                :key="i">
+                                <div class="car-model">{{car.brand}} {{car.model}} {{car.year}}</div>
+                                <div class="car-vin">VIN: {{car.vin}}</div>
+                                <div class="car-delete" @click="deleteCar({ id: car.id })">XXXX</div>
                               </div>
-                              <div class="car-delete"></div>
                             </div>
 
                             <label>Добавить автомобиль</label>
                             <div class="form-group">
                               <div class="input-wrap mark">
-                                <input type="text" placeholder="Марка">
+                                <input
+                                  type="text"
+                                  v-model="car.brand"
+                                  placeholder="Марка"
+                                />
                               </div>
                               <div class="input-wrap model">
-                                <input type="text" placeholder="Модель">
+                                <input 
+                                  type="text"
+                                  v-model="car.model"
+                                  placeholder="Модель"
+                                />
                               </div>
                             </div>
                             <div class="form-group">
                               <div class="input-wrap modification">
-                                <input type="text" placeholder="Модификация">
+                                <input 
+                                  type="text"
+                                  v-model="car.modification"
+                                  placeholder="Модификация"
+                                />
                               </div>
                               <div class="input-wrap year">
-                                <input type="text" placeholder="Год выпуска">
+                                <input 
+                                  type="text"
+                                  v-model.number="car.year"
+                                  placeholder="Год выпуска"
+                                />
                               </div>
                             </div>
                             <div class="input-wrap vin">
-                              <input type="text" placeholder="VIN">
+                              <input 
+                                type="text"
+                                v-model="car.vin"
+                                placeholder="VIN"
+                              />
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Отмена</button>
-                              <button class="btn full-red" @click.prevent="accountShow">Сохранить</button>
+                              <button class="btn full-red" @click.prevent="handleAddCar">Сохранить</button>
                             </div>
                           </form>
                         </div>
@@ -299,6 +322,13 @@ export default {
         phone1: '',
         phone2: ''
       },
+      car: {
+        brand: '',
+        model: '',
+        modification: '',
+        year: '',
+        vin: ''
+      },
       oldPassword: '',
       newPassword: '',
       cars: {
@@ -324,7 +354,8 @@ export default {
   },
   computed: {
     ...mapState('Auth', [
-      'profile'
+      'profile',
+      'userCars'
     ]),
     mainPhone: {
       get() {
@@ -358,7 +389,10 @@ export default {
       'logOut',
       'restoreEmail',
       'updatePhones',
-      'updatePassword'
+      'updatePassword',
+      'loadGarage',
+      'addCar',
+      'deleteCar'
     ]),
     goTo(car) {
       this.setModelFilter(car)
@@ -404,6 +438,28 @@ export default {
       this.restoreEmail({ email: this.emailToRestore })
       .then(() => this.accountShow())
       .catch(() => {})
+    },
+    handleGarage() {
+      this.loadGarage()
+      .then(() => this.garageShow())
+      .catch(() => {})
+    },
+    handleAddCar() {
+      this.addCar({
+        brand: this.car.brand,
+        model: this.car.model,
+        modification: this.car.modification,
+        year: this.car.year,
+        vin: this.car.vin
+      })
+      .then(() => {
+        this.accountShow()
+      })
+      .catch(() => {})
+    },
+    handleBackGarage() {
+      this.garageIsShown = false
+      this.accountShow()
     },
     contactsShow() {
       this.contactsShown = !this.contactsShown;
