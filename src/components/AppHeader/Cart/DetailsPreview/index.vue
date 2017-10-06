@@ -11,9 +11,9 @@
               <span class="bucket" @click="removeFromCart({ id: detail.id })">Удалить</span>
             </div>
             <div class="add-more">
-              <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
+              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '-' })"> - </button>
               <input type="text" class="amount" v-model="detail.amount">
-              <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '+' })"> + </button>
+              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '+' })"> + </button>
             </div>
           </div>
         </li>

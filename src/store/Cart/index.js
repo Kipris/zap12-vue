@@ -1,5 +1,5 @@
 import axios from '@/APIMock/api'
-import Vue from 'vue'
+// import Vue from 'vue'
 
 const state = {
   cartItems: [],
@@ -16,11 +16,12 @@ const getters = {
 
 }
 const mutations = {
-  setCartItem(state, { detail, selectedPrice }) {
-    const detailToCart = detail
-    Vue.set(detailToCart, 'amount', 1)
-    Vue.set(detailToCart, 'selectedPrice', selectedPrice)
-    state.cartItems.push(detailToCart)
+  setCartItem(state, { detailToAdd }) {
+    // const detailToCart = detail
+    // Vue.set(detailToCart, 'amount', 1)
+    // Vue.set(detailToCart, 'selectedPrice', selectedPrice)
+    // state.cartItems.push(detailToCart)
+    state.cartItems.push(detailToAdd)
   },
   setInventory(state, payload) {
     state.cartItems = payload
@@ -41,8 +42,8 @@ const mutations = {
   setDetailType(state, payload) {
     state.search.detailType = payload
   },
-  changeAmount(state, { detailId, sign }) {
-    const detail = state.cartItems.find(item => item.id === detailId)
+  changeAmount(state, { bookId, sign }) {
+    const detail = state.cartItems.find(item => item.bookId === bookId)
     if (sign === '+') {
       detail.amount += 1
     } else if (sign === '-' && detail.amount > 1) {
@@ -110,34 +111,17 @@ const actions = {
     })
     .catch(() => {})
   },
-  // getInventory({ commit }) {
-  //   axios.get('/user')
-  //   .then((res) => {
-  //     const ids = res.data.inventory.map(inv => inv.detailId)
-  //     return new Promise((resolve, reject) => {
-  //       axios.get('/details', {
-  //         params: {
-  //           _sort: 'storageAmount',
-  //           _order: 'desc',
-  //           _limit: 24,
-  //           id: ids
-  //         }
-  //       })
-  //       .then((details) => {
-  //         resolve(details.data)
-  //       })
-  //       .catch(err => reject(err))
-  //     })
-  //   })
-  //   .then((res) => {
-  //     res.forEach(invItem => commit('setCartItem', invItem))
-  //   })
-  // },
-  addToCart({ state, commit }, { detail, selectedPrice }) {
-    if (state.cartItems.find(item => item.id === detail.id)) {
-      commit('changeAmount', { detailId: detail.id, sign: '+' })
+  addToCart({ state, commit }, { detail, bookId, offerPrice }) {
+    const detailToAdd = {
+      bookId,
+      amount: 1,
+      name: detail.name,
+      offerPrice
+    }
+    if (state.cartItems.find(item => item.bookId === detailToAdd.bookId)) {
+      commit('changeAmount', { bookId, sign: '+' })
     } else {
-      commit('setCartItem', { detail, selectedPrice })
+      commit('setCartItem', { detailToAdd })
     }
   }
 }

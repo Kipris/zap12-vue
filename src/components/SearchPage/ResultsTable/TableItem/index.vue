@@ -28,7 +28,7 @@
     <td class="price">
       <div v-for="offer in detail.offers">
         <span>{{offer.price}} Р</span>
-        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, selectedPrice: offer.price})"></span> 
+        <span class="buy-icon" v-if="buy" @click="addToCart({ detail: detail, bookId: offer.bookId, offerPrice: offer.price })"></span> 
       </div>
       <!-- <div v-if="detail.offers[1].isAvailable">
         <span>{{detail.offers[1].price}} Р</span>
