@@ -1,7 +1,7 @@
 <template>
   <div class="modal-backdrop">
     <div class="modal">
-      <span class="cross">✖</span>
+      <span class="cross" @click="close">✖</span>
       <gmap-map
         :center="{lat:55.8495078, lng:37.6172781}"
         :zoom="15"
@@ -27,6 +27,11 @@ Vue.use(VueGoogleMaps, {
 export default {
   name: 'MapModal',
   data() {},
+  methods: {
+    close() {
+      this.$emit('close')
+    }
+  }
 }
 </script>
 
