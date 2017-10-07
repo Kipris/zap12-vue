@@ -3,7 +3,9 @@
 .search-panel {
   min-width: 250px;
   margin-top: 0;
-  position: relative;
+  height: 100%;
+  position: sticky;
+  top: 70px;
   .panel.dark {
     padding: 20px;
     border-color: rgba(0, 0, 0, 0.2);
@@ -27,7 +29,6 @@
               margin-right: 10px;
           }
       }
-      
       a {
           font-size: 1.6rem;
           color: #787878;
@@ -42,6 +43,8 @@
     order: -1;
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
+    top: auto;
     .categories-wrap {
       display: flex;
       .category {
@@ -57,10 +60,11 @@
 
 @media (max-width: 540px) {
   .search-panel {
-    &.dark {
+    .panel.dark {
       border: none;
+      padding: 0;
     }      
-    padding: 0;
+    
     margin: 0;
     .categories-wrap {
         display: none;
