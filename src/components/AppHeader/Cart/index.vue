@@ -2,7 +2,10 @@
   <div class="dropdown-menu cart">
     <!-- TODO: v-if = isCartIsEmpty -->
     <span v-if="inventory.length === 0">Корзина пуста</span>
-    <DetailsPreview v-if="inventory.length > 0" :details="inventory"/>
+    <DetailsPreview
+       v-if="inventory.length > 0"
+      :details="inventory"
+      @close="handleClose"/>
   </div>
 </template>
 
@@ -26,14 +29,11 @@ export default {
       }
     }
   },
-  // methods: {
-  //   ...mapActions('Cart', [
-  //     'getInventory'
-  //   ])
-  // },
-  // created() {
-  //   this.getInventory()
-  // },
+  methods: {
+    handleClose() {
+      this.$emit('close')
+    }
+  },
   components: {
     DetailsPreview
   }

@@ -19,18 +19,18 @@
                 <tbody>
                   <tr v-for="detail in cartItems">
                     <td>{{detail.producer}}</td>
-                    <td>{{detail.vendor}}</td>
+                    <td>{{detail.number}}</td>
                     <td class="detail-name">
                       <span>{{detail.name}}</span>
-                      <span class="trash" @click="removeFromCart({ id: detail.id })"></span>
+                      <span class="trash" @click="removeFromCart({ id: detail.bookId })"></span>
                     </td>
                     <td class="amount-row">
                       <!-- <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
                       <input type="text" class="amount" v-model="detail.amount">
                       <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '+' })"> + </button> -->
-                      <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '-' })"> - </button>
+                      <button class="sign" @click="changeAmount({ bookId: detail.bookId, sign: '-', maxAvailable: detail.maxAvailable })"> - </button>
                       <input type="text" class="amount" :value="detail.amount">
-                      <button class="sign" @click="changeAmount({ detailId: detail.id, sign: '+' })"> + </button>
+                      <button class="sign" @click="changeAmount({ bookId: detail.bookId, sign: '+', maxAvailable: detail.maxAvailable })"> + </button>
                     </td>
                     <td class="price-row">
                       {{detail.selectedPrice}} Р
@@ -128,11 +128,12 @@
               </div>
               <div class="discount">
                 <span>Со скидкой</span>
-                <span class="red">2 149 Р</span>
+                <!-- <span class="red">{{discountPrice}}2 149 Р</span> -->
+                <span class="red">{{discountPrice}} P</span>
               </div>
             </div>
             <div class="actions">
-              <button class="btn full-red">Оформить</button>
+              <button class="btn full-red" @click="handleMakeOrder">Оформить</button>
             </div>
           </div>
         
@@ -142,7 +143,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'CartModal',
@@ -162,15 +163,25 @@ export default {
     }
   },
   computed: {
+    ...mapState('Auth', [
+      'profile'
+    ]),
     totalPrice() {
-      const mapped = this.cartItems.map(detail => detail.amount * detail.selectedPrice);
+      const mapped = this.cartItems.map(detail => detail.amount * detail.offerPrice);
       return mapped.reduce((a, b) => a + b);
+    },
+    discountPrice() {
+      const discount = this.totalPrice / this.profile.discount
+      return this.totalPrice - discount
     }
   },
   methods: {
     ...mapMutations('Cart', [
       'changeAmount',
       'removeFromCart'
+    ]),
+    ...mapActions('Cart', [
+      'makeOrder'
     ]),
     promocodeCollapse() {
       if (this.promocodeIsDisabled !== false) {
@@ -192,6 +203,13 @@ export default {
         this.deliveryAccordion = false
         this.paymentAccordion = !this.paymentAccordion
       }
+    },
+    handleMakeOrder() {
+      this.makeOrder()
+      .then(() => {
+        this.close()
+      })
+      .catch(() => {})
     },
     close() {
       this.$emit('close')

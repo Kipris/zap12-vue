@@ -42,9 +42,9 @@ const mutations = {
   setDetailType(state, payload) {
     state.search.detailType = payload
   },
-  changeAmount(state, { bookId, sign }) {
+  changeAmount(state, { bookId, sign, maxAvailable }) {
     const detail = state.cartItems.find(item => item.bookId === bookId)
-    if (sign === '+') {
+    if (sign === '+' && detail.amount !== maxAvailable) {
       detail.amount += 1
     } else if (sign === '-' && detail.amount > 1) {
       detail.amount -= 1
@@ -111,18 +111,36 @@ const actions = {
     })
     .catch(() => {})
   },
-  addToCart({ state, commit }, { detail, bookId, offerPrice }) {
+  addToCart({ state, commit }, { detail, bookId, offerPrice, producer, number, maxAvailable }) {
     const detailToAdd = {
       bookId,
       amount: 1,
       name: detail.name,
-      offerPrice
+      offerPrice,
+      producer,
+      number,
+      maxAvailable
+    }
+    if (maxAvailable === 0) {
+      return
     }
     if (state.cartItems.find(item => item.bookId === detailToAdd.bookId)) {
-      commit('changeAmount', { bookId, sign: '+' })
+      commit('changeAmount', { bookId, sign: '+', maxAvailable })
     } else {
       commit('setCartItem', { detailToAdd })
     }
+  },
+  makeOrder({ state }) {
+    return new Promise((resolve, reject) => {
+      const items = state.cartItems.map(item => ({ bookId: item.bookId, amount: item.amount }))
+      axios.post('order/create', {
+        items
+      }, { withCredentials: true })
+      .then((res) => {
+        resolve(res)
+      })
+      .catch(err => reject(err))
+    })
   }
 }
 

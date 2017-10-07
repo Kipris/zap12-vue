@@ -62,7 +62,9 @@
                     <span class="cart dropdown" v-bind:class="{ active: cartShown }">
                         <span class="cart-img" @click="cartShow"></span>
                         <transition name="fade">
-                          <Cart v-show="cartShown"/>
+                          <Cart
+                            v-if="cartShown"
+                            @close="cartShown = false"/>
                         </transition>
                     </span>
 
@@ -77,7 +79,7 @@
                               <span></span>
                               <input type="email"
                                      v-model="user.email"
-                                     @keyup.enter="handleLogIn"
+                                     @keyup.enter.prevent="handleLogIn"
                                      placeholder="Электронная почта"
                                      required>
                             </div>
@@ -85,7 +87,7 @@
                               <span @click="passwordIsVisible" :class="{active: passwordVisible}"></span>
                               <input id="input-password"
                                      type="password"
-                                     @keyup.enter="handleLogIn"
+                                     @keyup.enter.prevent="handleLogIn"
                                      v-model="user.password"
                                      placeholder="Пароль"
                                      required>

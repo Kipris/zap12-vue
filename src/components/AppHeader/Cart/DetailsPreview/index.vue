@@ -7,8 +7,8 @@
           <div class="price-wrapper">
             <div class="detial-price">
               <!-- TODO computed for universal price -->
-              <span class="price">{{detail.selectedPrice}} P</span>
-              <span class="bucket" @click="removeFromCart({ id: detail.id })">Удалить</span>
+              <span class="price">{{detail.offerPrice}} P</span>
+              <span class="bucket" @click="removeFromCart({ id: detail.bookId })">Удалить</span>
             </div>
             <div class="add-more">
               <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '-' })"> - </button>
@@ -27,7 +27,7 @@
       </div>
       <div class="actions">
         <button class="btn black" @click="showCartModal = true">В корзину</button>
-        <button class="btn full-red">к оплате</button>
+        <button class="btn full-red" @click="handleMakeOrder">к оплате</button>
       </div>
   </div>
   <CartModal v-if="showCartModal"
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapActions } from 'vuex'
 import CartModal from '@/components/AppHeader/CartModal'
 
 export default {
@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     getTotalPrice() {
-      const mapped = this.details.map(detail => detail.amount * detail.selectedPrice);
+      const mapped = this.details.map(detail => detail.amount * detail.offerPrice);
       return mapped.reduce((a, b) => a + b);
     }
   },
@@ -63,7 +63,16 @@ export default {
     ...mapMutations('Cart', [
       'changeAmount',
       'removeFromCart'
-    ])
+    ]),
+    ...mapActions('Cart', [
+      'makeOrder'
+    ]),
+    handleMakeOrder() {
+      this.makeOrder()
+      .then(() => {
+        this.$emit('close')
+      })
+    }
   },
   components: {
     CartModal
