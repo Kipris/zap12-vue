@@ -34,7 +34,9 @@ const actions = {
       }, { withCredentials: true })
       .then(() => dispatch('getProfile'))
       .then(res => resolve(res))
-      .catch(err => reject(err))
+      .catch((err) => {
+        reject(err.response.data.message)
+      })
     })
   },
   logOut({ commit }) {
@@ -68,7 +70,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.put('phones', data, { withCredentials: true })
       .then((res) => {
-        console.log(res)
         resolve(res)
       })
       .catch(err => reject(err))
@@ -81,10 +82,9 @@ const actions = {
         new_password: newPassword
       }, { withCredentials: true })
       .then((res) => {
-        console.log(res)
         resolve(res)
       })
-      .catch(err => reject(err))
+      .catch(err => reject(err.response.data.message))
     })
   },
   restoreEmail(ctx, { email }) {

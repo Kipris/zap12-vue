@@ -207,9 +207,12 @@ export default {
     handleMakeOrder() {
       this.makeOrder()
       .then(() => {
+        this.$toastr('success', 'Заказ был успешно оформлен', '')
         this.close()
       })
-      .catch(() => {})
+      .catch(() => {
+        this.$toastr('error', 'Произошла ошибка', '')
+      })
     },
     close() {
       this.$emit('close')

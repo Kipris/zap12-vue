@@ -52,7 +52,9 @@ Vue.use(VueScrollReveal);
 
 export default {
   name: 'AppFooter',
-  data() {},
+  data() {
+    return {}
+  },
   components: {
     MapModal
   }

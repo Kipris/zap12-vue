@@ -70,7 +70,11 @@ export default {
     handleMakeOrder() {
       this.makeOrder()
       .then(() => {
+        this.$toastr('success', 'Заказ был успешно оформлен', '')
         this.$emit('close')
+      })
+      .catch(() => {
+        this.$toastr('error', 'Произошла ошибка', '')
       })
     }
   },

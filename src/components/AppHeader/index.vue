@@ -263,7 +263,7 @@
                             </div>
                             <div class="actions">
                               <button class="btn light" @click="accountShow">Отмена</button>
-                              <button class="btn full-red" @click="handleRestorePassword">Отправить запрос</button>
+                              <button class="btn full-red" @click.prevent="handleRestorePassword">Отправить запрос</button>
                             </div>
                           </form>
                         </div>
@@ -414,7 +414,8 @@ export default {
         .then((res) => {
           if (res.status === 200) this.accountShow()
         })
-        .catch(() => {
+        .catch((err) => {
+          this.$toastr('error', err, '')
         })
       }
     },
@@ -427,10 +428,22 @@ export default {
         phone1: this.user.phone1,
         phone2: this.user.phone2
       })
+      .then(() => {
+        this.$toastr('success', 'Телефон успешно обновлен', '')
+      })
+      .catch(() => {
+        this.$toastr('error', 'Произошла ошибка', '')
+      })
       if (this.oldPassword.length > 0) {
         this.updatePassword({
           oldPassword: this.oldPassword,
           newPassword: this.newPassword
+        })
+        .then(() => {
+          this.$toastr('success', 'Пароль успешно изменен', '')
+        })
+        .catch((err) => {
+          this.$toastr('error', err, '')
         })
         // .then(() => this.accountShow())
       }
@@ -438,13 +451,22 @@ export default {
     },
     handleRestorePassword() {
       this.restoreEmail({ email: this.emailToRestore })
-      .then(() => this.accountShow())
-      .catch(() => {})
+      .then(() => {
+        this.$toastr('success', 'Письмо отправлено', '')
+        this.accountShow()
+      })
+      .catch(() => {
+        this.$toastr('error', 'Произошла ошибка', '')
+      })
     },
     handleGarage() {
       this.loadGarage()
-      .then(() => this.garageShow())
-      .catch(() => {})
+      .then(() => {
+        this.garageShow()
+      })
+      .catch(() => {
+        this.$toastr('error', 'Произошла ошибка', '')
+      })
     },
     handleAddCar() {
       this.addCar({
@@ -455,6 +477,7 @@ export default {
         vin: this.car.vin
       })
       .then(() => {
+        this.$toastr('success', 'Машина была добавлена', '')
         this.accountShow()
       })
       .catch(() => {})

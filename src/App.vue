@@ -10,6 +10,14 @@
 import { mapActions } from 'vuex'
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
+import Vue from 'vue'
+import VueToastr from '@deveodk/vue-toastr'
+
+Vue.use(VueToastr, {
+  defaultPosition: 'toast-top-right',
+  defaultType: 'info',
+  defaultTimeout: 5000
+})
 
 export default {
   name: 'app',
@@ -33,9 +41,12 @@ export default {
 <style lang="scss" scoped>
   @import 'styles';
   // @import 'node_modules/pavilion/scss/pavilion';
+
 </style>
 
 <style lang="scss">
+  @import url('../static/toastr.css');
+
   #content {
     margin-bottom: 315px;
     z-index: 10;

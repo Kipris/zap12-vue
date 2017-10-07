@@ -12,6 +12,7 @@
     "mock": "json-server --watch src/APIMock/dbf.json"
   },
   "dependencies": {
+    "@deveodk/vue-toastr": "^1.0.4",
     "axios": "^0.16.2",
     "debounce": "^1.0.2",
     "lodash.startcase": "^4.4.0",
