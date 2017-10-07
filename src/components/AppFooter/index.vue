@@ -40,7 +40,6 @@
       </div>
     </div>
     </div>
-    <MapModal v-if="false"/>
   </footer>
 </template>
 
@@ -53,6 +52,7 @@ Vue.use(VueScrollReveal);
 
 export default {
   name: 'AppFooter',
+  data() {},
   components: {
     MapModal
   }

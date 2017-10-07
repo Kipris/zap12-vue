@@ -76,6 +76,12 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         loader: '!!vue-style-loader!css-loader'
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          'file-loader'
+        ]
       }
     ]
   }

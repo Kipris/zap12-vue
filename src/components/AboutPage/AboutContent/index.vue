@@ -52,7 +52,7 @@
 
       <div class="panel map">    
         <div class="h1">Мы на карте</div>
-        <button class="btn white" @click="resizeMap">Смотреть</button>
+        <button class="btn white" @click="mapModalIsShown=!mapModalIsShown">Смотреть</button>
         <gmap-map
           :center="{lat:55.8495078, lng:37.6172781}"
           :zoom="15"
@@ -62,7 +62,11 @@
       </div>
 
     </div>
-    <MapModal v-if="false"/>
+    <transition name="fade">
+    <MapModal v-if="mapModalIsShown"
+              @close="mapModalIsShown = false"/>
+    </transition>
+    
   </div>
 </template>
 
@@ -86,7 +90,8 @@ export default {
   name: 'AboutContent',
   data() {
     return {
-      toggled: true
+      toggled: true,
+      mapModalIsShown: false
     }
   },
   components: {

@@ -2,7 +2,7 @@
 
 @font-face {
     // font-family: 'Bebas Neue';
-    // src: url('./../../fonts/BebasNeue/BebasNeueRegular.otf');
+    // src: url('./../fonts/BebasNeue/BebasNeueRegular.otf');
 }
 
 html {
@@ -11,7 +11,7 @@ html {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    // font-family: 'Bebas Neue', sans-serif;
+    // font-family: 'Bebas Neue', sans-serif !important;
     font-family: 'Open Sans', sans-serif !important;
     margin: 0;
 }
