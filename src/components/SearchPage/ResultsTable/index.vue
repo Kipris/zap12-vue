@@ -65,6 +65,14 @@
         </tr> -->
       </tbody>
     </table>
+    <div class="details-pagination">
+      <button class="btn gray prev">Предыдущая</button>
+      <div class="pages">
+          <span>Страниц:</span>
+          <span class="red">1 из 10</span>
+      </div>
+      <button class="btn gray next active">Следующая</button>
+    </div>
   </div>
 </template>
 

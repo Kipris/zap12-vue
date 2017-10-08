@@ -1,17 +1,11 @@
 @import 'colors';
 
-@font-face {
-    // font-family: 'Bebas Neue';
-    // src: url('./../fonts/BebasNeue/BebasNeueRegular.otf');
-}
-
 html {
   font-size: 10px;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    // font-family: 'Bebas Neue', sans-serif !important;
     font-family: 'Open Sans', sans-serif !important;
     margin: 0;
 }
