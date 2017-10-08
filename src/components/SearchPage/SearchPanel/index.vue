@@ -59,7 +59,7 @@ export default {
       this.$router.push('/searchresults')
     }, 1000),
     handleShowInput($event) {
-      this.setShowPositions($event)
+      this.setShowPositions(Number($event))
       this.$router.push('/searchresults')
       this.getDetails()
     }

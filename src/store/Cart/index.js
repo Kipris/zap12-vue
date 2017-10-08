@@ -1,5 +1,4 @@
 import axios from '@/APIMock/api'
-// import Vue from 'vue'
 
 const state = {
   cartItems: [],
@@ -7,6 +6,8 @@ const state = {
   analogDetails: [],
   reloadedSelectedDetail: {},
   showAnalogs: true,
+  totalFound: 0,
+  offset: 0,
   search: {
     carModel: [],
     detailProducer: [],
@@ -15,14 +16,16 @@ const state = {
   }
 }
 const getters = {
+  pagesCount: state => Math.round(state.totalFound / state.search.showPostions),
+  currentPage: state => Math.ceil(state.offset / state.search.showPostions) + 1
+    // if (state.search.offset === 0) {
+    //   return 1
+    // }
+    // return state.offset / state.search.showPostions
 
 }
 const mutations = {
   setCartItem(state, { detailToAdd }) {
-    // const detailToCart = detail
-    // Vue.set(detailToCart, 'amount', 1)
-    // Vue.set(detailToCart, 'selectedPrice', selectedPrice)
-    // state.cartItems.push(detailToCart)
     state.cartItems.push(detailToAdd)
   },
   removeFromCart(state, { id }) {
@@ -33,7 +36,6 @@ const mutations = {
     state.details = payload
   },
   setModelFilter(state, payload) {
-    // const str = payload.reduce(curr => (`${curr.name}`), state.search.carModel)
     state.search.carModel = payload
   },
   setProducerFilter(state, payload) {
@@ -61,21 +63,19 @@ const mutations = {
   },
   setSmartString(state, payload) {
     state.search.smartString = payload
+  },
+  setTotalFound(state, payload) {
+    state.totalFound = payload
+  },
+  changeOffset(state, payload) {
+    state.offset = payload
   }
 }
 const actions = {
-  // smartSearch({ state, dispatch, commit }, payload) {
-  //   if (state.search.carModel) {
-  //     commit('setModelFilter', { name: '' })
-  //   }
-  //   if (state.search.detailProducer) {
-  //     commit('setProducerFilter', { name: '' })
-  //   }
-  //   dispatch('getDetails')
-  // },
   getDetails({ state, commit }) {
     const params = {
-      limit: state.search.showPostions
+      limit: state.search.showPostions,
+      offset: state.offset
     }
     if (state.search.smartString) {
       params.q = state.search.smartString
@@ -87,10 +87,13 @@ const actions = {
         params.q = state.search.detailProducer.reduce((prev, curr) => `${prev} ${curr.name}`, params.q)
       }
     }
+    params.q = 'bmw'
     axios.get('/search', {
       params
     })
     .then((res) => {
+      console.log(res)
+      commit('setTotalFound', res.data.totalFound)
       commit('setDetails', res.data.products)
     })
     .catch(() => {})
@@ -102,6 +105,7 @@ const actions = {
       }
     })
     .then((res) => {
+      console.log(res)
       commit('selectDetail', res.data.currentCode)
       commit('setAnalogs', res.data.analogs)
     })
@@ -151,6 +155,11 @@ const actions = {
       })
       .catch(err => reject(err))
     })
+  },
+  changePage({ state, commit, dispatch }, payload) {
+    commit('changeOffset', payload === 'next' ? state.offset + state.search.showPostions :
+      state.offset - state.search.showPostions)
+    dispatch('getDetails')
   }
 }
 

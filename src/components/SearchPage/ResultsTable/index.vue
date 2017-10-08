@@ -25,59 +25,21 @@
                    :buy="buy"
                    @detailWasSelected="handleDetailSelect($event)"
                    v-if="detail.offers.length > 0" />
-        <!-- <tr v-for="detail in details"
-            @click="handleDetailSelect(detail)">
-          <td class="producer">
-            <div>{{detail.detailProducer}}</div>
-          </td>
-          <td class="vendor">
-            <div>
-              {{detail.vendor}}
-            </div>
-          </td>
-          <td class="naming">
-            <div>{{detail.detailName}}</div>
-          </td>  
-          <td class="availability">
-            <div v-if="detail.storageAmount">
-              <label class="chip chip-green">{{detail.storageAmount}}</label>
-            </div>
-            <div v-if="detail.deliveryAmount">
-              <label class="chip chip-blue">{{detail.deliveryAmount}}</label>
-            </div>
-            <div v-if="detail.nonAvailableAmount">
-              <label class="chip chip-grey">{{detail.nonAvailableAmount}}</label>
-            </div>        
-          </td>
-          <td class="price">
-            <div v-if="detail.storageAmount">
-              <span>{{detail.storagePrice}} Р</span>
-              <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
-            </div>
-            <div v-if="detail.deliveryAmount">
-              <span>{{detail.deliveryPrice}} Р</span>
-              <span class="buy-icon" v-if="buy" @click="addToCart(detail)"></span> 
-            </div>
-            <div v-if="detail.nonAvailableAmount">
-              <span>{{detail.nonAvailablePrice}} Р</span>
-              <span class="buy-icon" v-if="false" @click="addToCart(detail)"></span> 
-            </div>
-          </td>
-        </tr> -->
       </tbody>
     </table>
-    <div class="details-pagination">
-      <button class="btn gray prev">Предыдущая</button>
+    <div class="details-pagination" v-if="details.length > 0">
+      <button class="btn gray prev" @click="changePage('prev')" :disabled="currentPage === 1">Предыдущая</button>
       <div class="pages">
           <span>Страниц:</span>
-          <span class="red">1 из 10</span>
+          <span class="red">{{currentPage}} из {{pagesCount}}</span>
       </div>
-      <button class="btn gray next active">Следующая</button>
+      <button class="btn gray next active" @click="changePage('next')" :disabled="currentPage === pagesCount">Следующая</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from 'vuex'
 import TableItem from './TableItem'
 
 export default {
@@ -97,7 +59,19 @@ export default {
       carDetails: []
     }
   },
+  computed: {
+    ...mapState('Cart', [
+      'details'
+    ]),
+    ...mapGetters('Cart', [
+      'pagesCount',
+      'currentPage',
+    ])
+  },
   methods: {
+    ...mapActions('Cart', [
+      'changePage'
+    ]),
     handleDetailSelect(detail) {
       this.$emit('detailWasSelected', detail)
     }
