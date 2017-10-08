@@ -147,6 +147,15 @@ const actions = {
       })
       .catch(err => reject(err))
     })
+  },
+  contact(ctx, { email, name, message }) {
+    return new Promise((resolve, reject) => {
+      axios.post('contacts', {
+        email, name, message
+      }, { withCredentials: true })
+      .then(res => resolve(res))
+      .catch(err => reject(err))
+    })
   }
 }
 

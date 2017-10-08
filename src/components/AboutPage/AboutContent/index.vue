@@ -38,13 +38,13 @@
             <div class="right">
                 <form action="">
                     <div class="input-wrap name">
-                      <input type="text" placeholder="Фамилия Имя *" required>
+                      <input type="text" placeholder="Фамилия Имя *" v-model="name" required>
                     </div>
                     <div class="input-wrap email">
-                      <input type="text" placeholder="Электронная почта *" required>
+                      <input type="text" placeholder="Электронная почта *" v-model="email" required>
                     </div>
-                    <textarea name="" id="" cols="30" rows="3" placeholder="Ваше сообщение, предложение"></textarea>
-                    <button type="submit" class="btn black">Отправить</button>
+                    <textarea name="" id="" cols="30" rows="3" placeholder="Ваше сообщение, предложение" v-model="message"></textarea>
+                    <button type="submit" class="btn black" @click.prevent="send">Отправить</button>
                 </form>
             </div>
         </div>
@@ -74,6 +74,7 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import { bCollapse } from 'bootstrap-vue/lib/components'
+import { mapActions } from 'vuex'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import MapModal from './../../MapModal'
 
@@ -91,7 +92,29 @@ export default {
   data() {
     return {
       toggled: true,
-      mapModalIsShown: false
+      mapModalIsShown: false,
+      email: '',
+      name: '',
+      message: ''
+    }
+  },
+  methods: {
+    ...mapActions('Auth', [
+      'contact'
+    ]),
+    send() {
+      this.contact({
+        email: this.email,
+        name: this.name,
+        message: this.message
+      })
+      .then(() => {
+        this.$toastr('success', 'Отправлено')
+        this.email = ''
+        this.name = ''
+        this.message = ''
+      })
+      .catch(() => this.$toastr('error', 'Произошла ошибка', ''))
     }
   },
   components: {
