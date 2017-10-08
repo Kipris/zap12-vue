@@ -87,11 +87,11 @@ export default {
       'getDetails'
     ]),
     emitCar() {
-      this.setModelFilter(this.selectedMark.name)
+      this.setModelFilter(this.selectedMark)
       this.getDetails()
     },
     emitProducer() {
-      this.setProducerFilter(this.selectedProducer.name)
+      this.setProducerFilter(this.selectedProducer)
       this.getDetails()
     }
   },

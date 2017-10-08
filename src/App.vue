@@ -23,13 +23,15 @@ export default {
   name: 'app',
   methods: {
     ...mapActions('Auth', [
-      'getProfile'
+      'getProfile',
+      'loadOrdersHistory'
     ])
   },
   created() {
     this.getProfile()
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    // .then(() => {})
+    // .catch(() => {})
+    this.loadOrdersHistory()
   },
   components: {
     AppHeader,

@@ -118,7 +118,7 @@
                           </div>
                           <div class="info-menu">
                             <div class="personal-info" @click="personalInfoShow">Личная информация</div>
-                            <div class="orders" @click="ordersShow">Мои заказы (0)</div>
+                            <div class="orders" @click="ordersShow">Мои заказы ({{ordersCount}})</div>
                             <div class="garage" @click="handleGarage">Мой гараж</div>
                           </div>
                           <div class="actions">
@@ -300,7 +300,7 @@
       </div>
     </header>
     <CartModal v-if="false"/>
-    <OrderHistoryModal v-if="false"/>
+    <OrderHistoryModal v-if="ordersIsShown"/>
   </div>
   
 </template>
@@ -357,7 +357,8 @@ export default {
   computed: {
     ...mapState('Auth', [
       'profile',
-      'userCars'
+      'userCars',
+      'ordersCount'
     ]),
     mainPhone: {
       get() {
@@ -394,7 +395,8 @@ export default {
       'updatePassword',
       'loadGarage',
       'addCar',
-      'deleteCar'
+      'deleteCar',
+      'loadOrdersHistory'
     ]),
     goTo(car) {
       this.setModelFilter(car)
@@ -414,6 +416,8 @@ export default {
         .then((res) => {
           if (res.status === 200) this.accountShow()
         })
+        .then(() => this.loadOrdersHistory())
+        .then(() => {})
         .catch((err) => {
           this.$toastr('error', err, '')
         })

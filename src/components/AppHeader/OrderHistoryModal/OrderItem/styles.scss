@@ -1,0 +1,112 @@
+@import './../../../../assets/theme/styles';
+
+.order {
+  .heading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .chevron {
+      mask: url('../../../../assets/img/chevron.svg');
+      mask-size: cover;
+      display: block;
+      min-width: 10px;
+      height: 5px;
+      background-color: $black;
+      padding: 0;
+      transition: .3s ease-in;
+      &.opened {
+        transform: rotate(180deg);
+      }
+    }
+    .order-id {
+      display: flex;
+    }
+    .order-icon {
+      mask: url('../../../../assets/img/ic_ad.svg');
+      mask-size: cover;
+      display: block;
+      width: 18px;
+      height: 21px;
+      background-color: $black;
+      margin-right: 10px;
+    }
+    .order-price {
+      white-space: nowrap;
+    }
+    & > span {
+      padding: 10px;
+      font-size: 1.6rem;
+    }
+    & > span:first-child {
+      padding-left: 0;
+    }
+    & > span:last-child {
+      padding-right: 0;
+    }
+    .order-status {
+      margin-right: auto;
+    }
+    .red {
+      color: $red;
+    }
+  }
+}
+
+.actions {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $white-smoke;
+}
+
+.table-wrap {
+  margin-bottom: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  th, td {
+    font-size: 1.6rem;
+    color: $dark;
+  }
+  th {
+    padding: 10px 30px 10px 0;
+    border-bottom: 2px solid $white-smoke;
+    white-space: nowrap;
+    text-align: left;
+  }
+  th:last-child {
+    padding-left: 30px;
+    padding-right: 0;
+    text-align: right;
+  }
+  td {
+    padding: 10px 5px 10px 0;
+    border-bottom: 1px solid $white-smoke;
+  }
+  td:last-child {
+    padding-left: 5px;
+    padding-right: 0;
+    text-align: right;
+  }
+  .amount,
+  .price {
+    white-space: nowrap;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  table th, table td,
+  .history .order .heading > span {
+    font-size: 1.3rem;
+  }
+  .history .order .heading > span {
+    padding: 5px;
+  }
+}
+

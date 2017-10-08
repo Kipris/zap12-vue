@@ -3,7 +3,9 @@ import axios from '@/APIMock/api'
 
 const state = {
   profile: {},
-  userCars: []
+  userCars: [],
+  ordersCount: 0,
+  ordersHistory: []
 }
 const getters = {
 }
@@ -23,6 +25,12 @@ const mutations = {
   deleteUserCar(state, { id }) {
     const carIndex = state.userCars.findIndex(car => car.id === id)
     state.userCars.splice(carIndex, 1)
+  },
+  setOrdersCount(state, { count }) {
+    state.ordersCount = count
+  },
+  setOrdersHistory(state, { orders }) {
+    state.ordersHistory = orders
   }
 }
 const actions = {
@@ -124,6 +132,17 @@ const actions = {
       axios.delete(`cars/delete/${id}`, { withCredentials: true })
       .then((res) => {
         commit('deleteUserCar', { id })
+        resolve(res)
+      })
+      .catch(err => reject(err))
+    })
+  },
+  loadOrdersHistory({ commit }) {
+    return new Promise((resolve, reject) => {
+      axios.get('order/list', { withCredentials: true })
+      .then((res) => {
+        commit('setOrdersCount', { count: res.data.totalFound })
+        commit('setOrdersHistory', { orders: res.data.orders })
         resolve(res)
       })
       .catch(err => reject(err))
