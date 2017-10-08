@@ -300,7 +300,9 @@
       </div>
     </header>
     <CartModal v-if="false"/>
-    <OrderHistoryModal v-if="ordersIsShown"/>
+    <OrderHistoryModal
+      v-if="ordersIsShown"
+      @close="ordersIsShown = false"/>
   </div>
   
 </template>

@@ -4,7 +4,7 @@
         <div class="modal-content" id="scrollbar">
           <div class="modal-title">
           <div class="h2">История заказов</div>
-          <span class="cross">✖</span>
+          <span class="cross" @click="$emit('close')">✖</span>
         </div>
 
         <div class="modal-body">
