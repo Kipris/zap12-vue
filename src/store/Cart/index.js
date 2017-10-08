@@ -6,10 +6,12 @@ const state = {
   details: [],
   analogDetails: [],
   reloadedSelectedDetail: {},
+  showAnalogs: true,
   search: {
     carModel: [],
     detailProducer: [],
-    detailType: ''
+    detailType: '',
+    showPostions: 24
   }
 }
 const getters = {
@@ -23,9 +25,6 @@ const mutations = {
     // state.cartItems.push(detailToCart)
     state.cartItems.push(detailToAdd)
   },
-  setInventory(state, payload) {
-    state.cartItems = payload
-  },
   removeFromCart(state, { id }) {
     const itemToRemove = state.cartItems.findIndex(ci => ci.id === id)
     state.cartItems.splice(itemToRemove, 1)
@@ -34,13 +33,14 @@ const mutations = {
     state.details = payload
   },
   setModelFilter(state, payload) {
+    // const str = payload.reduce(curr => (`${curr.name}`), state.search.carModel)
     state.search.carModel = payload
   },
   setProducerFilter(state, payload) {
     state.search.detailProducer = payload
   },
-  setDetailType(state, payload) {
-    state.search.detailType = payload
+  setShowPositions(state, payload) {
+    state.search.showPostions = payload
   },
   changeAmount(state, { bookId, sign, maxAvailable }) {
     const detail = state.cartItems.find(item => item.bookId === bookId)
@@ -55,27 +55,37 @@ const mutations = {
   },
   selectDetail(state, payload) {
     state.reloadedSelectedDetail = payload
+  },
+  toggleShowAnalogs(state, payload) {
+    state.showAnalogs = payload
+  },
+  setSmartString(state, payload) {
+    state.search.smartString = payload
   }
 }
 const actions = {
+  // smartSearch({ state, dispatch, commit }, payload) {
+  //   if (state.search.carModel) {
+  //     commit('setModelFilter', { name: '' })
+  //   }
+  //   if (state.search.detailProducer) {
+  //     commit('setProducerFilter', { name: '' })
+  //   }
+  //   dispatch('getDetails')
+  // },
   getDetails({ state, commit }) {
     const params = {
-      // _sort: 'storageAmount',
-      // _order: 'desc',
-      // _limit: 24
-      limit: 24
+      limit: state.search.showPostions
     }
-    // if (state.search.carModel) {
-    //   params.carModel_like = state.search.carModel
-    // }
-    // if (state.search.detailProducer) {
-    //   params.detailProducer = state.search.detailProducer
-    // }
-    // if (state.search.detailType) {
-    //   params.detailType = state.search.detailType
-    // }
-    if (state.search.carModel) {
-      params.q = state.search.carModel
+    if (state.search.smartString) {
+      params.q = state.search.smartString
+    } else {
+      if (state.search.carModel) {
+        params.q = state.search.carModel.reduce((prev, curr) => `${prev} ${curr.name}`, '')
+      }
+      if (state.search.detailProducer) {
+        params.q = state.search.detailProducer.reduce((prev, curr) => `${prev} ${curr.name}`, params.q)
+      }
     }
     axios.get('/search', {
       params

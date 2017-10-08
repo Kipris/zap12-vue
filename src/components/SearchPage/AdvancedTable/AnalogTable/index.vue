@@ -7,7 +7,8 @@
           <TableItem v-for="detail in details"
                     :detail="detail"
                     :buy="true"
-                    @detailWasSelect="handleDetailSelect($event)" />
+                    @detailWasSelect="handleDetailSelect($event)"
+                    v-if="detail.offers.length > 0" />
         </tbody>
       </table>
     </div>

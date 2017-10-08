@@ -4,17 +4,20 @@
       <form>
         <div class="form-group">
           <label>Марка автомобиля</label> 
-          <multiselect v-model="selectedMark" 
-          :options="carOptions" 
-          :multiple="true" 
-          :close-on-select="false" 
-          :clear-on-select="false" 
-          :hide-selected="true" 
-          :preserve-search="true" 
-          placeholder="" 
-          label="name" 
-          track-by="name"
-          @close="emitCar">
+          <multiselect
+            v-model="selectedMark" 
+            :options="carOptions" 
+            :multiple="true" 
+            :close-on-select="false" 
+            :clear-on-select="false" 
+            :hide-selected="true" 
+            :preserve-search="true" 
+            placeholder="" 
+            label="name" 
+            track-by="name"
+            @input="selectCar"
+          />
+            <!-- @close="emitCar" -->
             <template slot="tag" scope="props">
               <span class="custom__tag">
                 <span>{{ props.option.name }}</span>
@@ -25,17 +28,20 @@
         </div>
         <div class="form-group">
           <label>По производителю</label>
-          <multiselect v-model="selectedProducer" 
-          :options="producerOptions" 
-          :multiple="true" 
-          :close-on-select="false" 
-          :clear-on-select="false" 
-          :hide-selected="true" 
-          :preserve-search="true" 
-          placeholder="" 
-          label="name" 
-          track-by="name"
-          @close="emitProducer">
+          <multiselect
+            v-model="selectedProducer" 
+            :options="producerOptions" 
+            :multiple="true" 
+            :close-on-select="false" 
+            :clear-on-select="false" 
+            :hide-selected="true" 
+            :preserve-search="true" 
+            placeholder=""
+            label="name"
+            track-by="name"
+            @input="selectProducer"
+          />
+            <!-- @close="emitProducer" -->
             <template slot="tag" scope="props">
               <span class="custom__tag">
                 <span>{{ props.option.name }}</span>
@@ -46,7 +52,7 @@
         </div>
         <div class="form-group checkbox-group">
           <label>Учитывать аналоги</label> 
-          <input class="tgl tgl-red" id="cb2" type="checkbox">
+          <input class="tgl tgl-red" id="cb2" type="checkbox" v-model="showAnalogs" @click="handleToggle">
           <label class="tgl-btn" for="cb2"></label>
         </div>
       </form>
@@ -63,6 +69,7 @@ export default {
   data() {
     return {
       selectedMark: [],
+      showAnalogs: true,
       carOptions: [
         { name: 'BMW' },
         { name: 'Renault' },
@@ -78,21 +85,33 @@ export default {
       ]
     }
   },
+  computed: {
+  },
   methods: {
     ...mapMutations('Cart', [
       'setModelFilter',
-      'setProducerFilter'
+      'setProducerFilter',
+      'toggleShowAnalogs',
+      'setSmartString'
+
     ]),
     ...mapActions('Cart', [
       'getDetails'
     ]),
-    emitCar() {
+    selectCar() {
       this.setModelFilter(this.selectedMark)
+      this.setSmartString('')
+      this.$router.push('/searchresults')
       this.getDetails()
     },
-    emitProducer() {
+    selectProducer() {
       this.setProducerFilter(this.selectedProducer)
+      this.setSmartString('')
+      this.$router.push('/searchresults')
       this.getDetails()
+    },
+    handleToggle() {
+      this.toggleShowAnalogs(this.showAnalogs)
     }
   },
   components: {

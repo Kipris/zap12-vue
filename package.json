@@ -15,6 +15,7 @@
     "@deveodk/vue-toastr": "^1.0.4",
     "axios": "^0.16.2",
     "debounce": "^1.0.2",
+    "lodash": "^4.17.4",
     "lodash.startcase": "^4.4.0",
     "pavilion": "^2.0.3",
     "style-loader": "^0.18.2",

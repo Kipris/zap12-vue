@@ -2,8 +2,11 @@
   <div>
     <ResultsTable :details="[detail]"
                   :buy="true" />
-    <AnalogTable :details="analogDetails"
-                 :buy="true"/>
+    <AnalogTable 
+      :details="analogDetails"
+      :buy="true"
+      v-if="showAnalogs"
+    />
   </div>
 </template>
 
@@ -27,7 +30,8 @@ export default {
   computed: {
     ...mapState('Cart', [
       'analogDetails',
-      'reloadedSelectedDetail'
+      'reloadedSelectedDetail',
+      'showAnalogs'
     ]),
     detail() {
       if (Object.keys(this.selectedDetail).length !== 0) {

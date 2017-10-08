@@ -23,7 +23,8 @@
         <TableItem v-for="detail in details"
                    :detail="detail"
                    :buy="buy"
-                   @detailWasSelected="handleDetailSelect($event)" />
+                   @detailWasSelected="handleDetailSelect($event)"
+                   v-if="detail.offers.length > 0" />
         <!-- <tr v-for="detail in details"
             @click="handleDetailSelect(detail)">
           <td class="producer">

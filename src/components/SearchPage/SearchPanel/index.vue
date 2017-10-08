@@ -23,6 +23,7 @@
                   <multiselect v-model="showRecordValue" 
                                v-bind:class='{singleSelect: true}'
                                placeholder=''
+                               @input="handleShowInput"
                                :options="showRecordOptions" 
                                :searchable="false" 
                                :close-on-select="true" 
@@ -37,7 +38,7 @@
 
 <script>
 import { mapActions, mapMutations } from 'vuex'
-import debounce from 'debounce'
+import { debounce } from 'lodash'
 import SearchInput from '@/uikit/SearchInput'
 import Multiselect from 'vue-multiselect'
 
@@ -45,17 +46,22 @@ export default {
   name: 'SearchPanel',
   methods: {
     ...mapMutations('Cart', [
-      'setModelFilter'
+      'setModelFilter',
+      'setShowPositions',
+      'setSmartString'
     ]),
     ...mapActions('Cart', [
       'getDetails'
     ]),
-    handleInput($event) {
-      console.log($event)
-      this.setModelFilter($event)
-      const debounced = debounce(this.getDetails, 1000)
+    handleInput: debounce(function ($event) {
+      this.setSmartString($event)
+      this.getDetails()
       this.$router.push('/searchresults')
-      debounced()
+    }, 1000),
+    handleShowInput($event) {
+      this.setShowPositions($event)
+      this.$router.push('/searchresults')
+      this.getDetails()
     }
   },
   components: {

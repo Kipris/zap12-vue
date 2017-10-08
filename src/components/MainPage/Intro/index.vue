@@ -7,7 +7,7 @@
         </small>
         <!-- TODO: search input: button = true -->
         <SearchInput placeholder="Поиск автозапчастей по номеру, по марке машины"
-                     @enter="search"
+                     @enter="handleInput"
                      :button="true" />
       </div>
     </div>
@@ -17,7 +17,7 @@
 
 import { mapActions, mapMutations } from 'vuex'
 import SearchInput from '@/uikit/SearchInput'
-import debounce from 'debounce'
+import { debounce } from 'lodash'
 
 export default {
   name: 'Intro',
@@ -29,14 +29,20 @@ export default {
       'getDetails'
     ]),
     ...mapMutations('Cart', [
-      'setModelFilter'
+      'setModelFilter',
+      'setSmartString'
     ]),
-    search($event) {
-      this.setModelFilter($event)
-      const debounced = debounce(this.getDetails, 1000)
-      debounced()
-      this.$router.push({ path: 'searchresults' })
-    }
+    // search($event) {
+    //   this.setModelFilter($event)
+    //   const debounced = debounce(this.getDetails, 1000)
+    //   debounced()
+    //   this.$router.push({ path: 'searchresults' })
+    // },
+    handleInput: debounce(function ($event) {
+      this.setSmartString($event)
+      this.getDetails()
+      this.$router.push('/searchresults')
+    }, 1000),
   }
 }
 </script>

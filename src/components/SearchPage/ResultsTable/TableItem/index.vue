@@ -5,7 +5,7 @@
     </td>
     <td class="vendor">
       <div>
-        {{detail.vendor}}
+        {{detail.number}}
       </div>
     </td>
     <td class="naming">
