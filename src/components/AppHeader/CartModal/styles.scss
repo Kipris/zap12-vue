@@ -15,8 +15,7 @@
 
 table {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 40px;
+  border-collapse: collapse;  
   th, td {
     font-size: 1.6rem;
     color: $dark;
@@ -93,6 +92,7 @@ table {
     }
   }
   .h1 {
+    margin-top: 40px;
     margin-bottom: 30px;
   }
   .promocode,
