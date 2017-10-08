@@ -138,6 +138,19 @@ table {
   }
 }
 
+.details-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+      text-transform: uppercase;
+      font-size: 1.3rem;
+      &.red {
+          color: $red;
+      }
+  }
+}
+
 @media (max-width: 1200px) {
   .table-title {
     flex-direction: column;
