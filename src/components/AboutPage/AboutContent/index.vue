@@ -63,8 +63,11 @@
 
     </div>
     <transition name="fade">
-    <MapModal v-if="mapModalIsShown"
-              @close="mapModalIsShown = false"/>
+    <portal to="map" v-if="mapModalIsShown">
+      <MapModal
+      @close="mapModalIsShown = false"
+    />
+    </portal>
     </transition>
     
   </div>

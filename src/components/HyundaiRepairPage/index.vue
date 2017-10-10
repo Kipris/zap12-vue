@@ -33,10 +33,11 @@
         </div>  
       </div>
     </div>
-    <MapModal
-      v-if="showMap"
+    <portal to="map" v-if="showMap">
+      <MapModal
       @close="showMap = false"
     />
+    </portal>
   </section>
 </template>
 

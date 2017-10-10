@@ -3,6 +3,7 @@
     <AppHeader />
     <router-view id="content"></router-view>
     <AppFooter id="footer"/>
+    <portal-target name="map" />
   </div>
 </template>
 

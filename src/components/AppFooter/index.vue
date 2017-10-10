@@ -40,9 +40,11 @@
       </div>
     </div>
     </div>
-    <MapModal
-      v-if="showMap"
-      @close="showMap = false"/>
+    <portal to="map" v-if="showMap">
+      <MapModal
+      @close="showMap = false"
+    />
+    </portal>
   </footer>
 </template>
 
