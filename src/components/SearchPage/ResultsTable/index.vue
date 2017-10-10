@@ -20,14 +20,14 @@
         </tr>
       </thead>
       <tbody>
-        <TableItem v-for="detail in details"
+        <TableItem v-for="detail in detailsHandler"
                    :detail="detail"
                    :buy="buy"
                    @detailWasSelected="handleDetailSelect($event)"
                    v-if="detail.offers.length > 0" />
       </tbody>
     </table>
-    <div class="details-pagination" v-if="details.length > 0">
+    <div class="details-pagination" v-if="pagesCount > 1 && showPagination">
       <button class="btn gray prev" @click="changePage('prev')" :disabled="currentPage === 1">Предыдущая</button>
       <div class="pages">
           <span>Страниц:</span>
@@ -52,6 +52,10 @@ export default {
     buy: {
       type: Boolean,
       default: false
+    },
+    showPagination: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -60,13 +64,21 @@ export default {
     }
   },
   computed: {
-    ...mapState('Cart', [
-      'details'
-    ]),
+    ...mapState('Cart', {
+      detailsFromStore: 'details',
+      search: 'search',
+      totalFound: 'totalFound'
+    }),
     ...mapGetters('Cart', [
       'pagesCount',
       'currentPage',
-    ])
+    ]),
+    detailsHandler() {
+      if (this.details) {
+        return this.details
+      }
+      return this.detailsFromStore
+    }
   },
   methods: {
     ...mapActions('Cart', [

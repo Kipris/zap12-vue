@@ -7,7 +7,9 @@
                    @producerSelected="filteredProducer = $event"/>
           <router-view @detailWasSelected="handleSelect" class="table-container"
                        :details="details"
+                       :showPagination="true"
                        :selectedDetail="selectedDetail"></router-view>
+          <!-- <h1 v-else>Введите запрос</h1> -->
           <!-- <ResultsTable /> -->
         </div>    
     </div> 

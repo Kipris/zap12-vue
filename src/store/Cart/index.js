@@ -87,7 +87,7 @@ const actions = {
         params.q = state.search.detailProducer.reduce((prev, curr) => `${prev} ${curr.name}`, params.q)
       }
     }
-    params.q = 'bmw'
+    // params.q = 'bmw'
     axios.get('/search', {
       params
     })

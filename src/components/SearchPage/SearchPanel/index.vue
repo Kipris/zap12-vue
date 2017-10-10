@@ -48,7 +48,8 @@ export default {
     ...mapMutations('Cart', [
       'setModelFilter',
       'setShowPositions',
-      'setSmartString'
+      'setSmartString',
+      'changeOffset'
     ]),
     ...mapActions('Cart', [
       'getDetails'
@@ -59,6 +60,7 @@ export default {
       this.$router.push('/searchresults')
     }, 1000),
     handleShowInput($event) {
+      this.changeOffset(0)
       this.setShowPositions(Number($event))
       this.$router.push('/searchresults')
       this.getDetails()

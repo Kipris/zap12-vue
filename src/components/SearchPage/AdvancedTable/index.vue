@@ -38,10 +38,10 @@ export default {
         return this.selectedDetail
       }
       return this.reloadedSelectedDetail
-    },
-    trimmedAnalogs() {
-      return this.details.splice(0, 4)
     }
+    // trimmedAnalogs() {
+    //   return this.details.splice(0, 4)
+    // }
   },
   methods: {
     ...mapActions('Cart', [
