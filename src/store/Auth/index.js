@@ -47,6 +47,18 @@ const actions = {
       })
     })
   },
+  register({ state }, { email, password, tel, name }) {
+    return new Promise((resolve, reject) => {
+      axios.post('registration', {
+        password,
+        name,
+        phone1: tel,
+        email
+      })
+      .then(res => resolve(res))
+      .catch(err => reject(err))
+    })
+  },
   logOut({ commit }) {
     return new Promise((resolve, reject) => {
       axios.post('logout')

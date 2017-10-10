@@ -26,7 +26,9 @@ Vue.use(VueGoogleMaps, {
 
 export default {
   name: 'MapModal',
-  data() {},
+  data() {
+    return {}
+  },
   methods: {
     close() {
       this.$emit('close')

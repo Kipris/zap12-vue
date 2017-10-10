@@ -22,7 +22,7 @@
           </div>
           <div class="map-wrap">
             <div class="h1">Схема проезда</div>
-            <button class="btn full-red">Смотреть</button>
+            <button class="btn full-red" @click="showMap = true">Смотреть</button>
             <gmap-map
               :center="{lat:55.8495078, lng:37.6172781}"
               :zoom="15"
@@ -32,13 +32,18 @@
           </div>
         </div>  
       </div>
-    </div>    
+    </div>
+    <MapModal
+      v-if="showMap"
+      @close="showMap = false"
+    />
   </section>
 </template>
 
 <script>
 import Vue from 'vue';
 import * as VueGoogleMaps from 'vue2-google-maps'
+import MapModal from '../MapModal'
 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -48,7 +53,15 @@ Vue.use(VueGoogleMaps, {
 })
 
 export default {
-  name: 'HyundaiRepairPage'
+  name: 'HyundaiRepairPage',
+  data() {
+    return {
+      showMap: false
+    }
+  },
+  components: {
+    MapModal
+  }
 }
 </script>
 

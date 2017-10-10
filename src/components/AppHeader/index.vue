@@ -92,8 +92,25 @@
                                      placeholder="Пароль"
                                      required>
                             </div>
+                            <div v-if="registerShow">
+                              <div class="input-wrap email">
+                                <span></span>
+                                <input type="text"
+                                      v-model="user.name"
+                                      placeholder="Имя"
+                                      required>
+                              </div>
+                              <div class="input-wrap email">
+                                <span></span>
+                                <the-mask type="phone"
+                                      :mask="'+7 (###) ###-##-##'"
+                                      v-model="user.tel"
+                                      placeholder="Телефон"
+                                      required />
+                              </div>
+                            </div>
                             <div class="actions">
-                              <button class="btn light" @click="accountShow">Создать аккаунт</button>
+                              <button class="btn light" @click.prevent="handleCreateAcc">Создать аккаунт</button>
                               <button class="btn full-red"
                                       @click.prevent="handleLogIn">Войти в кабинет</button>
                             </div>
@@ -320,11 +337,14 @@ export default {
   data() {
     return {
       emailToRestore: '',
+      registerShow: false,
       user: {
         email: '',
         password: '',
         phone1: '',
-        phone2: ''
+        phone2: '',
+        name: '',
+        tel: ''
       },
       car: {
         brand: '',
@@ -391,6 +411,7 @@ export default {
     ]),
     ...mapActions('Auth', [
       'logIn',
+      'register',
       'logOut',
       'restoreEmail',
       'updatePhones',
@@ -487,6 +508,22 @@ export default {
         this.accountShow()
       })
       .catch(() => {})
+    },
+    handleCreateAcc() {
+      if (this.registerShow) {
+        this.register({
+          name: this.user.name,
+          tel: this.user.tel,
+          email: this.user.email,
+          password: this.user.password
+        })
+        .then(() => {
+          this.accountShow()
+          this.$toastr('success', 'Регистрация успешна', '')
+        })
+        .catch(() => this.$toastr('error', 'Произошла ошибка', ''))
+      }
+      this.registerShow = true
     },
     handleBackGarage() {
       this.garageIsShown = false

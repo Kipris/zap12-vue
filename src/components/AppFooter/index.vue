@@ -36,10 +36,13 @@
       </div>
       <div class="footer-item">
           <p class="location">г. Москва, Березовая аллея, 12, корп. 4</p>
-          <button class="btn default">На карте</button>
+          <button class="btn default" @click="showMap = true">На карте</button>
       </div>
     </div>
     </div>
+    <MapModal
+      v-if="showMap"
+      @close="showMap = false"/>
   </footer>
 </template>
 
@@ -53,7 +56,9 @@ Vue.use(VueScrollReveal);
 export default {
   name: 'AppFooter',
   data() {
-    return {}
+    return {
+      showMap: false
+    }
   },
   components: {
     MapModal
