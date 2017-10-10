@@ -92,7 +92,6 @@ const actions = {
       params
     })
     .then((res) => {
-      console.log(res)
       commit('setTotalFound', res.data.totalFound)
       commit('setDetails', res.data.products)
     })
@@ -105,7 +104,6 @@ const actions = {
       }
     })
     .then((res) => {
-      console.log(res)
       commit('selectDetail', res.data.currentCode)
       commit('setAnalogs', res.data.analogs)
     })
