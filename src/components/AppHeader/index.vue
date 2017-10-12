@@ -406,7 +406,7 @@ export default {
   },
   methods: {
     ...mapMutations('Cart', [
-      'setModelFilter'
+      'setSmartString'
     ]),
     ...mapActions('Cart', [
       'getDetails'
@@ -424,12 +424,13 @@ export default {
       'loadOrdersHistory'
     ]),
     goTo(car) {
-      this.setModelFilter(car)
+      this.setSmartString(car)
       if (this.$route.path === '/') {
         this.$router.push({ path: 'searchresults' })
       } else {
         this.getDetails()
       }
+      this.detailsShown = false
     },
     handleLogIn() {
       if (this.user.email.length > 0 &&
@@ -520,7 +521,7 @@ export default {
           password: this.user.password
         })
         .then(() => {
-          this.accountShow()
+          this.handleLogIn()
           this.$toastr('success', 'Регистрация успешна', '')
         })
         .catch(() => this.$toastr('error', 'Произошла ошибка', ''))

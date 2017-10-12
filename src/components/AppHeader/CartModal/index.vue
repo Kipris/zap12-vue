@@ -4,7 +4,7 @@
       <div class="modal">
           <div class="modal-content" id="scrollbar">
             <div class="modal-title">
-              <div class="h1">1 товар в корзине</div>
+              <div class="h1">{{cartItems.length}} товар в корзине</div>
               <span class="cross" @click="close">✖</span>
             </div>
             <div class="modal-body">
@@ -125,12 +125,12 @@
               <div class="total-sum">
                 <div class="total">
                   <span>Сумма заказа</span>
-                  <span>{{totalPrice}}</span>
+                  <span>{{totalPrice}} Р</span>
                 </div>
                 <div class="discount">
                   <span>Со скидкой</span>
                   <!-- <span class="red">{{discountPrice}}2 149 Р</span> -->
-                  <span class="red">{{discountPrice}} P</span>
+                  <span class="red">{{discountPrice}} Р</span>
                 </div>
               </div>
               <div class="actions">
@@ -173,8 +173,11 @@ export default {
       return mapped.reduce((a, b) => a + b);
     },
     discountPrice() {
-      const discount = this.totalPrice / this.profile.discount
-      return this.totalPrice - discount
+      if (this.profile.discount > 0) {
+        const discount = this.totalPrice / this.profile.discount
+        return this.totalPrice - discount
+      }
+      return this.totalPrice
     }
   },
   methods: {
