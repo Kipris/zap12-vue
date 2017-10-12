@@ -27,7 +27,7 @@
                     <a class="nav-link navbar-dropdown" v-bind:class="{ active: detailsShown }">
                       <span class="" v-on:click="detailsShow">Запчасти</span>
                       <transition name="fade">
-                        <div class="details-dropdown dropdown" v-show="detailsShown">
+                        <div class="details-dropdown dropdown" v-show="detailsShown" v-on-clickaway="hideDetails">
                           <div class="container">
                               <div class="car-row">
                                 <div v-for="car in cars.row1"
@@ -64,6 +64,7 @@
                         <transition name="fade">
                           <Cart
                             v-if="cartShown"
+                            v-on-clickaway="hideCart"
                             @close="cartShown = false"/>
                         </transition>
                     </span>
@@ -120,7 +121,7 @@
                       </transition>
 
                       <transition name="fade">
-                        <div class="dropdown-menu account-menu" v-show="accountShown">
+                        <div class="dropdown-menu account-menu" v-show="accountShown" v-on-clickaway="hideCabinet">
                           <div class="h3">Личный кабинет</div>
                           <div class="info">
                             <div class="email">{{profile.email}}</div>
@@ -195,7 +196,7 @@
                       </transition>
 
                       <transition name="fade">
-                        <div class="dropdown-menu garage-menu" v-show="garageIsShown">
+                        <div class="dropdown-menu garage-menu" v-show="garageIsShown" v-on-clickaway="hideGarage">
                           <div class="menu-title">
                             <span class="back" @click="handleBackGarage"></span>
                             <div class="h3">Мой гараж</div>
@@ -329,6 +330,7 @@
 import { mixin as clickaway } from 'vue-clickaway';
 import { TheMask } from 'vue-the-mask'
 import { mapState, mapMutations, mapActions } from 'vuex'
+// import { debounce } from 'lodash'
 import Cart from './Cart'
 import CartModal from './CartModal'
 import OrderHistoryModal from './OrderHistoryModal'
@@ -425,11 +427,8 @@ export default {
     ]),
     goTo(car) {
       this.setSmartString(car)
-      if (this.$route.path === '/') {
-        this.$router.push({ path: 'searchresults' })
-      } else {
-        this.getDetails()
-      }
+      this.$router.push({ path: '/searchresults' })
+      this.getDetails()
       this.detailsShown = false
     },
     handleLogIn() {
@@ -654,6 +653,22 @@ export default {
       this.ordersIsShown = false;
       this.garageIsShown = false;
       this.responsiveMenuShown = false;
+    },
+    hideCart() {
+      this.cartShown = false
+    },
+    hideCabinet($event) {
+      if ($event.screenY > 160) {
+        this.accountShown = false
+      }
+    },
+    hideGarage() {
+      this.garageIsShown = false
+    },
+    hideDetails($event) {
+      if ($event.screenY > 380) {
+        this.detailsShown = false
+      }
     }
   },
   created() {

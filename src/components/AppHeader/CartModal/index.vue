@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="modal-backdrop">
-      <div class="modal">
+      <div class="modal" v-on-clickaway="close">
           <div class="modal-content" id="scrollbar">
             <div class="modal-title">
               <div class="h1">{{cartItems.length}} товар в корзине</div>
@@ -145,10 +145,12 @@
 </template>
 
 <script>
+import { mixin as clickaway } from 'vue-clickaway';
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   name: 'CartModal',
+  mixins: [clickaway],
   props: {
     cartItems: {
       type: Array
