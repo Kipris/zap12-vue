@@ -88,7 +88,12 @@ a {
               margin-left: -33px;
           }
           span.mail::before {
-              content: url('./../../assets/img/ic_message.png');  
+              content: '';
+              mask: url('./../../assets/img/ic_message.svg');
+              mask-size: cover;
+              width: 24px;
+              height: 24px;
+              background-color: $red;  
               margin-top: -12px;
               margin-left: -33px;
           }

@@ -26,8 +26,24 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    span {
+    .h3 {
+      
+    }
+    .time {
+      font-size: 1.3rem;
       color: $dark-grey;
+      position: relative;
+      margin-left: 40px;
+      &::before {
+        content: '';
+        mask: url('../../../assets/img/ic_calender.svg');
+        mask-size: cover;
+        background-color: $dark-grey;
+        width: 21px;
+        height: 20px;
+        position: absolute;
+        left: -30px;
+      }
     }
   }
 }

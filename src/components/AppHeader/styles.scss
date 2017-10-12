@@ -230,7 +230,7 @@ a {
 .toggle-menu-icon {
   width: 46px;
   height: 46px;
-  padding: 12px 25.5px;
+  padding: 12px;
   span {
     cursor: pointer;
     display: block;
@@ -361,7 +361,9 @@ label.opened + nav {
   .navbar-menu {
       display: none;
   }
- 
+  .login .btn {
+    display: none;
+  }
   .toggle-menu-wrap {
     display: block;
   }
@@ -442,6 +444,11 @@ label.opened + nav {
       content: url('../../assets/img/forward.svg');
     }
   }
+  .forgot {
+    font-size: 1.6rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -455,7 +462,35 @@ label.opened + nav {
       color: $dark-grey;
     }
     .input-wrap {
-      position: relative;   
+      position: relative; 
+      & span::before {
+        content: '';
+        background-color: $dark;
+        left: 15px;
+        top: 50%;
+        position: absolute;
+      }
+      &.email span::before {
+        mask: url('../../assets/img/ic_message.svg');
+        mask-size: cover; 
+        margin-top: -25px;
+        width: 24px;
+        height: 24px;
+      }
+      &.password span::before {
+        mask: url('../../assets/img/ic_visibility.svg');
+        mask-size: cover; 
+        margin-top: -16px;
+        width: 21px;
+        height: 9px;
+        cursor: pointer;
+      }
+      &.password span.active::before {
+        background-color: $red;
+      }
+      input {
+        padding-left: 50px;
+      }
     }
     input {
       width: 100%;

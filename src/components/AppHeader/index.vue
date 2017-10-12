@@ -146,7 +146,7 @@
                       </transition>
 
                       <transition name="fade">
-                        <div class="dropdown-menu personal-info-menu" v-show="personalInfoIsShown">
+                        <div class="dropdown-menu personal-info-menu" v-show="personalInfoIsShown" >
                           <div class="menu-title">
                             <span class="back" @click="accountShow"></span>
                             <div class="h3">Личная информация</div>
@@ -326,6 +326,7 @@
 
 <script>
 // import Vue from 'vue'
+import { mixin as clickaway } from 'vue-clickaway';
 import { TheMask } from 'vue-the-mask'
 import { mapState, mapMutations, mapActions } from 'vuex'
 import Cart from './Cart'
@@ -334,6 +335,7 @@ import OrderHistoryModal from './OrderHistoryModal'
 
 export default {
   name: 'AppHeader',
+  mixins: [clickaway],
   data() {
     return {
       emailToRestore: '',
@@ -638,6 +640,18 @@ export default {
       this.personalInfoIsShown = false;
       this.ordersIsShown = false;
       this.garageIsShown = true;
+      this.responsiveMenuShown = false;
+    },
+    away() {
+      this.contactsShown = false;
+      this.detailsShown = false;
+      this.cartShown = false;
+      this.loginShown = false;
+      this.accountShown = false;
+      this.forgotPasswordIsShown = false;
+      this.personalInfoIsShown = false;
+      this.ordersIsShown = false;
+      this.garageIsShown = false;
       this.responsiveMenuShown = false;
     }
   },

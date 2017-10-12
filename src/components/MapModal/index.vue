@@ -1,16 +1,18 @@
 <template>
-  <div class="modal-backdrop">
-    <div class="modal">
-      <span class="cross" @click="close">✖</span>
-      <gmap-map
-        :center="{lat:55.8495078, lng:37.6172781}"
-        :zoom="15"
-        style="width: 100%; height: 100%"
-        map-type-id="terrain">
-        <gmap-marker :position="{lat:55.8495078, lng:37.6172781}"></gmap-marker>
-      </gmap-map>
+  <transition name="fade">
+    <div class="modal-backdrop">
+      <div class="modal">
+        <span class="cross" @click="close">✖</span>
+        <gmap-map
+          :center="{lat:55.8495078, lng:37.6172781}"
+          :zoom="15"
+          style="width: 100%; height: 100%"
+          map-type-id="terrain">
+          <gmap-marker :position="{lat:55.8495078, lng:37.6172781}"></gmap-marker>
+        </gmap-map>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
