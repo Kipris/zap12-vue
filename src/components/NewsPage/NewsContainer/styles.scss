@@ -19,9 +19,20 @@
           color: #000;
           margin: 0;
         }
-        span {
+        .time {
           font-size: 1.3rem;
           color: $red;
+          position: relative;
+          &::before {
+            content: '';
+            mask: url('../../../assets/img/ic_calender.svg');
+            mask-size: cover;
+            background-color: $red;
+            width: 21px;
+            height: 20px;
+            position: absolute;
+            left: -30px;
+          }
         }
     }
     p {

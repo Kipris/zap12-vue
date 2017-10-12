@@ -1,14 +1,14 @@
 <template>
   <div>
   <div class="wrapper">
-    <ul class="items">
+    <ul class="items" id="scrollbar">
         <li class="item" v-for="(detail, i) in details">
           <div class="detail-name">{{detail.name}}</div>
           <div class="price-wrapper">
             <div class="detial-price">
               <!-- TODO computed for universal price -->
               <span class="price">{{detail.offerPrice}} P</span>
-              <span class="bucket" @click="removeFromCart({ id: detail.bookId })">Удалить</span>
+              <span class="bucket" @click="removeFromCart({ id: detail.bookId })"></span>
             </div>
             <div class="add-more">
               <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '-' })"> - </button>

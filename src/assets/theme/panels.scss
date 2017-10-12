@@ -8,14 +8,13 @@
   color: $white;
   position: relative;
   .panel-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      & *:first-child {
-          font-family: 'Open Sans', sans-serif;
-          margin-bottom: 22px;
-      }
-      
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    & *:first-child {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 22px;
+    }      
   }
   
   &.light {

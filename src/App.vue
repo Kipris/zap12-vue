@@ -49,7 +49,6 @@ export default {
 
 <style lang="scss">
   @import url('../static/toastr.css');
-
   #content {
     margin-bottom: 315px;
     z-index: 10;
@@ -64,6 +63,11 @@ export default {
     left: 0;
     z-index: 9;
   }
+  @media (max-width: 1024px) {
+    #app {
+      overflow-x: hidden;
+    }
+  }  
   @media (max-width: 991px) {
     #content {
       margin-bottom: 591px;

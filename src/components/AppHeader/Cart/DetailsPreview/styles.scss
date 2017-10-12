@@ -57,3 +57,21 @@ ul.items {
   display: flex;
   justify-content: space-between;
 }
+
+.detial-price {
+  display: flex;
+}
+
+.bucket {
+  position: relative;
+  &::after {
+    content: '';
+    mask: url('../../../../assets/img/Trash.svg');
+    mask-size: cover;
+    background-color: $dark-grey;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -25px;
+  }
+}
