@@ -6,28 +6,30 @@
             <div class="details-item panel body-details" v-scroll-reveal>
                 <h3>Кузовные детали</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <button class="btn full-red"  @click="handleSelect('body-details')">Смотреть</button>
+                <button class="btn full-red"  @click="handleSelect('кузов')">Смотреть</button>
             </div>
             <div class="details-item panel chassis" v-scroll-reveal>
                 <h3>Ходовую часть автомобиля</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <button class="btn full-red"  @click="handleSelect('chassis')">Смотреть</button>
+                <button class="btn full-red"  @click="handleSelect('ходовая')">Смотреть</button>
             </div> 
         </div>
         <div class="details-wrap">
             <div class="details-item panel optics" v-scroll-reveal>
                 <h3>Оптика</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
-                <button class="btn full-red" @click="handleSelect('optics')" >Смотреть</button>
+                <button class="btn full-red" @click="handleSelect('оптика')" >Смотреть</button>
             </div>
             <div class="details-item panel consumables" v-scroll-reveal>
                 <h3>Расходные материалы</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
+                <button class="btn full-red" @click="handleSelect('расходные')" >Смотреть</button>
                 <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>
             <div class="details-item panel care" v-scroll-reveal>
                 <h3>Средства по уходу</h3>
                 <Arrow v-bind:class="{ arrowContainer: true }" />
+                <button class="btn full-red" @click="handleSelect('уход')" >Смотреть</button>
                 <router-link class="btn full-red" :to="'/searchresults'" tag="button">Смотреть</router-link>
             </div>   
         </div>
@@ -50,10 +52,11 @@ export default {
       'getDetails'
     ]),
     ...mapMutations('Cart', [
-      'setDetailType'
+      'setSmartString'
     ]),
     handleSelect(detailType) {
-      this.setDetailType(detailType)
+      this.setSmartString(detailType)
+      this.getDetails()
       this.$router.push('/searchresults')
     }
   },
