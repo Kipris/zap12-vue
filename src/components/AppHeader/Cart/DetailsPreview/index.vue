@@ -11,9 +11,14 @@
               <span class="bucket" @click="removeFromCart({ id: detail.bookId })"></span>
             </div>
             <div class="add-more">
-              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '-' })"> - </button>
-              <input type="text" class="amount" v-model="detail.amount">
-              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '+' })"> + </button>
+              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '-', maxAvailable: detail.maxAvailable })"> - </button>
+              <input type="text" class="amount" :value="detail.amount"
+                @change="changeAmount({
+                  bookId: detail.bookId,
+                  amount: $event.target.value,
+                  maxAvailable: detail.maxAvailable
+                })">
+              <button class="sign" @click.stop="changeAmount({ bookId: detail.bookId, sign: '+', maxAvailable: detail.maxAvailable })"> + </button>
             </div>
           </div>
         </li>

@@ -30,7 +30,12 @@
                         <input type="text" class="amount" v-model="detail.amount">
                         <button class="sign" @click.stop="changeAmount({ detailId: detail.id, sign: '+' })"> + </button> -->
                         <button class="sign" @click="changeAmount({ bookId: detail.bookId, sign: '-', maxAvailable: detail.maxAvailable })"> - </button>
-                        <input type="text" class="amount" :value="detail.amount">
+                        <input type="text" class="amount" :value="detail.amount"
+                          @change="changeAmount({
+                            bookId: detail.bookId,
+                            amount: $event.target.value,
+                            maxAvailable: detail.maxAvailable
+                          })">
                         <button class="sign" @click="changeAmount({ bookId: detail.bookId, sign: '+', maxAvailable: detail.maxAvailable })"> + </button>
                       </td>
                       <td class="price-row">

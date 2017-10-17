@@ -44,8 +44,18 @@ const mutations = {
   setShowPositions(state, payload) {
     state.search.showPostions = payload
   },
-  changeAmount(state, { bookId, sign, maxAvailable }) {
+  changeAmount(state, { bookId, sign, amount, maxAvailable }) {
     const detail = state.cartItems.find(item => item.bookId === bookId)
+    if (!sign && amount) {
+      // if direct change
+      detail.amount = amount
+    }
+    if (amount < 0) {
+      detail.amount = 0
+    }
+    if (detail.amount > maxAvailable) {
+      detail.amount = maxAvailable
+    }
     if (sign === '+' && detail.amount !== maxAvailable) {
       detail.amount += 1
     } else if (sign === '-' && detail.amount > 1) {
