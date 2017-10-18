@@ -1,0 +1,112 @@
+
+@import './../../../../assets/theme/styles';
+
+.chip {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: $black;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -5px;
+    display: block;    
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  &.chip-grey::after {
+    background-color: #8D8D8D;
+  }
+  &.chip-green::after {
+    background-color: #39CA02;
+  }
+  &.chip-blue::after {
+    background-color: #02A5CA;
+  }
+}
+
+tbody {
+  tr {
+    cursor: pointer;
+  }
+  tr:hover {
+    background-color: transparentize($black, .9);
+  }
+  td {
+    font-size: 1.3rem;
+    color: transparentize($black, .2);      
+    vertical-align: top;
+    border-spacing: 0 0;
+    border-bottom: 1px solid transparentize($black, .85); 
+    padding: 0 !important;     
+    &:nth-child(odd) {
+      background-color: transparentize($light-grey, .8);
+    }
+    & > div {
+      width: inherit;
+      padding: 10px 8px;
+      border-bottom: 1px solid transparentize($black, .85);
+      .chip::after {
+        right: 5px;
+      }
+    }
+    & > div:last-child {
+      border: none;
+    }
+    &.availability {
+      width: 60px;
+    }
+    &.naming {
+      max-width: 410px;
+    }
+    label {
+      display: block;
+      margin: 0;
+      position: relative;
+    }
+  }    
+}  
+
+
+.price {
+  width: 101px;
+  & > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  span {
+    white-space: nowrap;
+  }
+  .buy-icon {
+    width: 25px;
+    height: 17px;
+  }
+  .buy-icon::after {
+    content: '';
+    mask: url('../../../../assets/img/ic_bag.svg');
+    mask-size: cover;
+    background-color: $dark-grey;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    position: absolute;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  table {
+    .producer {
+      display: none;
+    }
+    .vendor {
+      display: none;
+    }
+  }
+}
+  

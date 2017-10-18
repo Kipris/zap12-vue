@@ -1,0 +1,97 @@
+//BUTTONS
+@import 'colors';
+
+.btn {
+  border-radius: 100px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  text-transform: uppercase;    
+  transition: background-color 0.3s ease-in;
+  max-height: 40px;
+  font-family: 'Open Sans', sans-serif;
+  //DEFAULT
+  &.default {
+      background-color: transparent;
+      border: 1px solid $dark-grey;
+      color: $dark-grey;
+      &:hover {
+          background-color: $dark-grey;
+          color: $white; 
+      }
+  }
+  
+  //RED
+  &.red {
+      background-color: transparent;
+      border: 1px solid $red;
+      color: $red;
+      &:hover {
+          background-color: $red;
+          color: $black; 
+      }
+  }
+  
+  //FULL-RED
+  &.full-red {
+      background-color: $red;
+      border: 1px solid $red;
+      color: $black;
+      &:hover {
+          background-color: transparent;
+          color: $red; 
+      }
+  }
+
+  //WHITE
+  &.white {
+    background-color: $white;
+    border: 1px solid $white;
+    color: $black;
+    &:hover {
+        background-color: transparent;
+        color: $white; 
+    }
+  }
+
+  //BLACK
+  &.black {
+    background-color: $black;
+    border: 1px solid $black;
+    color: $white;
+    &:hover {
+        background-color: transparent;
+        color: $black; 
+    }
+  }
+
+  //LIGHT
+  &.light {
+    background-color: transparent;
+    color: $dark;
+    border: 2px solid #EFEFEF;
+    &:hover {
+      background-color: #EFEFEF;
+      color: $black; 
+    }
+  }
+  
+  //PAGINATION BUTTONS
+  &.prev,
+  &.next {
+      cursor: default;
+      background-color: transparent;
+      border: 1px solid $light-grey;
+      color: $light-grey;
+      &.active {
+          cursor: pointer;
+          color: $dark-grey;
+          border: 1px solid $dark-grey;
+          &:hover {
+              background-color: $dark-grey;
+              color: $white; 
+          }
+      }        
+  }
+}

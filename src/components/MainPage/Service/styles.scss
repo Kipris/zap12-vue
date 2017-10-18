@@ -1,0 +1,100 @@
+@import './../../../assets/theme/styles';
+
+.service {
+  padding: 30px;
+  background-color: $dark;
+  .service-wrap {
+    display: flex;
+  }
+  .service-item {
+    flex: 1;
+    margin: 0 25px;
+    position: relative;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    &::before {
+      content: ''; 
+      display: block;
+      width: 41px;
+      height: 45px;
+      background-color: $dark;
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      margin-top: -22.5px;
+    }
+    &::after {
+        display: block;
+        position: absolute;
+        right: -15px;
+        top: 50%;
+        margin-top: -14px; 
+    }
+    &:nth-child(1)::after {
+        content: url('./../../../assets/img/settings.svg');            
+    }
+    &:nth-child(2)::after {
+        content: url('./../../../assets/img/delivery.svg');
+    }
+    &:nth-child(3)::after {
+        content: url('./../../../assets/img/speech-bubble.svg');
+    }
+    &:nth-child(4)::after {
+        content: url('./../../../assets/img/garanty.svg');
+    }
+  }
+}
+
+
+@media (max-width: 990px) {
+  .service {
+      .service-wrap {
+          flex-wrap: wrap;
+          justify-content: space-between;
+      }
+      .service-item {
+          min-width: 220px;
+          margin-bottom: 25px;
+      }
+      .service-item:nth-child(odd) {
+          margin-left: 0;
+          margin-right: 25px;
+      }
+      .service-item:nth-child(even) {
+          margin-left: 25px;
+          margin-right: 0;
+      }
+  }
+}
+
+@media (max-width: 768px) {
+  .service {
+      .service-item {
+          min-width: auto;
+      }
+  }
+}
+
+@media (max-width: 540px) {
+  .service {
+      .service-item {
+          margin: 0 0 25px 0;
+          min-width: 100%;
+      }
+      .service-item:nth-child(odd) {
+          margin-left: 0;
+          margin-right: 0;
+      }
+      .service-item:nth-child(even) {
+          margin-left: 0;
+          margin-right: 0;
+      }
+  }
+}
+
+

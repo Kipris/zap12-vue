@@ -1,0 +1,42 @@
+@import './../../assets/theme/styles';
+
+.search-input-group {
+  width: 100%;
+  position: relative;
+  height: 50px;
+  font-size: 1.6rem;
+  button {
+      position: absolute;
+      top: 50%;
+      right: 6px;
+      margin-top: -20px;
+      font-size: 1.8rem;
+      padding: 14.5px 25px;
+      max-height: 40px;
+  }
+  &::before {
+    content: url('./../../assets/img/ic_search.svg');
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -10px;
+  }
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  border-radius: 100px !important;
+  padding: 15px 130px 15px 50px !important;
+  border: none;
+  transition: box-shadow .3s ease-in;
+  
+  &::placeholder {
+      font-size: 1.3rem;
+      text-transform: uppercase;
+  }
+  &:focus {
+      box-shadow: 0 0 10px rgba(255,255,255,0.8);
+  }
+}

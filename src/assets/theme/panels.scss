@@ -1,0 +1,39 @@
+@import 'colors';
+
+.panel {
+  border-radius: 8px;
+  flex: 1;
+  padding: 20px;
+  font-size: 1.4rem;
+  color: $white;
+  position: relative;
+  .panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    & *:first-child {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 22px;
+    }      
+  }
+  
+  &.light {
+      border: 1px solid $light-grey;
+      background-color: $white;
+      color: $black;
+      .panel-title {
+          & *:last-child {
+              color: $red;
+          }
+      }
+  }
+  &.dark {
+      background-color: transparent;
+      border: 1px solid #272727;
+      .panel-title {
+          & *:last-child {
+              color: $light-grey;
+          }
+      }
+  }
+}

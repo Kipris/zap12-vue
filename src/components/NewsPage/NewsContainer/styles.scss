@@ -1,0 +1,86 @@
+@import './../../../assets/theme/styles';
+
+.news-container {
+  margin-right: 35px;
+  .news-item {
+    border: 1px solid rgba(0,0,0,.2);
+    margin-bottom: 20px;
+    &:hover {
+        cursor: pointer;            
+    }
+    .news-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        .h3 {
+          font-family: 'Bebas Neue';
+          font-size: 2.4rem;
+          color: #000;
+          margin: 0;
+        }
+        .time {
+          font-size: 1.3rem;
+          color: $red;
+          position: relative;
+          &::before {
+            content: '';
+            mask: url('../../../assets/img/ic_calender.svg');
+            mask-size: cover;
+            background-color: $red;
+            width: 21px;
+            height: 20px;
+            position: absolute;
+            left: -30px;
+          }
+        }
+    }
+    p {
+      font-size: 1.6rem;
+    }
+  }
+  .news-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        &.red {
+            color: $red;
+        }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .news-container {
+      margin-right: 0;
+  }    
+}
+
+@media (max-width: 540px) { 
+  .news-pagination {
+    .btn {
+      padding: 11px 14px;
+      font-size: 0px;
+      position: relative;
+      &.prev {
+        transform: scaleX(-1);
+      }
+      &.prev::after,
+      &.next::after {
+          content: url('./../../../assets/img/ic_forward.png');
+          opacity: .25;
+      }
+      &.active::after {
+        opacity: .5;
+      }
+        
+    }            
+  }
+}
+
+
+
+

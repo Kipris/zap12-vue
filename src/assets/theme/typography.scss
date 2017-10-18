@@ -1,0 +1,84 @@
+@import 'colors';
+
+html {
+  font-size: 10px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Open Sans', sans-serif !important;
+    margin: 0;
+}
+
+h1,
+.h1 {    
+    font-size: 3.6rem !important;
+    line-height: 1.1;
+    margin-bottom: 50px;
+}
+
+h2,
+.h2 {    
+    font-size: 2.8rem !important;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+h3,
+.h3 {    
+    font-size: 2.4rem !important;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+h4,
+.h4 {    
+    font-size: 1.6rem !important;
+    line-height: 2.3rem;
+    margin-bottom: 40px;
+}
+
+h5,
+.h5 {    
+    font-size: 1.35rem !important;
+    line-height: 1.4rem;
+    margin-bottom: 8px;
+}
+
+h6,
+.h6 {    
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 1.3rem !important;
+    line-height: 1.8rem;
+    margin-bottom: 5px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+small {
+    font-size: 2rem !important;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Open Sans', sans-serif;
+    &.white {
+      color: $white;
+    }
+    &.grey {
+      color: $dark-grey;
+    }
+    &.dark {
+      color: $dark;
+    }
+}
+
+@media (max-width: 768px) {
+  small {
+    font-size: 1.6rem !important;
+  }
+}

@@ -1,0 +1,26 @@
+@import './../../../assets/theme/styles';
+
+//INTRO
+.intro {
+  height: 540px;
+  background: url(./../../../assets/img/background-min.jpg) no-repeat center center;
+  background-size: cover;
+  text-align: center;  
+  .container {
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  h1 {
+      color: $white;
+  }
+  small {
+      max-width: 630px;
+  }
+  .search-input-group {
+      max-width: 745px;
+  }
+}
+

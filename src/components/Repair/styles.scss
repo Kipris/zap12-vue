@@ -1,0 +1,45 @@
+@import './../../assets/theme/styles';
+
+.repair {
+  background: url('./../../assets/img/hyundai.png') no-repeat bottom right;
+  background-size: cover;
+  padding: 50px 0;
+  position: relative;
+  min-height: 250px;
+  .container {
+    z-index: 10;
+    position: relative;
+  }
+  .h1 {
+      color: $white;
+      margin: 0 0 15px 0;
+  }
+  small {  
+      color: $light-grey;
+      margin-bottom: 27px;
+      display: block;
+      text-align: left;
+  }
+  .btn {
+      font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .repair {
+      background-position: 70% 0%;
+      text-align: center;
+      small {
+        text-align: center;
+      }
+      &::before {
+        content: '';
+        width: 100%;
+        min-height: 100%;
+        display: block;
+        background-color: transparentize($dark, .5);
+        position: absolute;
+        top: 0;
+      }
+  }
+}

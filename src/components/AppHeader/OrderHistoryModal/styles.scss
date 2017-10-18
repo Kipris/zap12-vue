@@ -1,0 +1,28 @@
+@import './../../../assets/theme/styles';
+
+.modal-title {
+  display: flex;
+  justify-content: space-between;
+  .h1 {
+    margin-bottom: 20px;
+  }
+  .cross {
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+}
+
+.empty-history {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  .content {
+    margin-top: 10px;
+    font-size: 1.8rem;
+  }
+}
+
+
+

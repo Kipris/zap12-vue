@@ -1,0 +1,77 @@
+@import './../../../../assets/theme/styles';
+
+ul.items {
+  padding-left: 0;
+  list-style: none;
+  margin: 0 0 25px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.item {
+  border-bottom: 1px solid $light-grey;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .detail-name {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+}
+
+.price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  .price {
+    color: $red;
+    font-size: 1.8rem;
+  }
+  input.amount {
+    border: 1px solid #979797;
+    border-radius: 4px;
+    max-width: 31px;
+    padding: 9px 0;
+    text-align: center;
+  }
+  button.sign {
+    border: none;
+    background-color: transparent;
+    font-size: 1.8rem;
+  }
+}
+
+.total {
+  margin-bottom: 25px;
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detial-price {
+  display: flex;
+}
+
+.bucket {
+  position: relative;
+  &::after {
+    content: '';
+    mask: url('../../../../assets/img/Trash.svg');
+    mask-size: cover;
+    background-color: $dark-grey;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -25px;
+  }
+}

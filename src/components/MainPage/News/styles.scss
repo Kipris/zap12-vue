@@ -1,0 +1,75 @@
+@import './../../../assets/theme/styles';
+
+.news {
+  background-color: $dark;
+  padding: 30px 0 50px 0; 
+  text-align: center;
+  .h1 {
+    color: $white;
+  }
+  .news-wrap {
+    display: flex;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .news-block {
+    text-align: left;
+    padding: 30px;
+    background-color: transparentize($white, .9);
+    // height: inherit;
+    p {
+      font-size: 1.6rem;
+      line-height: 2.3rem;
+    }
+  }
+  .news-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    .h3 {
+      
+    }
+    .time {
+      font-size: 1.3rem;
+      color: $dark-grey;
+      position: relative;
+      margin-left: 40px;
+      &::before {
+        content: '';
+        mask: url('../../../assets/img/ic_calender.svg');
+        mask-size: cover;
+        background-color: $dark-grey;
+        width: 21px;
+        height: 20px;
+        position: absolute;
+        left: -30px;
+      }
+    }
+  }
+}
+
+//ARROWS
+.next, .prev {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  z-index: 10;
+  text-align: justify;
+}
+.next {
+  transform: scaleX(-1);
+  right: -40px;
+}
+.prev {
+  left: -40px;
+}
+
+@media (max-width: 580px) {
+  .next {
+    right: -20px;
+  }
+  .prev {
+    left: -20px;
+  }
+}
+
