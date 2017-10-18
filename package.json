@@ -2,7 +2,7 @@
   "name": "zap12",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Alexander Dubrovin & Maria Zakharova",
+  "author": "Zap12",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js & corsproxy",
