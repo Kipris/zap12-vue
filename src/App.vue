@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppHeader />
+    <AppHeader id="header"/>
     <router-view id="content"></router-view>
     <AppFooter id="footer"/>
     <portal-target name="map" />
@@ -49,40 +49,30 @@ export default {
 
 <style lang="scss">
   @import url('../static/toastr.css');
-  #content {
-    margin-bottom: 315px;
-    z-index: 10;
+  #header {
     position: relative;
+    z-index: 11;
   }
-  #footer {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 315px;
-    bottom: 0;
-    left: 0;
-    z-index: 9;
+  @media (min-width: 992px) {
+    #content {
+      margin-bottom: 315px;
+      z-index: 10;
+      position: relative;
+    }
+    #footer {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 315px;
+      bottom: 0;
+      left: 0;
+      z-index: 9;
+    }
   }
   @media (max-width: 1024px) {
     #app {
       overflow-x: hidden;
     }
   }  
-  @media (max-width: 991px) {
-    #content {
-      margin-bottom: 591px;
-    }
-    #footer {
-      height: 591px;
-    }
-  }
-  @media (max-width: 540px) {
-    #content {
-      margin-bottom: 942px;
-    }
-    #footer {
-      height: 942px;
-    }
-  }
 </style>
 

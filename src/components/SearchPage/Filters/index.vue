@@ -140,8 +140,7 @@ export default {
     border-radius: 8px;
     border: none;
     position: absolute;
-    top: 0;
-    padding: 0 25px 0 10px;
+    padding: 0 10px;
     z-index: 9;
   }
   .multiselect__tags {
@@ -168,6 +167,13 @@ export default {
     cursor: pointer;
     position: relative;
     z-index: 10;
+    background-color: #E8E8E8;
+    color: #5D5D5D;
+    border: 1px solid #A2A2A2;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 5px 5px 0;
+    display: inline-block;
   }
   .multiselect__tag:hover {
     text-decoration: underline;
@@ -175,6 +181,21 @@ export default {
   .multiselect__tag,
   .multiselect__content {
     color: rgba(46,46,46,1);
+  }
+  .multiselect__tag-icon {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    font-style: normal;
+    &::after {
+      content: '✖';
+      position: absolute;
+      color: #A2A2A2;
+      width: 15px;
+      height: 15px;
+      display: block;
+    }
   }
   .multiselect__content-wrapper {
     background-color: #fff;
